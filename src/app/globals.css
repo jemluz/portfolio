@@ -130,8 +130,9 @@
 
 @layer utilities {
   .hide-scrollbar {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+    overflow-y: auto !important; /* Override Radix inline styles */
   }
 
   .hide-scrollbar::-webkit-scrollbar {
