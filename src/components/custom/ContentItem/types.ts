@@ -2,7 +2,9 @@ import { Background, Project } from "@/background-data";
 
 export type ContentItemProps = {
   background: Background;
-  isNotUniqueOrLast: boolean;
+  isCurrentContent: boolean;
+  isPreviousContent: boolean;
+  isNextContent: boolean;
 }
 
 export type ProjectButtonProps = {
@@ -15,6 +17,7 @@ export type ColorKey = keyof typeof colorMap;
 export type CircleProps = {
   color: ColorKey;
   month: number;
+  isActive?: boolean;
 }
 
 export const colorMap = {

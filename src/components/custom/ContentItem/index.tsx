@@ -12,7 +12,9 @@ import { cn } from "@/lib/utils";
 
 export default function ContentItem({
   background,
-  isNotUniqueOrLast
+  isCurrentContent,
+  isPreviousContent,
+  isNextContent
 } : ContentItemProps) {
   const { id, month, title, description, location, durationInMonths, projects } = background;
 
@@ -21,11 +23,12 @@ export default function ContentItem({
       id={id}
       className={
         cn(
-          `flex flex-col items-start justify-between ${courstardSans.className} text-gray-400 txt-xs`,
-          isNotUniqueOrLast && "mb-8"
+          `flex flex-col items-start justify-between ${courstardSans.className} text-gray-400 txt-xs transition-opacity duration-300 min-h-[290px]`,
+          isPreviousContent && "hidden",
+          isNextContent && "opacity-30"
         )}
     >
-      {month && <MonthCircle color={getRandomColor()} month={month} />}
+      {month && <MonthCircle color={getRandomColor()} month={month} isActive={isCurrentContent} />}
 
       <PeriodInfo
         title={title}
@@ -39,14 +42,18 @@ export default function ContentItem({
   );
 }
 
-function MonthCircle({ color, month }: CircleProps) {
+function MonthCircle({ color, month, isActive = true }: CircleProps) {
   const { bg, border } = colorMap[color];
+  
+  // Use grayscale colors when not active
+  const bgClass = isActive ? bg : "bg-gray-200";
+  const borderClass = isActive ? border : "border-gray-400";
 
   return (
     <div className="flex">
       <div className="relative flex items-center justify-center w-5 h-5 mr-2">
-        <div className={`absolute w-2 h-2 rounded-full ${bg}`}></div>
-        <div className={`absolute w-4 h-4 rounded-full border-2 ${border}`}></div>
+        <div className={`absolute w-2 h-2 rounded-full ${bgClass}`}></div>
+        <div className={`absolute w-4 h-4 rounded-full border-2 ${borderClass}`}></div>
       </div>
       <span className="text-sm text-gray-500 pb-2">{` ${numberToMonthPTBR(month)}` }</span>
     </div>
