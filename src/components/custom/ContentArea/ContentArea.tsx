@@ -18,7 +18,7 @@ export default function ContentArea() {
       </h1>
 
       <div
-        className="content-view flex justify-between max-h-[200px] h-[200px] "
+        className="content-view flex justify-between max-h-[230px] h-[230px] "
       >
         <ContentList />
         <BulletList />

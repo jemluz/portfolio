@@ -93,7 +93,7 @@ export function ContentList() {
             isNext={isNext}
             isPrevious={isPrevious}
             isLastItem={isLastItem}
-            containerHeight={290}
+            containerHeight={230}
           />
         );
       })}
