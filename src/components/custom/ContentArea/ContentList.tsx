@@ -6,6 +6,7 @@ import {
   scrollToItem,
 } from "./content-list.utils";
 import ContentItem from "./ContentItem";
+import { CONTENT_VIEW_HEIGHT } from "./content-area.constants";
 
 const SCROLL_CONFIG = {
   THRESHOLD: 1,
@@ -99,7 +100,7 @@ export function ContentList() {
             isNext={isNext}
             isPrevious={isPrevious}
             isLastItem={isLastItem}
-            containerHeight={230}
+            containerHeight={CONTENT_VIEW_HEIGHT}
           />
         );
       })}

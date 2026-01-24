@@ -13,7 +13,7 @@ export default function ContentArea() {
         {selectedYear}
       </h1>
 
-      <div className="content-view flex justify-between max-h-[230px] h-[230px] ">
+      <div className="content-view flex justify-between max-h-[230px] h-[230px]">
         <ContentList />
         <BulletList />
       </div>
