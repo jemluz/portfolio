@@ -1,11 +1,16 @@
 import { useBackground } from "@/contexts/BackgroundContext";
 import { useCallback, useEffect, useRef } from "react";
-import { createWheelHandler, resetScroll, scrollToItem } from "./content-list.utils";
+import {
+  createWheelHandler,
+  resetScroll,
+  scrollToItem,
+} from "./content-list.utils";
 import ContentItem from "./ContentItem";
+import { CONTENT_VIEW_HEIGHT } from "./content-area.constants";
 
 const SCROLL_CONFIG = {
   THRESHOLD: 1,
-  TIME_RESET: 300
+  TIME_RESET: 300,
 } as const;
 
 /**
@@ -62,10 +67,10 @@ export function ContentList() {
         goToNextContent,
         goToPreviousContent,
         SCROLL_CONFIG.THRESHOLD, // Minimum accumulated deltaY threshold to navigate
-        SCROLL_CONFIG.TIME_RESET // Maximum time between scrolls to accumulate deltaY
+        SCROLL_CONFIG.TIME_RESET, // Maximum time between scrolls to accumulate deltaY
       )(event);
     },
-    [goToNextContent, goToPreviousContent]
+    [goToNextContent, goToPreviousContent],
   );
 
   return (
@@ -73,10 +78,12 @@ export function ContentList() {
       ref={contentListRef}
       onWheel={handleWheel}
       className="content-list overflow-y-auto scroll-smooth hide-scrollbar"
-      style={{ scrollBehavior: 'smooth' }}
+      style={{ scrollBehavior: "smooth" }}
     >
       {yearContents.map((period, index) => {
-        const currentIndex = yearContents.findIndex((item) => item.id === selectedContent);
+        const currentIndex = yearContents.findIndex(
+          (item) => item.id === selectedContent,
+        );
         const isLastItem = index === yearContents.length - 1;
         const isNotUniqueOrLast = yearContents.length > 1 && !isLastItem;
 
@@ -93,10 +100,10 @@ export function ContentList() {
             isNext={isNext}
             isPrevious={isPrevious}
             isLastItem={isLastItem}
-            containerHeight={290}
+            containerHeight={CONTENT_VIEW_HEIGHT}
           />
         );
       })}
     </ul>
-  )
+  );
 }
