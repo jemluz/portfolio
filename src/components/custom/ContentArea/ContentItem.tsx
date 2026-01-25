@@ -1,7 +1,7 @@
 "use client";
 
 import { courstardSans } from "@/lib/fonts";
-import { ContentItemProps, ColorKey } from "./content-item.types";
+import { ContentItemProps } from "./content-item.types";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useMemo, forwardRef } from "react";
 import ProjectsList from "./ProjectList";
@@ -27,9 +27,8 @@ import PeriodInfo from "./PeriodInfo";
  * - ResizeObserver for responsive layout adjustments
  */
 
-const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
-  (
-    {
+const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>((props, forwardedRef) => {
+    const {
       background,
       isNotUniqueOrLast,
       color,
@@ -37,9 +36,8 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
       isPrevious,
       isLastItem = false,
       containerHeight = DEFAULT_CONTAINER_HEIGHT,
-    },
-    ref,
-  ) => {
+    } = props;
+
     const {
       id,
       month,
@@ -50,7 +48,7 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
       projects,
     } = background;
 
-    const contentItemRef = useRef<HTMLLIElement>(null);
+    const internalRef = useRef<HTMLLIElement>(null);
 
     // Determine visual state based on position (next, previous, current)
     const visualState = useMemo(() => {
@@ -65,22 +63,33 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
 
     const { opacity, transition } = visualState;
 
+    // Helper to combine internal ref with forwarded ref
+    const setItemRef = (element: HTMLLIElement | null) => {
+      internalRef.current = element; // Set internal ref
+
+      if (typeof forwardedRef === "function") {
+        forwardedRef(element); // Call the function if it's a callback ref
+      } else if (forwardedRef) { // Assign to .current if it's a RefObject
+        forwardedRef.current = element;
+      }
+    };
+
     // Calculate padding for the last item
     useEffect(() => {
-      if (!isLastItem || !contentItemRef.current) return;
+      if (!isLastItem || !internalRef.current) return;
 
       const updatePadding = () => {
-        if (!contentItemRef.current) return;
+        if (!internalRef.current) return;
 
         // Calculate needed padding
         const paddingNeeded = calculatePaddingNeeded(
-          contentItemRef.current.offsetHeight,
+          internalRef.current.offsetHeight,
           containerHeight,
         );
 
         // If the item is smaller than the available space, add padding
         if (paddingNeeded > 0) {
-          contentItemRef.current.style.paddingBottom = `${paddingNeeded}px`;
+          internalRef.current.style.paddingBottom = `${paddingNeeded}px`;
         }
       };
 
@@ -89,7 +98,7 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
 
       // Observe size changes to adjust padding dynamically every time the size changes (e.g., window resize or content changes)
       const resizeObserver = new ResizeObserver(updatePadding);
-      resizeObserver.observe(contentItemRef.current);
+      resizeObserver.observe(internalRef.current);
 
       return () => resizeObserver.disconnect();
     }, [isLastItem, containerHeight]);
@@ -97,14 +106,7 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
     return (
       <li
         id={id}
-        ref={(el) => {
-          contentItemRef.current = el;
-          if (typeof ref === "function") {
-            ref(el);
-          } else if (ref) {
-            ref.current = el;
-          }
-        }}
+        ref={setItemRef}
         className={cn(
           "flex flex-col items-start justify-between text-gray-400 txt-xs",
           courstardSans.className,

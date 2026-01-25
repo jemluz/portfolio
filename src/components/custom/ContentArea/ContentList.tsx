@@ -37,21 +37,21 @@ export function ContentList() {
   const contentListRef = useRef<HTMLUListElement>(null);
 
   // Refs for scroll state management
-  const isScrolling = useRef({ current: false }); // Flag to indicate if a scroll is in progress
-  const lastScrollTime = useRef({ current: 0 }); // Timestamp of the last scroll
-  const accumulatedDelta = useRef({ current: 0 }); // Accumulates deltaY to detect direction
+  const isScrolling = useRef(false); // Flag to indicate if a scroll is in progress
+  const lastScrollTime = useRef(0); // Timestamp of the last scroll
+  const accumulatedDelta = useRef(0); // Accumulates deltaY to detect direction
 
   // Refs for tracking individual ContentItem heights
-  const itemRefs = useRef<Record<string, HTMLLIElement | null>>({});
+  const contentItemRefs = useRef<Record<string, HTMLLIElement | null>>({});
   const [scrollHeight, setScrollHeight] = useState<number | null>(null);
 
-  // Reset callback every time the year changes
+  // Reset scroll state every time the year changes
   useEffect(() => {
     registerScrollReset(() => {
       resetScroll(contentListRef);
-      isScrolling.current.current = false;
-      lastScrollTime.current.current = 0;
-      accumulatedDelta.current.current = 0;
+      isScrolling.current = false;
+      lastScrollTime.current = 0;
+      accumulatedDelta.current = 0;
     });
   }, [registerScrollReset]);
 
@@ -59,7 +59,7 @@ export function ContentList() {
   useEffect(() => {
     const calculateScrollPadding = () => {
       // Get all item heights
-      const itemHeights = Object.values(itemRefs.current)
+      const itemHeights = Object.values(contentItemRefs.current)
         .filter((ref): ref is HTMLLIElement => ref !== null)
         .map((ref) => ref.offsetHeight);
 
@@ -82,7 +82,7 @@ export function ContentList() {
 
     // Observe resize changes to recalculate
     const resizeObserver = new ResizeObserver(calculateScrollPadding);
-    Object.values(itemRefs.current).forEach((ref) => {
+    Object.values(contentItemRefs.current).forEach((ref) => {
       if (ref) resizeObserver.observe(ref);
     });
 
@@ -111,6 +111,11 @@ export function ContentList() {
     [goToNextContent, goToPreviousContent],
   );
 
+  // Helper to create ref callback for each ContentItem
+  const setItemRef = (itemId: string) => (el: HTMLLIElement | null) => {
+    contentItemRefs.current[itemId] = el;
+  };
+
   return (
     <ul
       ref={contentListRef}
@@ -135,9 +140,7 @@ export function ContentList() {
         return (
           <ContentItem
             key={period.id}
-            ref={(el) => {
-              itemRefs.current[period.id] = el;
-            }}
+            ref={setItemRef(period.id)}
             background={period}
             isNotUniqueOrLast={isNotUniqueOrLast}
             color={color}
