@@ -192,3 +192,17 @@ export function createTouchHandlers(
     handleTouchEnd,
   };
 }
+
+/**
+ * Calculates visibility states for a content item based on its index position.
+ *
+ * @param {number} index - The index of the current item
+ * @param {number} currentIndex - The index of the currently selected item
+ * @returns Object containing isNext and isPrevious boolean flags
+ */
+export function calculateItemVisibility(index: number, currentIndex: number) {
+  return {
+    isNext: index > currentIndex,
+    isPrevious: index < currentIndex,
+  };
+}

@@ -1,13 +1,17 @@
 import { useBackground } from "@/contexts/BackgroundContext";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import {
   createWheelHandler,
   createTouchHandlers,
   resetScroll,
   scrollToItem,
+  calculateItemVisibility,
 } from "./content-list.utils";
 import ContentItem from "./ContentItem";
 import { CONTENT_VIEW_HEIGHT } from "./content-area.constants";
+import { useScrollPadding } from "@/hooks/useScrollPadding";
+import { useScrollActivation } from "@/hooks/useScrollActivation";
+import { useContentItemRefs } from "@/hooks/useContentItemRefs";
 
 const SCROLL_CONFIG = {
   THRESHOLD: 1,
@@ -46,8 +50,10 @@ export function ContentList() {
   const touchStartY = useRef(0); // Initial Y position for touch events
 
   // Refs for tracking individual ContentItem heights
-  const contentItemRefs = useRef<Record<string, HTMLLIElement | null>>({});
-  const [scrollHeight, setScrollHeight] = useState<number | null>(null);
+  const [contentItemRefs, setItemRef] = useContentItemRefs();
+
+  // Calculate bottom padding to enable scrolling based on ContentItem heights
+  const scrollHeight = useScrollPadding(contentItemRefs, yearContents.length);
 
   // Reset scroll state every time the year changes
   useEffect(() => {
@@ -59,40 +65,6 @@ export function ContentList() {
       touchStartY.current = 0;
     });
   }, [registerScrollReset]);
-
-  // Calculate bottom padding to enable scrolling based on ContentItem heights
-  useEffect(() => {
-    const calculateScrollPadding = () => {
-      // Get all item heights
-      const itemHeights = Object.values(contentItemRefs.current)
-        .filter((ref): ref is HTMLLIElement => ref !== null)
-        .map((ref) => ref.offsetHeight);
-
-      // If only one item, no scroll padding needed
-      if (itemHeights.length <= 1) {
-        setScrollHeight(null);
-        return;
-      }
-
-      // Calculate total height of all items
-      const totalHeight = itemHeights.reduce((sum, height) => sum + height, 0);
-
-      // Set padding to total height so items can scroll up fully
-      // This allows each item to reach the top of the container
-      setScrollHeight(totalHeight);
-    };
-
-    // Calculate after all items are rendered
-    calculateScrollPadding();
-
-    // Observe resize changes to recalculate
-    const resizeObserver = new ResizeObserver(calculateScrollPadding);
-    Object.values(contentItemRefs.current).forEach((ref) => {
-      if (ref) resizeObserver.observe(ref);
-    });
-
-    return () => resizeObserver.disconnect();
-  }, [yearContents]);
 
   // Effect to scroll when selectedContent changes (e.g., click on the bullet)
   useEffect(() => {
@@ -128,46 +100,14 @@ export function ContentList() {
   }, [goToNextContent, goToPreviousContent]);
 
   // Scroll handler to auto-activate content based on position
-  const handleScroll = useCallback(() => {
-    // Don't interfere during programmatic scrolling
-    if (isScrolling.current) return;
-
-    const listElement = contentListRef.current;
-    if (!listElement) return;
-
-    const listTop = listElement.getBoundingClientRect().top;
-    const currentIndex = yearContents.findIndex(
-      (item) => item.id === selectedContent,
-    );
-
-    // Check each content item
-    yearContents.forEach((content, index) => {
-      const itemElement = contentItemRefs.current[content.id];
-      if (!itemElement) return;
-
-      const itemRect = itemElement.getBoundingClientRect();
-      const itemTop = itemRect.top;
-      const itemBottom = itemRect.bottom;
-
-      // Threshold for position matching (5px tolerance)
-      const threshold = 5;
-
-      // Rule 1: If this is a "next" item and its top matches the container top
-      if (index > currentIndex && Math.abs(itemTop - listTop) <= threshold) {
-        setSelectedContent(content.id);
-      }
-
-      // Rule 2: If this is a "previous" item and its bottom matches the container top
-      if (index < currentIndex && Math.abs(itemBottom - listTop) <= threshold) {
-        setSelectedContent(content.id);
-      }
-    });
-  }, [yearContents, selectedContent, setSelectedContent]);
-
-  // Helper to create ref callback for each ContentItem
-  const setItemRef = (itemId: string) => (el: HTMLLIElement | null) => {
-    contentItemRefs.current[itemId] = el;
-  };
+  const handleScroll = useScrollActivation(
+    contentListRef,
+    contentItemRefs,
+    isScrolling,
+    yearContents,
+    selectedContent,
+    setSelectedContent,
+  );
 
   return (
     <ul
@@ -190,8 +130,11 @@ export function ContentList() {
         const isLastItem = index === yearContents.length - 1;
         const isNotUniqueOrLast = yearContents.length > 1 && !isLastItem;
 
-        const isNext = index > currentIndex;
-        const isPrevious = index < currentIndex;
+        const { isNext, isPrevious } = calculateItemVisibility(
+          index,
+          currentIndex,
+        );
+
         const color = itemColors[period.id];
 
         return (
