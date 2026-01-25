@@ -24,7 +24,9 @@ export default function PeriodInfo({
       {(location || durationInMonths) && (
         <div className="flex gap-2 mt-6">
           {location && <LocationInfo location={location} />}
-          {durationInMonths && <DurationInfo durationInMonths={durationInMonths}/>}
+          {durationInMonths && (
+            <DurationInfo durationInMonths={durationInMonths} />
+          )}
         </div>
       )}
     </div>

@@ -10,9 +10,11 @@ export const DEFAULT_CONTAINER_HEIGHT = 290; // Default container height in pixe
  */
 export function calculatePaddingNeeded(
   contentItemHeight: number,
-  containerHeight: number
+  containerHeight: number,
 ): number {
   const availableHeight = containerHeight - HEADER_HEIGHT;
 
-  return contentItemHeight < availableHeight ? availableHeight - contentItemHeight : 0;
+  return contentItemHeight < availableHeight
+    ? availableHeight - contentItemHeight
+    : 0;
 }

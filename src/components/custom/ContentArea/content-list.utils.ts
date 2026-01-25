@@ -3,6 +3,7 @@ import { RefObject } from "react";
 const SCROLL_ANIMATION_DURATION = 600;
 const DEFAULT_SCROLL_THRESHOLD = 10;
 const DEFAULT_SCROLL_TIME_RESET = 300;
+const DEFAULT_TOUCH_THRESHOLD = 50; // pixels for touch swipe
 
 /**
  * Scrolls to the selected item
@@ -15,7 +16,7 @@ const DEFAULT_SCROLL_TIME_RESET = 300;
 export function scrollToItem(
   contentListRef: RefObject<HTMLUListElement | null>,
   itemId: string,
-  isScrollingRef: RefObject<boolean>
+  isScrollingRef: RefObject<boolean>,
 ): void {
   const listElement = contentListRef.current;
   if (!listElement) return;
@@ -34,7 +35,7 @@ export function scrollToItem(
   // Perform the scroll
   listElement.scrollTo({
     top: listElement.scrollTop + scrollOffset,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 
   setTimeout(() => {
@@ -48,13 +49,14 @@ export function scrollToItem(
  *
  * @param {RefObject<HTMLUListElement | null>} contentListRef - Reference to the scrollable container element
  */
-export function resetScroll(contentListRef: RefObject<HTMLUListElement | null>): void {
+export function resetScroll(
+  contentListRef: RefObject<HTMLUListElement | null>,
+): void {
   contentListRef.current?.scrollTo({
     top: 0,
-    behavior: 'auto'
+    behavior: "auto",
   });
 }
-
 
 /**
  * Creates a wheel event handler that simulates carousel-like navigation behavior.
@@ -76,7 +78,7 @@ export function createWheelHandler(
   goToNext: () => void,
   goToPrevious: () => void,
   threshold = DEFAULT_SCROLL_THRESHOLD,
-  timeReset = DEFAULT_SCROLL_TIME_RESET
+  timeReset = DEFAULT_SCROLL_TIME_RESET,
 ): (e: React.WheelEvent<HTMLUListElement>) => void {
   return (e: React.WheelEvent<HTMLUListElement>) => {
     e.preventDefault();
@@ -111,5 +113,96 @@ export function createWheelHandler(
       // Reset the accumulated delta after navigating
       accumulatedDeltaRef.current = 0;
     }
+  };
+}
+
+/**
+ * Creates touch event handlers that simulate carousel-like navigation behavior on mobile.
+ * Tracks touch position and triggers navigation when swipe distance exceeds threshold.
+ *
+ * @param {RefObject<boolean>} isScrollingRef - Reference to track if navigation is in progress
+ * @param {RefObject<number>} touchStartYRef - Reference to store the initial touch Y position
+ * @param {() => void} goToNext - Callback function to navigate to the next item
+ * @param {() => void} goToPrevious - Callback function to navigate to the previous item
+ * @param {number} [threshold=50] - Minimum swipe distance (pixels) required to trigger navigation
+ * @returns Touch event handlers object with onTouchStart, onTouchMove, and onTouchEnd
+ */
+export function createTouchHandlers(
+  isScrollingRef: RefObject<boolean>,
+  touchStartYRef: RefObject<number>,
+  goToNext: () => void,
+  goToPrevious: () => void,
+  threshold = DEFAULT_TOUCH_THRESHOLD,
+) {
+  const handleTouchStart = (e: React.TouchEvent<HTMLUListElement>) => {
+    // Prevent scroll during animation
+    if (isScrollingRef.current) {
+      e.preventDefault();
+      return;
+    }
+
+    // Prevent default scrolling behavior to avoid interference
+    e.preventDefault();
+
+    // Store the initial touch Y position
+    touchStartYRef.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLUListElement>) => {
+    // Always prevent default to block native scroll
+    e.preventDefault();
+
+    // Prevent scroll during animation
+    if (isScrollingRef.current) {
+      return;
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLUListElement>) => {
+    // Prevent scroll during animation
+    if (isScrollingRef.current) {
+      return;
+    }
+
+    // Get the final touch Y position
+    const touchEndY = e.changedTouches[0].clientY;
+    const touchStartY = touchStartYRef.current;
+
+    // Calculate the vertical distance of the swipe
+    const deltaY = touchStartY - touchEndY;
+
+    // Navigate if the swipe distance exceeds the threshold
+    if (Math.abs(deltaY) >= threshold) {
+      if (deltaY > 0) {
+        // Swiped up (scroll down) - go to next
+        goToNext();
+      } else {
+        // Swiped down (scroll up) - go to previous
+        goToPrevious();
+      }
+    }
+
+    // Reset touch start position
+    touchStartYRef.current = 0;
+  };
+
+  return {
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+  };
+}
+
+/**
+ * Calculates visibility states for a content item based on its index position.
+ *
+ * @param {number} index - The index of the current item
+ * @param {number} currentIndex - The index of the currently selected item
+ * @returns Object containing isNext and isPrevious boolean flags
+ */
+export function calculateItemVisibility(index: number, currentIndex: number) {
+  return {
+    isNext: index > currentIndex,
+    isPrevious: index < currentIndex,
   };
 }

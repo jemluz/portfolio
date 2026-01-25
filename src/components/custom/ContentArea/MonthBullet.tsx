@@ -1,7 +1,11 @@
 import { colorMap, MonthBulletProps } from "./content-item.types";
 import { numberToMonthPTBR } from "./month-bullet.utils";
 
-export default function MonthBullet({ color, month, isGrayScale = false }: MonthBulletProps) {
+export default function MonthBullet({
+  color,
+  month,
+  isGrayScale = false,
+}: MonthBulletProps) {
   // Use grayscale when isGrayScale is true (for next content), otherwise use the assigned color
   const { bg, border } = isGrayScale
     ? { bg: "bg-neutral-400", border: "border-neutral-400" }

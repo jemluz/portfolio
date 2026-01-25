@@ -7,7 +7,7 @@ The `BackgroundContext` is a React context that manages state and interactions r
 ## Location
 
 - **File**: [src/contexts/BackgroundContext.tsx](src/contexts/BackgroundContext.tsx)
-- **Dependencies**: 
+- **Dependencies**:
   - `@/background-data` - Content data
   - `@/components/custom/ContentItem/utils` - Color utilities
 
@@ -16,9 +16,7 @@ The `BackgroundContext` is a React context that manages state and interactions r
 ### Provider
 
 ```tsx
-<BackgroundProvider initialYear={number | null}>
-  {children}
-</BackgroundProvider>
+<BackgroundProvider initialYear={number | null}>{children}</BackgroundProvider>
 ```
 
 #### Props
@@ -38,20 +36,20 @@ const context = useBackground();
 
 ### Primitives
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `canGoNext` | boolean | Indicates if it's possible to navigate to the next content |
-| `canGoPrevious` | boolean | Indicates if it's possible to navigate to the previous content |
-| `selectedContent` | string \| null | ID of the currently selected content |
-| `selectedYear` | number \| null | Currently selected year |
+| Property          | Type           | Description                                                    |
+| ----------------- | -------------- | -------------------------------------------------------------- |
+| `canGoNext`       | boolean        | Indicates if it's possible to navigate to the next content     |
+| `canGoPrevious`   | boolean        | Indicates if it's possible to navigate to the previous content |
+| `selectedContent` | string \| null | ID of the currently selected content                           |
+| `selectedYear`    | number \| null | Currently selected year                                        |
 
 ### Complex Objects
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `initialContent` | Background \| null | First content of the selected year (sorted by month) |
-| `itemColors` | Record<string, string> | Mapping of item ID to its color (with persistent cache) |
-| `yearContents` | Background[] | List of contents filtered by selected year, sorted by month |
+| Property         | Type                   | Description                                                 |
+| ---------------- | ---------------------- | ----------------------------------------------------------- |
+| `initialContent` | Background \| null     | First content of the selected year (sorted by month)        |
+| `itemColors`     | Record<string, string> | Mapping of item ID to its color (with persistent cache)     |
+| `yearContents`   | Background[]           | List of contents filtered by selected year, sorted by month |
 
 ## Actions/Callbacks
 
@@ -62,6 +60,7 @@ setSelectedYear: (year: number | null) => void
 ```
 
 Sets the selected year. When the year changes:
+
 1. Scroll is reset (if callback is registered)
 2. The first content of the year is automatically selected
 
@@ -110,6 +109,7 @@ Contents are automatically sorted by month (from oldest to newest) when filterin
 ### Side Effects
 
 When `selectedYear` changes:
+
 1. The `yearContents` list is recalculated
 2. Scroll is reset (via registered callback)
 3. `selectedContent` is set to the first item of the year
@@ -117,7 +117,10 @@ When `selectedYear` changes:
 ## Usage Example
 
 ```tsx
-import { BackgroundProvider, useBackground } from '@/contexts/BackgroundContext';
+import {
+  BackgroundProvider,
+  useBackground,
+} from "@/contexts/BackgroundContext";
 
 // In root component or layout
 function App() {
@@ -143,15 +146,18 @@ function MyComponent() {
 
   return (
     <div>
-      <select 
-        value={selectedYear ?? ''} 
+      <select
+        value={selectedYear ?? ""}
         onChange={(e) => setSelectedYear(Number(e.target.value))}
       >
         {/* year options */}
       </select>
 
       {yearContents.map((content) => (
-        <div key={content.id} className={selectedContent === content.id ? 'active' : ''}>
+        <div
+          key={content.id}
+          className={selectedContent === content.id ? "active" : ""}
+        >
           {content.title}
         </div>
       ))}
