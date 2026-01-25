@@ -4,7 +4,10 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../../ui/tooltip";
 import { ProjectButtonProps } from "./content-item.types";
 import { cn } from "@/lib/utils";
 
-export default function ProjectButton({ project, isNotUniqueOrLast }: ProjectButtonProps) {
+export default function ProjectButton({
+  project,
+  isNotUniqueOrLast,
+}: ProjectButtonProps) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>

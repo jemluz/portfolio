@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { calculateBlackBorderTranslation, isElementVisible } from "../components/custom/Timeline/timeline.utils";
+import {
+  calculateBlackBorderTranslation,
+  isElementVisible,
+} from "../components/custom/Timeline/timeline.utils";
 
 interface UseTimelineBlackBorderProps {
   selectedYear: number | null;

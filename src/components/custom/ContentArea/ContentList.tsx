@@ -2,6 +2,7 @@ import { useBackground } from "@/contexts/BackgroundContext";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   createWheelHandler,
+  createTouchHandlers,
   resetScroll,
   scrollToItem,
 } from "./content-list.utils";
@@ -11,6 +12,7 @@ import { CONTENT_VIEW_HEIGHT } from "./content-area.constants";
 const SCROLL_CONFIG = {
   THRESHOLD: 1,
   TIME_RESET: 300,
+  TOUCH_THRESHOLD: 50, // pixels for touch swipe
 } as const;
 
 /**
@@ -40,6 +42,7 @@ export function ContentList() {
   const isScrolling = useRef(false); // Flag to indicate if a scroll is in progress
   const lastScrollTime = useRef(0); // Timestamp of the last scroll
   const accumulatedDelta = useRef(0); // Accumulates deltaY to detect direction
+  const touchStartY = useRef(0); // Initial Y position for touch events
 
   // Refs for tracking individual ContentItem heights
   const contentItemRefs = useRef<Record<string, HTMLLIElement | null>>({});
@@ -52,6 +55,7 @@ export function ContentList() {
       isScrolling.current = false;
       lastScrollTime.current = 0;
       accumulatedDelta.current = 0;
+      touchStartY.current = 0;
     });
   }, [registerScrollReset]);
 
@@ -111,6 +115,19 @@ export function ContentList() {
     [goToNextContent, goToPreviousContent],
   );
 
+  // Touch handlers to simulate carousel behavior on mobile
+  const touchHandlers = useCallback(() => {
+    return createTouchHandlers(
+      isScrolling,
+      touchStartY,
+      goToNextContent,
+      goToPreviousContent,
+      SCROLL_CONFIG.TOUCH_THRESHOLD, // Minimum swipe distance to navigate
+    );
+  }, [goToNextContent, goToPreviousContent]);
+
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = touchHandlers();
+
   // Helper to create ref callback for each ContentItem
   const setItemRef = (itemId: string) => (el: HTMLLIElement | null) => {
     contentItemRefs.current[itemId] = el;
@@ -120,6 +137,9 @@ export function ContentList() {
     <ul
       ref={contentListRef}
       onWheel={handleWheel}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       className="content-list overflow-y-auto scroll-smooth hide-scrollbar"
       style={{
         scrollBehavior: "smooth",

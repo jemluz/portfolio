@@ -36,14 +36,19 @@ export default function Timeline({ years }: TimelineItemProps) {
     });
 
   // Navigation logic
-  const { errorButton, handleUpAll, handleDownAll, handleUpOne, handleDownOne } =
-    useTimelineNavigation({
-      years,
-      selectedYear,
-      setSelectedYear,
-      scrollToYear,
-      scrollViewportRef,
-    });
+  const {
+    errorButton,
+    handleUpAll,
+    handleDownAll,
+    handleUpOne,
+    handleDownOne,
+  } = useTimelineNavigation({
+    years,
+    selectedYear,
+    setSelectedYear,
+    scrollToYear,
+    scrollViewportRef,
+  });
 
   return (
     <div className="timeline-container flex flex-col">
@@ -81,4 +86,3 @@ export default function Timeline({ years }: TimelineItemProps) {
     </div>
   );
 }
-
