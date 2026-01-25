@@ -4,20 +4,18 @@ const SCROLL_ANIMATION_DURATION = 600;
 const DEFAULT_SCROLL_THRESHOLD = 10;
 const DEFAULT_SCROLL_TIME_RESET = 300;
 
-type MutableRef<T> = RefObject<{ current: T }>;
-
 /**
  * Scrolls to the selected item
  * Scrolls smoothly to a specific item within a scrollable container.
  *
  * @param {RefObject<HTMLUListElement | null>} contentListRef - Reference to the scrollable container element
  * @param {string} itemId - The ID of the element to scroll to
- * @param {RefObject<{ current: boolean }>} isScrollingRef - Reference to track if a scroll animation is in progress
+ * @param {RefObject<boolean>} isScrollingRef - Reference to track if a scroll animation is in progress
  */
 export function scrollToItem(
   contentListRef: RefObject<HTMLUListElement | null>,
   itemId: string,
-  isScrollingRef: MutableRef<boolean>
+  isScrollingRef: RefObject<boolean>
 ): void {
   const listElement = contentListRef.current;
   if (!listElement) return;
@@ -26,9 +24,7 @@ export function scrollToItem(
   if (!targetElement) return;
 
   // Prevent multiple scrolls at the same time (locks during animation)
-  if (isScrollingRef.current) {
-    isScrollingRef.current.current = true;
-  }
+  isScrollingRef.current = true;
 
   // Calculate the offset to scroll the element to the top of the container
   const containerRect = listElement.getBoundingClientRect();
@@ -43,9 +39,7 @@ export function scrollToItem(
 
   setTimeout(() => {
     // Allow scrolling again after animation (unlock)
-    if (isScrollingRef.current) {
-      isScrollingRef.current.current = false;
-    }
+    isScrollingRef.current = false;
   }, SCROLL_ANIMATION_DURATION);
 }
 
@@ -66,9 +60,9 @@ export function resetScroll(contentListRef: RefObject<HTMLUListElement | null>):
  * Creates a wheel event handler that simulates carousel-like navigation behavior.
  * Accumulates scroll deltas and triggers navigation callbacks when thresholds are met.
  *
- * @param {RefObject<{ current: boolean }>} isScrollingRef - Reference to track if navigation is in progress
- * @param {RefObject<{ current: number }>} lastScrollTimeRef - Reference to store the timestamp of the last scroll event
- * @param {RefObject<{ current: number }>} accumulatedDeltaRef - Reference to accumulate scroll deltas
+ * @param {RefObject<boolean>} isScrollingRef - Reference to track if navigation is in progress
+ * @param {RefObject<number>} lastScrollTimeRef - Reference to store the timestamp of the last scroll event
+ * @param {RefObject<number>} accumulatedDeltaRef - Reference to accumulate scroll deltas
  * @param {() => void} goToNext - Callback function to navigate to the next item
  * @param {() => void} goToPrevious - Callback function to navigate to the previous item
  * @param {number} [threshold=10] - Minimum accumulated delta required to trigger navigation
@@ -76,9 +70,9 @@ export function resetScroll(contentListRef: RefObject<HTMLUListElement | null>):
  * @returns {(e: React.WheelEvent<HTMLUListElement>) => void} Wheel event handler function
  */
 export function createWheelHandler(
-  isScrollingRef: MutableRef<boolean>,
-  lastScrollTimeRef: MutableRef<number>,
-  accumulatedDeltaRef: MutableRef<number>,
+  isScrollingRef: RefObject<boolean>,
+  lastScrollTimeRef: RefObject<number>,
+  accumulatedDeltaRef: RefObject<number>,
   goToNext: () => void,
   goToPrevious: () => void,
   threshold = DEFAULT_SCROLL_THRESHOLD,
@@ -88,27 +82,23 @@ export function createWheelHandler(
     e.preventDefault();
 
     // Prevent scroll during animation (locks during animation)
-    if (isScrollingRef.current?.current) return;
+    if (isScrollingRef.current) return;
 
     const now = Date.now();
-    const lastScrollTime = lastScrollTimeRef.current?.current || 0;
+    const lastScrollTime = lastScrollTimeRef.current;
 
     // Reset accumulator if too much time has passed since the last scroll
-    if (now - lastScrollTime > timeReset && accumulatedDeltaRef.current) {
-      accumulatedDeltaRef.current.current = 0;
+    if (now - lastScrollTime > timeReset) {
+      accumulatedDeltaRef.current = 0;
     }
 
     // Accumulate the deltaY to detect scroll direction
-    if (accumulatedDeltaRef.current) {
-      accumulatedDeltaRef.current.current += e.deltaY;
-    }
+    accumulatedDeltaRef.current += e.deltaY;
 
     // Update the last scroll time
-    if (lastScrollTimeRef.current) {
-      lastScrollTimeRef.current.current = now;
-    }
+    lastScrollTimeRef.current = now;
 
-    const accumulatedDelta = accumulatedDeltaRef.current?.current || 0;
+    const accumulatedDelta = accumulatedDeltaRef.current;
 
     // Navigate if the accumulated delta exceeds the threshold
     if (Math.abs(accumulatedDelta) >= threshold) {
@@ -119,9 +109,7 @@ export function createWheelHandler(
       }
 
       // Reset the accumulated delta after navigating
-      if (accumulatedDeltaRef.current) {
-        accumulatedDeltaRef.current.current = 0;
-      }
+      accumulatedDeltaRef.current = 0;
     }
   };
 }

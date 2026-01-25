@@ -25,14 +25,6 @@ export type Background = {
 
 type UserBackground = Background[];
 
-function generateUUID(): string {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-    const r = (Math.random() * 16) | 0;
-    const v = c === "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}
-
 export const listOfYears = [
   1997, 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
 ];
@@ -50,7 +42,7 @@ export const userData: UserInfo = {
 
 export const contentData: UserBackground = [
   {
-    id: generateUUID(),
+    id: "bg-1997-09",
     year: 1997,
     month: 9,
     title: "Era uma vez 🚩",
@@ -58,14 +50,14 @@ export const contentData: UserBackground = [
     location: "Salvador/BA",
   },
   {
-    id: generateUUID(),
+    id: "bg-2013-02",
     year: 2013,
     month: 2,
     title: "Ensino médio",
     description: "primeiro contato com programação \n - HTML e CSS",
   },
   {
-    id: generateUUID(),
+    id: "bg-2016-03",
     year: 2016,
     month: 3,
     title: "Ingressou na Universidade Federal do Ceará ✈️",
@@ -73,14 +65,14 @@ export const contentData: UserBackground = [
     location: "Fortaleza/CE",
   },
   {
-    id: generateUUID(),
+    id: "bg-2016-06",
     year: 2016,
     month: 6,
     title: "Trainee CoDi Jr. ❤️💚💙",
     description: "entrou na empresa júnior do SMD",
   },
   {
-    id: generateUUID(),
+    id: "bg-2018-04",
     year: 2018,
     month: 4,
     title: "Entrou para a diretoria 🥸",
@@ -88,7 +80,7 @@ export const contentData: UserBackground = [
     durationInMonths: 8,
   },
   {
-    id: generateUUID(),
+    id: "bg-2018-08",
     year: 2018,
     month: 8,
     title: "Estágio frontend - JGV",
@@ -96,7 +88,7 @@ export const contentData: UserBackground = [
     durationInMonths: 12,
   },
   {
-    id: generateUUID(),
+    id: "bg-2019-08",
     year: 2019,
     month: 8,
     title: "Jr. Developer - JGV 🤓",
@@ -111,7 +103,7 @@ export const contentData: UserBackground = [
     ],
   },
   {
-    id: generateUUID(),
+    id: "bg-2020-10",
     year: 2020,
     month: 10,
     title: "UX Developer - Ootz 🛍️",
@@ -120,7 +112,7 @@ export const contentData: UserBackground = [
     durationInMonths: 6,
   },
   {
-    id: generateUUID(),
+    id: "bg-2021-04",
     year: 2021,
     month: 4,
     title: "Dev Jr Flutter / Designer UI - bHave 📲",
@@ -140,7 +132,7 @@ export const contentData: UserBackground = [
     ],
   },
   {
-    id: generateUUID(),
+    id: "bg-2021-08",
     year: 2021,
     month: 8,
     title: "Software Engineer - Levva 💛🖤💛",
@@ -156,7 +148,7 @@ export const contentData: UserBackground = [
     ],
   },
   {
-    id: generateUUID(),
+    id: "bg-2022-12a",
     year: 2022,
     month: 12,
     title: "O diploma veio aí! 🎓",
@@ -174,7 +166,7 @@ export const contentData: UserBackground = [
     ],
   },
   {
-    id: generateUUID(),
+    id: "bg-2022-12b",
     year: 2022,
     month: 12,
     title: "Ingressou no Ignite 🚀",
@@ -187,7 +179,7 @@ export const contentData: UserBackground = [
     ],
   },
   {
-    id: generateUUID(),
+    id: "bg-2023-03",
     year: 2023,
     month: 3,
     title: "Primeira produção de conteúdo 🎥",
@@ -204,7 +196,7 @@ export const contentData: UserBackground = [
     ],
   },
   {
-    id: generateUUID(),
+    id: "bg-2023-06",
     year: 2023,
     month: 6,
     title: "Ingressou no curso.dev 📝",
@@ -217,7 +209,7 @@ export const contentData: UserBackground = [
     ],
   },
   {
-    id: generateUUID(),
+    id: "bg-2024-12",
     year: 2024,
     month: 12,
     title: "Especialista em React e Next.js🏅",
@@ -234,7 +226,7 @@ export const contentData: UserBackground = [
     ],
   },
   {
-    id: generateUUID(),
+    id: "bg-2025-01",
     year: 2025,
     month: 1,
     title: "Iniciou os estudos em Web3 e Open Source 🌐",

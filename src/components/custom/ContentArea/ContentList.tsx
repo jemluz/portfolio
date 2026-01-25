@@ -1,5 +1,5 @@
 import { useBackground } from "@/contexts/BackgroundContext";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   createWheelHandler,
   resetScroll,
@@ -37,19 +37,57 @@ export function ContentList() {
   const contentListRef = useRef<HTMLUListElement>(null);
 
   // Refs for scroll state management
-  const isScrolling = useRef({ current: false }); // Flag to indicate if a scroll is in progress
-  const lastScrollTime = useRef({ current: 0 }); // Timestamp of the last scroll
-  const accumulatedDelta = useRef({ current: 0 }); // Accumulates deltaY to detect direction
+  const isScrolling = useRef(false); // Flag to indicate if a scroll is in progress
+  const lastScrollTime = useRef(0); // Timestamp of the last scroll
+  const accumulatedDelta = useRef(0); // Accumulates deltaY to detect direction
 
-  // Reset callback every time the year changes
+  // Refs for tracking individual ContentItem heights
+  const contentItemRefs = useRef<Record<string, HTMLLIElement | null>>({});
+  const [scrollHeight, setScrollHeight] = useState<number | null>(null);
+
+  // Reset scroll state every time the year changes
   useEffect(() => {
     registerScrollReset(() => {
       resetScroll(contentListRef);
-      isScrolling.current.current = false;
-      lastScrollTime.current.current = 0;
-      accumulatedDelta.current.current = 0;
+      isScrolling.current = false;
+      lastScrollTime.current = 0;
+      accumulatedDelta.current = 0;
     });
   }, [registerScrollReset]);
+
+  // Calculate bottom padding to enable scrolling based on ContentItem heights
+  useEffect(() => {
+    const calculateScrollPadding = () => {
+      // Get all item heights
+      const itemHeights = Object.values(contentItemRefs.current)
+        .filter((ref): ref is HTMLLIElement => ref !== null)
+        .map((ref) => ref.offsetHeight);
+
+      // If only one item, no scroll padding needed
+      if (itemHeights.length <= 1) {
+        setScrollHeight(null);
+        return;
+      }
+
+      // Calculate total height of all items
+      const totalHeight = itemHeights.reduce((sum, height) => sum + height, 0);
+
+      // Set padding to total height so items can scroll up fully
+      // This allows each item to reach the top of the container
+      setScrollHeight(totalHeight);
+    };
+
+    // Calculate after all items are rendered
+    calculateScrollPadding();
+
+    // Observe resize changes to recalculate
+    const resizeObserver = new ResizeObserver(calculateScrollPadding);
+    Object.values(contentItemRefs.current).forEach((ref) => {
+      if (ref) resizeObserver.observe(ref);
+    });
+
+    return () => resizeObserver.disconnect();
+  }, [yearContents]);
 
   // Effect to scroll when selectedContent changes (e.g., click on the bullet)
   useEffect(() => {
@@ -73,12 +111,20 @@ export function ContentList() {
     [goToNextContent, goToPreviousContent],
   );
 
+  // Helper to create ref callback for each ContentItem
+  const setItemRef = (itemId: string) => (el: HTMLLIElement | null) => {
+    contentItemRefs.current[itemId] = el;
+  };
+
   return (
     <ul
       ref={contentListRef}
       onWheel={handleWheel}
       className="content-list overflow-y-auto scroll-smooth hide-scrollbar"
-      style={{ scrollBehavior: "smooth" }}
+      style={{
+        scrollBehavior: "smooth",
+        paddingBottom: scrollHeight ? `${scrollHeight}px` : "0",
+      }}
     >
       {yearContents.map((period, index) => {
         const currentIndex = yearContents.findIndex(
@@ -94,6 +140,7 @@ export function ContentList() {
         return (
           <ContentItem
             key={period.id}
+            ref={setItemRef(period.id)}
             background={period}
             isNotUniqueOrLast={isNotUniqueOrLast}
             color={color}

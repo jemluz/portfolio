@@ -21,8 +21,12 @@ export default function PeriodInfo({
       </h2>
       <p className="text-sm max-w-[300px]">{description}</p>
 
-      {location && <LocationInfo location={location} />}
-      {durationInMonths && <DurationInfo durationInMonths={durationInMonths} />}
+      {(location || durationInMonths) && (
+        <div className="flex gap-2 mt-6">
+          {location && <LocationInfo location={location} />}
+          {durationInMonths && <DurationInfo durationInMonths={durationInMonths}/>}
+        </div>
+      )}
     </div>
   );
 }
