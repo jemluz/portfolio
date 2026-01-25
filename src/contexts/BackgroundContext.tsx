@@ -12,6 +12,7 @@ import React, {
 } from "react";
 import { contentData, Background } from "@/background-data";
 import { getRandomColor } from "@/components/custom/ContentArea/colors.utils";
+import { ColorKey } from "@/components/custom/ContentArea/content-item.types";
 
 type BackgroundContextType = {
   // State - primitives
@@ -22,7 +23,7 @@ type BackgroundContextType = {
 
   // State - complex objects
   initialContent: Background | null;
-  itemColors: Record<string, string>;
+  itemColors: Record<string, ColorKey>;
   yearContents: Background[];
 
   // Actions/callbacks
@@ -52,7 +53,7 @@ export function BackgroundProvider({
   );
 
   // ========== Refs ==========
-  const colorCacheRef = useRef<Record<string, string>>({});
+  const colorCacheRef = useRef<Record<string, ColorKey>>({});
   const scrollResetCallbackRef = useRef<(() => void) | null>(null);
 
   // ========== Memoized Values ==========
@@ -72,7 +73,7 @@ export function BackgroundProvider({
 
   // Generate colors for each ContentItem (cached to persist across year changes)
   const itemColors = useMemo(() => {
-    const colorMap: Record<string, string> = {};
+    const colorMap: Record<string, ColorKey> = {};
 
     yearContents.forEach((item) => {
       // Use cached color if exists, otherwise generate new one

@@ -115,7 +115,7 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
       >
         {month && (
           <MonthBullet
-            color={color as ColorKey}
+            color={color}
             month={month}
             isGrayScale={isNext}
           />
