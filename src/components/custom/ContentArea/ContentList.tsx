@@ -55,15 +55,15 @@ export function ContentList() {
     });
   }, [registerScrollReset]);
 
-  // Calculate total scroll height based on ContentItem heights
+  // Calculate bottom padding to enable scrolling based on ContentItem heights
   useEffect(() => {
-    const calculateScrollHeight = () => {
+    const calculateScrollPadding = () => {
       // Get all item heights
       const itemHeights = Object.values(itemRefs.current)
         .filter((ref): ref is HTMLLIElement => ref !== null)
         .map((ref) => ref.offsetHeight);
 
-      // If only one item, no scroll needed (return null to disable)
+      // If only one item, no scroll padding needed
       if (itemHeights.length <= 1) {
         setScrollHeight(null);
         return;
@@ -72,15 +72,16 @@ export function ContentList() {
       // Calculate total height of all items
       const totalHeight = itemHeights.reduce((sum, height) => sum + height, 0);
 
-      // Set scroll height to double the total height
-      setScrollHeight(totalHeight * 2);
+      // Set padding to total height so items can scroll up fully
+      // This allows each item to reach the top of the container
+      setScrollHeight(totalHeight);
     };
 
     // Calculate after all items are rendered
-    calculateScrollHeight();
+    calculateScrollPadding();
 
     // Observe resize changes to recalculate
-    const resizeObserver = new ResizeObserver(calculateScrollHeight);
+    const resizeObserver = new ResizeObserver(calculateScrollPadding);
     Object.values(itemRefs.current).forEach((ref) => {
       if (ref) resizeObserver.observe(ref);
     });
@@ -117,8 +118,7 @@ export function ContentList() {
       className="content-list overflow-y-auto scroll-smooth hide-scrollbar"
       style={{
         scrollBehavior: "smooth",
-        height: scrollHeight ? `${scrollHeight}px` : "auto",
-        overflowY: scrollHeight ? "auto" : "visible",
+        paddingBottom: scrollHeight ? `${scrollHeight}px` : "0",
       }}
     >
       {yearContents.map((period, index) => {
