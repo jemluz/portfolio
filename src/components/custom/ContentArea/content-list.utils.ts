@@ -141,14 +141,19 @@ export function createTouchHandlers(
       return;
     }
 
+    // Prevent default scrolling behavior to avoid interference
+    e.preventDefault();
+
     // Store the initial touch Y position
     touchStartYRef.current = e.touches[0].clientY;
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLUListElement>) => {
+    // Always prevent default to block native scroll
+    e.preventDefault();
+
     // Prevent scroll during animation
     if (isScrollingRef.current) {
-      e.preventDefault();
       return;
     }
   };
