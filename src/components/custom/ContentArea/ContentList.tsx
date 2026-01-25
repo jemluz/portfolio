@@ -1,5 +1,5 @@
 import { useBackground } from "@/contexts/BackgroundContext";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   createWheelHandler,
   resetScroll,
@@ -41,6 +41,10 @@ export function ContentList() {
   const lastScrollTime = useRef({ current: 0 }); // Timestamp of the last scroll
   const accumulatedDelta = useRef({ current: 0 }); // Accumulates deltaY to detect direction
 
+  // Refs for tracking individual ContentItem heights
+  const itemRefs = useRef<Record<string, HTMLLIElement | null>>({});
+  const [scrollHeight, setScrollHeight] = useState<number | null>(null);
+
   // Reset callback every time the year changes
   useEffect(() => {
     registerScrollReset(() => {
@@ -50,6 +54,39 @@ export function ContentList() {
       accumulatedDelta.current.current = 0;
     });
   }, [registerScrollReset]);
+
+  // Calculate total scroll height based on ContentItem heights
+  useEffect(() => {
+    const calculateScrollHeight = () => {
+      // Get all item heights
+      const itemHeights = Object.values(itemRefs.current)
+        .filter((ref): ref is HTMLLIElement => ref !== null)
+        .map((ref) => ref.offsetHeight);
+
+      // If only one item, no scroll needed (return null to disable)
+      if (itemHeights.length <= 1) {
+        setScrollHeight(null);
+        return;
+      }
+
+      // Calculate total height of all items
+      const totalHeight = itemHeights.reduce((sum, height) => sum + height, 0);
+
+      // Set scroll height to double the total height
+      setScrollHeight(totalHeight * 2);
+    };
+
+    // Calculate after all items are rendered
+    calculateScrollHeight();
+
+    // Observe resize changes to recalculate
+    const resizeObserver = new ResizeObserver(calculateScrollHeight);
+    Object.values(itemRefs.current).forEach((ref) => {
+      if (ref) resizeObserver.observe(ref);
+    });
+
+    return () => resizeObserver.disconnect();
+  }, [yearContents]);
 
   // Effect to scroll when selectedContent changes (e.g., click on the bullet)
   useEffect(() => {
@@ -78,7 +115,11 @@ export function ContentList() {
       ref={contentListRef}
       onWheel={handleWheel}
       className="content-list overflow-y-auto scroll-smooth hide-scrollbar"
-      style={{ scrollBehavior: "smooth" }}
+      style={{
+        scrollBehavior: "smooth",
+        height: scrollHeight ? `${scrollHeight}px` : "auto",
+        overflowY: scrollHeight ? "auto" : "visible",
+      }}
     >
       {yearContents.map((period, index) => {
         const currentIndex = yearContents.findIndex(
@@ -94,6 +135,9 @@ export function ContentList() {
         return (
           <ContentItem
             key={period.id}
+            ref={(el) => {
+              itemRefs.current[period.id] = el;
+            }}
             background={period}
             isNotUniqueOrLast={isNotUniqueOrLast}
             color={color}
