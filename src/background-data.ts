@@ -42,14 +42,6 @@ export const userData: UserInfo = {
 
 export const contentData: UserBackground = [
   {
-    id: "bg-2025-01",
-    year: 1997,
-    month: 9,
-    title: "Era uma vez 🚩",
-    description: "Brasileira, Soteropolitana",
-    location: "Salvador/BA",
-  },
-  {
     id: "bg-1997-09",
     year: 1997,
     month: 9,
@@ -232,5 +224,13 @@ export const contentData: UserBackground = [
         name: "Ignite - Certificado",
       },
     ],
+  },
+  {
+    id: "bg-2025-01",
+    year: 2025,
+    month: 1,
+    title: "Iniciou os estudos em Web3 e Open Source 🌐",
+    description:
+      "comecei a estudar blockchain, DAOs, DApps, Smart Contracts, e abrir meus olhos para o mundo open source.",
   },
 ];
