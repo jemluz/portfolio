@@ -33,6 +33,7 @@ export function ContentList() {
     goToNextContent,
     goToPreviousContent,
     registerScrollReset,
+    setSelectedContent,
   } = useBackground();
 
   // Ref to the content list element
@@ -126,6 +127,43 @@ export function ContentList() {
     );
   }, [goToNextContent, goToPreviousContent]);
 
+  // Scroll handler to auto-activate content based on position
+  const handleScroll = useCallback(() => {
+    // Don't interfere during programmatic scrolling
+    if (isScrolling.current) return;
+
+    const listElement = contentListRef.current;
+    if (!listElement) return;
+
+    const listTop = listElement.getBoundingClientRect().top;
+    const currentIndex = yearContents.findIndex(
+      (item) => item.id === selectedContent,
+    );
+
+    // Check each content item
+    yearContents.forEach((content, index) => {
+      const itemElement = contentItemRefs.current[content.id];
+      if (!itemElement) return;
+
+      const itemRect = itemElement.getBoundingClientRect();
+      const itemTop = itemRect.top;
+      const itemBottom = itemRect.bottom;
+
+      // Threshold for position matching (5px tolerance)
+      const threshold = 5;
+
+      // Rule 1: If this is a "next" item and its top matches the container top
+      if (index > currentIndex && Math.abs(itemTop - listTop) <= threshold) {
+        setSelectedContent(content.id);
+      }
+
+      // Rule 2: If this is a "previous" item and its bottom matches the container top
+      if (index < currentIndex && Math.abs(itemBottom - listTop) <= threshold) {
+        setSelectedContent(content.id);
+      }
+    });
+  }, [yearContents, selectedContent, setSelectedContent]);
+
   // Helper to create ref callback for each ContentItem
   const setItemRef = (itemId: string) => (el: HTMLLIElement | null) => {
     contentItemRefs.current[itemId] = el;
@@ -138,6 +176,7 @@ export function ContentList() {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onScroll={handleScroll}
       className="content-list overflow-y-auto scroll-smooth hide-scrollbar"
       style={{
         scrollBehavior: "smooth",
