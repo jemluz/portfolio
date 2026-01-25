@@ -25,6 +25,14 @@ export type MonthBulletProps = {
   isGrayScale?: boolean;
 };
 
+export type LocationInfoProps = {
+  location: string;
+};
+
+export type DurationInfoProps = {
+  durationInMonths: number;
+};
+
 export type ColorKey = keyof typeof colorMap;
 
 export const colorMap = {
