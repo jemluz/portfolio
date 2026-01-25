@@ -1,5 +1,5 @@
 import { useBackground } from "@/contexts/BackgroundContext";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   createWheelHandler,
   createTouchHandlers,
@@ -116,7 +116,7 @@ export function ContentList() {
   );
 
   // Touch handlers to simulate carousel behavior on mobile
-  const touchHandlers = useCallback(() => {
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useMemo(() => {
     return createTouchHandlers(
       isScrolling,
       touchStartY,
@@ -125,8 +125,6 @@ export function ContentList() {
       SCROLL_CONFIG.TOUCH_THRESHOLD, // Minimum swipe distance to navigate
     );
   }, [goToNextContent, goToPreviousContent]);
-
-  const { handleTouchStart, handleTouchMove, handleTouchEnd } = touchHandlers();
 
   // Helper to create ref callback for each ContentItem
   const setItemRef = (itemId: string) => (el: HTMLLIElement | null) => {
