@@ -17,11 +17,7 @@ type BulletProps = {
  */
 
 export default function BulletList() {
-    const {
-      yearContents,
-      selectedContent,
-      setSelectedContent,
-    } = useBackground();
+  const { yearContents, selectedContent, setSelectedContent } = useBackground();
 
   if (!yearContents || yearContents.length <= 1) return null;
 
@@ -52,7 +48,9 @@ export function Bullet({ isActive, onClick }: BulletProps) {
       onClick={onClick}
       className={`flex items-center justify-center w-5 h-5 ${opacity} cursor-pointer hover:opacity-75 transition-opacity mb-2`}
     >
-      <div className={`absolute ${smallCircleSize} rounded-full bg-neutral-400`}></div>
+      <div
+        className={`absolute ${smallCircleSize} rounded-full bg-neutral-400`}
+      ></div>
       <div
         className={`absolute ${largeCircleSize} rounded-full border-2 border-primary`}
       ></div>

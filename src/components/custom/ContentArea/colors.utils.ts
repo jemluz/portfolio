@@ -28,4 +28,3 @@ export function getRandomColor(): ColorKey {
   lastColor = color;
   return color;
 }
-

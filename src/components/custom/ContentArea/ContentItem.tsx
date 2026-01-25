@@ -27,7 +27,8 @@ import PeriodInfo from "./PeriodInfo";
  * - ResizeObserver for responsive layout adjustments
  */
 
-const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>((props, forwardedRef) => {
+const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
+  (props, forwardedRef) => {
     const {
       background,
       isNotUniqueOrLast,
@@ -69,7 +70,8 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>((props, forwarde
 
       if (typeof forwardedRef === "function") {
         forwardedRef(element); // Call the function if it's a callback ref
-      } else if (forwardedRef) { // Assign to .current if it's a RefObject
+      } else if (forwardedRef) {
+        // Assign to .current if it's a RefObject
         forwardedRef.current = element;
       }
     };
@@ -116,11 +118,7 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>((props, forwarde
         )}
       >
         {month && (
-          <MonthBullet
-            color={color}
-            month={month}
-            isGrayScale={isNext}
-          />
+          <MonthBullet color={color} month={month} isGrayScale={isNext} />
         )}
 
         <PeriodInfo

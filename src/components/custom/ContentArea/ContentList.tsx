@@ -1,16 +1,22 @@
 import { useBackground } from "@/contexts/BackgroundContext";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import {
   createWheelHandler,
+  createTouchHandlers,
   resetScroll,
   scrollToItem,
+  calculateItemVisibility,
 } from "./content-list.utils";
 import ContentItem from "./ContentItem";
 import { CONTENT_VIEW_HEIGHT } from "./content-area.constants";
+import { useScrollPadding } from "@/hooks/useScrollPadding";
+import { useScrollActivation } from "@/hooks/useScrollActivation";
+import { useContentItemRefs } from "@/hooks/useContentItemRefs";
 
 const SCROLL_CONFIG = {
   THRESHOLD: 1,
   TIME_RESET: 300,
+  TOUCH_THRESHOLD: 50, // pixels for touch swipe
 } as const;
 
 /**
@@ -31,6 +37,7 @@ export function ContentList() {
     goToNextContent,
     goToPreviousContent,
     registerScrollReset,
+    setSelectedContent,
   } = useBackground();
 
   // Ref to the content list element
@@ -40,10 +47,13 @@ export function ContentList() {
   const isScrolling = useRef(false); // Flag to indicate if a scroll is in progress
   const lastScrollTime = useRef(0); // Timestamp of the last scroll
   const accumulatedDelta = useRef(0); // Accumulates deltaY to detect direction
+  const touchStartY = useRef(0); // Initial Y position for touch events
 
   // Refs for tracking individual ContentItem heights
-  const contentItemRefs = useRef<Record<string, HTMLLIElement | null>>({});
-  const [scrollHeight, setScrollHeight] = useState<number | null>(null);
+  const [contentItemRefs, setItemRef] = useContentItemRefs();
+
+  // Calculate bottom padding to enable scrolling based on ContentItem heights
+  const scrollHeight = useScrollPadding(contentItemRefs, yearContents.length);
 
   // Reset scroll state every time the year changes
   useEffect(() => {
@@ -52,42 +62,9 @@ export function ContentList() {
       isScrolling.current = false;
       lastScrollTime.current = 0;
       accumulatedDelta.current = 0;
+      touchStartY.current = 0;
     });
   }, [registerScrollReset]);
-
-  // Calculate bottom padding to enable scrolling based on ContentItem heights
-  useEffect(() => {
-    const calculateScrollPadding = () => {
-      // Get all item heights
-      const itemHeights = Object.values(contentItemRefs.current)
-        .filter((ref): ref is HTMLLIElement => ref !== null)
-        .map((ref) => ref.offsetHeight);
-
-      // If only one item, no scroll padding needed
-      if (itemHeights.length <= 1) {
-        setScrollHeight(null);
-        return;
-      }
-
-      // Calculate total height of all items
-      const totalHeight = itemHeights.reduce((sum, height) => sum + height, 0);
-
-      // Set padding to total height so items can scroll up fully
-      // This allows each item to reach the top of the container
-      setScrollHeight(totalHeight);
-    };
-
-    // Calculate after all items are rendered
-    calculateScrollPadding();
-
-    // Observe resize changes to recalculate
-    const resizeObserver = new ResizeObserver(calculateScrollPadding);
-    Object.values(contentItemRefs.current).forEach((ref) => {
-      if (ref) resizeObserver.observe(ref);
-    });
-
-    return () => resizeObserver.disconnect();
-  }, [yearContents]);
 
   // Effect to scroll when selectedContent changes (e.g., click on the bullet)
   useEffect(() => {
@@ -111,15 +88,35 @@ export function ContentList() {
     [goToNextContent, goToPreviousContent],
   );
 
-  // Helper to create ref callback for each ContentItem
-  const setItemRef = (itemId: string) => (el: HTMLLIElement | null) => {
-    contentItemRefs.current[itemId] = el;
-  };
+  // Touch handlers to simulate carousel behavior on mobile
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useMemo(() => {
+    return createTouchHandlers(
+      isScrolling,
+      touchStartY,
+      goToNextContent,
+      goToPreviousContent,
+      SCROLL_CONFIG.TOUCH_THRESHOLD, // Minimum swipe distance to navigate
+    );
+  }, [goToNextContent, goToPreviousContent]);
+
+  // Scroll handler to auto-activate content based on position
+  const handleScroll = useScrollActivation(
+    contentListRef,
+    contentItemRefs,
+    isScrolling,
+    yearContents,
+    selectedContent,
+    setSelectedContent,
+  );
 
   return (
     <ul
       ref={contentListRef}
       onWheel={handleWheel}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onScroll={handleScroll}
       className="content-list overflow-y-auto scroll-smooth hide-scrollbar"
       style={{
         scrollBehavior: "smooth",
@@ -133,8 +130,11 @@ export function ContentList() {
         const isLastItem = index === yearContents.length - 1;
         const isNotUniqueOrLast = yearContents.length > 1 && !isLastItem;
 
-        const isNext = index > currentIndex;
-        const isPrevious = index < currentIndex;
+        const { isNext, isPrevious } = calculateItemVisibility(
+          index,
+          currentIndex,
+        );
+
         const color = itemColors[period.id];
 
         return (

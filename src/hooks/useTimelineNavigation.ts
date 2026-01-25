@@ -51,7 +51,8 @@ export function useTimelineNavigation({
     (direction: "up" | "down") => {
       if (years.length === 0) return;
 
-      const targetYear = direction === "up" ? years[0] : years[years.length - 1];
+      const targetYear =
+        direction === "up" ? years[0] : years[years.length - 1];
 
       // If already at the extreme, show error feedback
       if (selectedYear === targetYear) {
@@ -90,20 +91,37 @@ export function useTimelineNavigation({
 
       // Navigate to next/previous year
       const targetYear =
-        direction === "up"
-          ? years[currentIndex - 1]
-          : years[currentIndex + 1];
+        direction === "up" ? years[currentIndex - 1] : years[currentIndex + 1];
 
       setSelectedYear(targetYear);
       scrollToYear(targetYear);
     },
-    [years, selectedYear, setSelectedYear, scrollToYear, scrollViewportRef, blinkError],
+    [
+      years,
+      selectedYear,
+      setSelectedYear,
+      scrollToYear,
+      scrollViewportRef,
+      blinkError,
+    ],
   );
 
-  const handleUpAll = useCallback(() => navigateToExtreme("up"), [navigateToExtreme]);
-  const handleDownAll = useCallback(() => navigateToExtreme("down"), [navigateToExtreme]);
-  const handleUpOne = useCallback(() => navigateOneStep("up"), [navigateOneStep]);
-  const handleDownOne = useCallback(() => navigateOneStep("down"), [navigateOneStep]);
+  const handleUpAll = useCallback(
+    () => navigateToExtreme("up"),
+    [navigateToExtreme],
+  );
+  const handleDownAll = useCallback(
+    () => navigateToExtreme("down"),
+    [navigateToExtreme],
+  );
+  const handleUpOne = useCallback(
+    () => navigateOneStep("up"),
+    [navigateOneStep],
+  );
+  const handleDownOne = useCallback(
+    () => navigateOneStep("down"),
+    [navigateOneStep],
+  );
 
   return {
     errorButton,

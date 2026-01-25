@@ -2,9 +2,7 @@ import { changaSans } from "@/lib/fonts";
 import { ProjectListProps } from "./content-item.types";
 import ProjectButton from "./ProjectButton";
 
-export default function ProjectsList({
-  projects,
-}: ProjectListProps) {
+export default function ProjectsList({ projects }: ProjectListProps) {
   return (
     <div className="pl-9 mt-2">
       <h3

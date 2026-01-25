@@ -1,9 +1,17 @@
 import { ReactNode } from "react";
 import { Button } from "../../ui/button";
 import Link from "next/link";
-import { GithubLogoIcon, GlobeIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
+import {
+  GithubLogoIcon,
+  GlobeIcon,
+  LinkedinLogoIcon,
+} from "@phosphor-icons/react";
 import { urlToGoToButtonTypeRegex } from "./go-to-section.utils";
-import { GoToButtonProps, GoToButtonType, GoToSectionProps } from "./go-to-section.types";
+import {
+  GoToButtonProps,
+  GoToButtonType,
+  GoToSectionProps,
+} from "./go-to-section.types";
 
 export function GoToSection({ goToUrls }: GoToSectionProps) {
   return (
