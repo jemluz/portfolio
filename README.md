@@ -17,6 +17,36 @@ At this section we have some patterns defined.
 - Prettier was installed here so you can use the scripts `npm run lint:check` and `npm run lint:fix` to solve formatting issues
 - You can also use `npm run eslint` also
 
+### Documentation Standards
+
+**JSDoc is mandatory for all utility functions and hooks**
+
+- Every function in `src/hooks/` must have JSDoc documentation
+- Every function in `src/components/**/*/utils.ts` files must have JSDoc documentation
+- JSDoc should include:
+  - Function description
+  - `@param` tags for all parameters with types and descriptions
+  - `@returns` tag describing the return value
+  - `@example` tag with at least one usage example when applicable
+
+**Example:**
+```typescript
+/**
+ * Hook to detect if the current viewport matches a given media query.
+ * 
+ * @param query - The media query string to test (e.g., "(min-width: 769px)")
+ * @returns A boolean indicating whether the media query matches
+ * 
+ * @example
+ * ```tsx
+ * const isDesktop = useMediaQuery("(min-width: 769px)");
+ * ```
+ */
+export function useMediaQuery(query: string): boolean {
+  // implementation
+}
+```
+
 ### Working with issues + branchs
 
 1. First create a issue
