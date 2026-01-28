@@ -15,7 +15,7 @@ type GrowingLineProps = { hiddenOnDesktop?: boolean };
 
 export default function UserInfo(userData: UserInfoProps) {
   return (
-    <div className="user-container flex items-center justify-end h-full w-full">
+    <div className="user-container flex items-start justify-end h-full w-full pt-12 pr-8">
       <GrowingLine />
       <RightContainer {...userData} />
       <GrowingLine hiddenOnDesktop />
@@ -31,9 +31,8 @@ function GrowingLine({ hiddenOnDesktop = false }: GrowingLineProps) {
         hiddenOnDesktop && "md:hidden",
       )}
     >
-      <div className="h-[120px]"></div>
+      <div className="h-[152px]"></div>
       <div className="w-full h-[2px] mb-4 mt-2 border-b-[2px] border-b-zinc-200"></div>
-      <div className="h-[36px]"></div>
     </div>
   );
 }
@@ -47,9 +46,9 @@ function RightContainer({
   const nameInitials: string = `${name.charAt(0).toUpperCase()}${lastName.charAt(0).toUpperCase()}`;
 
   return (
-    <div className="min-w-[300px] md:w-fit flex flex-col items-center justify-center md:mr-8">
+    <div className=" md:w-fit flex flex-col items-center justify-center md:mr-8">
       <div className="flex flex-col items-center">
-        <Avatar className="w-[80px] h-[80px] mb-4 border-[3px] border-zinc-200">
+        <Avatar className="w-[112px] h-[112px] mb-4 border-[3px] border-zinc-200">
           <AvatarImage src={profilePhotoUrl} />
           <AvatarFallback>{nameInitials}</AvatarFallback>
         </Avatar>
