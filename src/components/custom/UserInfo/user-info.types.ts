@@ -1,3 +1,10 @@
+export type UserInfoProps = {
+  name: string;
+  lastName: string;
+  profilePhotoUrl: string;
+  urls: string[];
+};
+
 export enum GoToButtonType {
   GITHUB,
   LINKEDIN,

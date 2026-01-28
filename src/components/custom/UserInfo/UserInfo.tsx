@@ -3,32 +3,22 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { GoToSection } from "./GoToSection";
-
-type UserInfoProps = {
-  name: string;
-  lastName: string;
-  profilePhotoUrl: string;
-  urls: string[];
-};
-
-type GrowingLineProps = { hiddenOnDesktop?: boolean };
+import { UserInfoProps } from "./user-info.types";
 
 export default function UserInfo(userData: UserInfoProps) {
   return (
     <div className="user-container flex items-start justify-end h-full w-full pt-12 pr-8">
       <GrowingLine />
       <RightContainer {...userData} />
-      <GrowingLine hiddenOnDesktop />
     </div>
   );
 }
 
-function GrowingLine({ hiddenOnDesktop = false }: GrowingLineProps) {
+function GrowingLine() {
   return (
     <div
       className={cn(
-        `w-full flex flex-col items-center justify-center`,
-        hiddenOnDesktop && "md:hidden",
+        `w-full flex flex-col items-center justify-center`
       )}
     >
       <div className="h-[152px]"></div>

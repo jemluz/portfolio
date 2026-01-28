@@ -6,12 +6,12 @@ import {
   GlobeIcon,
   LinkedinLogoIcon,
 } from "@phosphor-icons/react";
-import { urlToGoToButtonTypeRegex } from "./go-to-section.utils";
+import { urlToGoToButtonTypeRegex } from "./user-info.utils";
 import {
   GoToButtonProps,
   GoToButtonType,
   GoToSectionProps,
-} from "./go-to-section.types";
+} from "./user-info.types";
 
 export function GoToSection({ goToUrls }: GoToSectionProps) {
   return (
