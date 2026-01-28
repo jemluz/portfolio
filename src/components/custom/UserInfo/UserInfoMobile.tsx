@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 import { GoToSection } from "./GoToSection";
 import { UserInfoProps } from "./user-info.types";
 
-export default function UserInfo(userData: UserInfoProps) {
+export default function UserInfoMobile(userData: UserInfoProps) {
   return (
-    <div className="user-container flex items-start justify-end h-full w-full pt-12 pr-8">
+    <div id="user-info-mobile" className="user-container flex items-start justify-end h-full w-full pt-12 pr-8">
       <GrowingLine />
       <RightContainer {...userData} />
     </div>
