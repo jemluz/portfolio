@@ -1,14 +1,14 @@
 @media (max-width: 768px) {
   /* medium screens */
   .user-page-grid {
-    grid-template-columns: 0.2fr 110px 0.2fr 1.8fr 0.5fr;
+    grid-template-columns: 0.2fr 110px 0.2fr 1.8fr 0.2fr;
     grid-template-rows: auto auto 1fr;
     row-gap: 60px;
     padding-top: 40px;
   }
 
   .user-container {
-    grid-column: 1 / 5;
+    grid-column: 2 / 5;
     grid-row: 1 / 2;
   }
   .timeline-container {

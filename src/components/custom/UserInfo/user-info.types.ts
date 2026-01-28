@@ -12,10 +12,20 @@ export enum GoToButtonType {
   INVALID,
 }
 
+type Axis = "horizontal" | "vertical";
+
 export type GoToSectionProps = {
   goToUrls: string[];
+  axis?: Axis;
 };
 
 export type GoToButtonProps = {
   url: string;
+  axis?: Axis;
+};
+
+export type GetGoButtonProps = {
+  type: GoToButtonType;
+  url: string;
+  axis?: Axis;
 };
