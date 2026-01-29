@@ -14,3 +14,11 @@ export type YearBtnLeftBulletProps = {
   isVisible: boolean;
   showError?: boolean;
 };
+
+export type TimelineNavButtonsProps = {
+  onUpAll: () => void;
+  onUpOne: () => void;
+  onDownAll: () => void;
+  onDownOne: () => void;
+  errorButton: string | null;
+}

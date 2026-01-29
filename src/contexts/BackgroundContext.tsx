@@ -14,6 +14,14 @@ import { contentData, Background } from "@/background-data";
 import { getRandomColor } from "@/components/custom/ContentArea/colors.utils";
 import { ColorKey } from "@/components/custom/ContentArea/content-item.types";
 
+export type TimelineNavigationHandlers = {
+  errorButton: string | null;
+  handleUpAll: () => void;
+  handleUpOne: () => void;
+  handleDownAll: () => void;
+  handleDownOne: () => void;
+};
+
 type BackgroundContextType = {
   // State - primitives
   canGoNext: boolean;
@@ -24,6 +32,7 @@ type BackgroundContextType = {
   // State - complex objects
   initialContent: Background | null;
   itemColors: Record<string, ColorKey>;
+  years: number[];
   yearContents: Background[];
 
   // Actions/callbacks
@@ -32,6 +41,10 @@ type BackgroundContextType = {
   registerScrollReset: (callback: () => void) => void;
   setSelectedContent: (contentId: string | null) => void;
   setSelectedYear: (year: number | null) => void;
+  
+  // Timeline navigation
+  registerTimelineNavigation: (handlers: TimelineNavigationHandlers) => void;
+  timelineNavigation: TimelineNavigationHandlers | null;
 };
 
 // Will be initialized in BackgroundProvider, if used outside will throw error
@@ -41,22 +54,28 @@ const BackgroundContext = createContext<BackgroundContextType | undefined>(
 
 export function BackgroundProvider({
   children,
-  initialYear = null,
 }: {
   children: ReactNode;
-  initialYear?: number | null;
 }) {
+  // ========== Memoized Values ==========
+  // Get all unique years from content data
+  const years = useMemo(() => {
+    return Array.from(new Set(contentData.map((item) => item.year)));
+  }, []);
+
   // ========== State ==========
   const [selectedContent, setSelectedContent] = useState<string | null>(null);
   const [selectedYear, setSelectedYear] = useState<number | null>(
-    initialYear ?? null,
+    years.length > 0 ? years[0] : null
   );
 
   // ========== Refs ==========
   const colorCacheRef = useRef<Record<string, ColorKey>>({});
   const scrollResetCallbackRef = useRef<(() => void) | null>(null);
+  const timelineNavigationRef = useRef<TimelineNavigationHandlers | null>(null);
+  const [timelineNavigation, setTimelineNavigation] = useState<TimelineNavigationHandlers | null>(null);
 
-  // ========== Memoized Values ==========
+  // ========== Derived State & Memoized Values ==========
   // Get content list for selected year, sorted by month (oldest first)
   const yearContents = useMemo(() => {
     if (selectedYear === null) return [];
@@ -108,6 +127,11 @@ export function BackgroundProvider({
     scrollResetCallbackRef.current = callback;
   }, []);
 
+  const registerTimelineNavigation = useCallback((handlers: TimelineNavigationHandlers) => {
+    timelineNavigationRef.current = handlers;
+    setTimelineNavigation(handlers);
+  }, []);
+
   const goToNextContent = useCallback(() => {
     if (canGoNext) {
       setSelectedContent(yearContents[currentIndex + 1].id);
@@ -147,6 +171,7 @@ export function BackgroundProvider({
         // State - complex objects
         initialContent,
         itemColors,
+        years,
         yearContents,
 
         // Actions/callbacks
@@ -155,6 +180,10 @@ export function BackgroundProvider({
         registerScrollReset,
         setSelectedContent,
         setSelectedYear,
+
+        // Timeline navigation
+        registerTimelineNavigation,
+        timelineNavigation,
       }}
     >
       {children}

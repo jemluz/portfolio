@@ -1,18 +1,20 @@
 "use client";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { TimelineItemProps } from "./timeline.types";
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useBackground } from "../../../contexts/BackgroundContext";
 import YearButton from "./YearButton";
-import TimelineNavButtons from "./TimelineNavButtons";
 import BlackBorder from "./BlackBorder";
 import { useTimelineBlackBorder } from "../../../hooks/useTimelineBlackBorder";
 import { useTimelineNavigation } from "../../../hooks/useTimelineNavigation";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import TimelineNavButtonsDesktop from "./TimelineNavButtonsDesktop";
 
-export default function Timeline({ years }: TimelineItemProps) {
+export default function Timeline() {
+  const isDesktop = useMediaQuery("(min-width: 769px)");
+
   // Context
-  const { selectedYear, setSelectedYear } = useBackground();
+  const { selectedYear, setSelectedYear, registerTimelineNavigation, years } = useBackground();
 
   // Timeline refs
   const scrollViewportRef = useRef<HTMLDivElement | null>(null);
@@ -35,7 +37,7 @@ export default function Timeline({ years }: TimelineItemProps) {
       itemRefs,
     });
 
-  // Navigation logic
+  // Initialize timeline navigation handlers
   const {
     errorButton,
     handleUpAll,
@@ -49,6 +51,17 @@ export default function Timeline({ years }: TimelineItemProps) {
     scrollToYear,
     scrollViewportRef,
   });
+
+  // Register navigation handlers in context for mobile buttons outside Timeline
+  useEffect(() => {
+    registerTimelineNavigation({
+      errorButton,
+      handleUpAll,
+      handleDownAll,
+      handleUpOne,
+      handleDownOne,
+    });
+  }, [errorButton, handleUpAll, handleDownAll, handleUpOne, handleDownOne, registerTimelineNavigation]);
 
   return (
     <div className="timeline-container flex flex-col">
@@ -76,13 +89,10 @@ export default function Timeline({ years }: TimelineItemProps) {
           hasError={errorButton !== null}
         />
       </div>
-      <TimelineNavButtons
-        onUpAll={handleUpAll}
-        onUpOne={handleUpOne}
-        onDownAll={handleDownAll}
-        onDownOne={handleDownOne}
-        errorButton={errorButton}
-      />
+      { isDesktop &&
+        <TimelineNavButtonsDesktop />
+      }
+
     </div>
   );
 }

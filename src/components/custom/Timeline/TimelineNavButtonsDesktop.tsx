@@ -6,22 +6,15 @@ import {
   ChevronsUpIcon,
   ChevronUpIcon,
 } from "lucide-react";
+import { useBackground } from "@/contexts/BackgroundContext";
 
-interface TimelineNavButtonsProps {
-  onUpAll: () => void;
-  onUpOne: () => void;
-  onDownAll: () => void;
-  onDownOne: () => void;
-  errorButton: string | null;
-}
+export default function TimelineNavButtonsDesktop() {
+  const { timelineNavigation } = useBackground();
 
-export default function TimelineNavButtons({
-  onUpAll,
-  onUpOne,
-  onDownAll,
-  onDownOne,
-  errorButton,
-}: TimelineNavButtonsProps) {
+  if (!timelineNavigation) return null;
+
+  const { errorButton, handleUpAll, handleUpOne, handleDownAll, handleDownOne } = timelineNavigation;
+
   const navButtonErrorStyle =
     "animate-pulse !border-red-400 !bg-red-100 !text-red-600";
 
@@ -32,7 +25,7 @@ export default function TimelineNavButtons({
           id="up-all"
           variant="outline"
           size="icon"
-          onClick={onUpAll}
+          onClick={handleUpAll}
           className={cn(errorButton === "up-all" && navButtonErrorStyle)}
         >
           <ChevronsUpIcon />
@@ -45,7 +38,7 @@ export default function TimelineNavButtons({
             "ml-2",
             errorButton === "up-one" && navButtonErrorStyle,
           )}
-          onClick={onUpOne}
+          onClick={handleUpOne}
         >
           <ChevronUpIcon />
         </Button>
@@ -55,7 +48,7 @@ export default function TimelineNavButtons({
           id="down-all"
           variant="outline"
           size="icon"
-          onClick={onDownAll}
+          onClick={handleDownAll}
           className={cn(errorButton === "down-all" && navButtonErrorStyle)}
         >
           <ChevronsDownIcon />
@@ -68,7 +61,7 @@ export default function TimelineNavButtons({
             "ml-2",
             errorButton === "down-one" && navButtonErrorStyle,
           )}
-          onClick={onDownOne}
+          onClick={handleDownOne}
         >
           <ChevronDownIcon />
         </Button>
