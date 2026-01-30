@@ -24,16 +24,16 @@ export default function TimelineNavButtonsMobile() {
         <Button
           id="up-all"
           variant="outline"
-          size="lg"
+          size="sm"
           onClick={handleUpAll}
           className={cn(errorButton === "up-all" && navButtonErrorStyle)}
         >
-          <ChevronsLeftIcon /> Primeiro
+          <ChevronsLeftIcon /> Prim.
         </Button>
         <Button
           id="up-one"
           variant="outline"
-          size="lg"
+          size="sm"
           className={cn(
             errorButton === "up-one" && navButtonErrorStyle,
           )}
@@ -46,7 +46,7 @@ export default function TimelineNavButtonsMobile() {
         <Button
           id="down-one"
           variant="outline"
-          size="lg"
+          size="sm"
           className={cn(
             errorButton === "down-one" && navButtonErrorStyle,
           )}
@@ -57,11 +57,11 @@ export default function TimelineNavButtonsMobile() {
         <Button
           id="down-all"
           variant="outline"
-          size="lg"
+          size="sm"
           onClick={handleDownAll}
           className={cn(errorButton === "down-all" && navButtonErrorStyle)}
         >
-          Último <ChevronsRightIcon />
+          Últ. <ChevronsRightIcon />
         </Button>
       </div>
     </div>
