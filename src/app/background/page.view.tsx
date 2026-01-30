@@ -14,7 +14,7 @@ export default function BackgroundPage() {
   const isDesktop = useMediaQuery("(min-width: 769px)");
 
   return (
-    <main className="user-page-grid grid my-auto min-h-screen">
+    <main className="user-page-grid grid h-screen overflow-hidden">
       {isDesktop ? (
         <UserInfoDesktop {...userData} />
       ) : (

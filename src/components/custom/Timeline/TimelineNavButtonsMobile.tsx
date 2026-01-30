@@ -19,8 +19,8 @@ export default function TimelineNavButtonsMobile() {
     "animate-pulse !border-red-400 !bg-red-100 !text-red-600";
 
   return (
-    <div className="navigation-area flex justify-center pb-12">
-      <div className="left-navigation flex mt-4 gap-4 mr-4">
+    <div className="navigation-area flex justify-center items-center bg-white h-fit z-10">
+      <div className="left-navigation flex gap-4 mr-4">
         <Button
           id="up-all"
           variant="outline"
@@ -42,7 +42,7 @@ export default function TimelineNavButtonsMobile() {
           Ant. <ChevronLeftIcon />
         </Button>
       </div>
-      <div className="right-navigation flex mt-4 gap-4">
+      <div className="right-navigation flex gap-4">
         <Button
           id="down-one"
           variant="outline"

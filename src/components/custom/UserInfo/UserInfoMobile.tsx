@@ -8,6 +8,7 @@ import AvatarAndName from "./AvatarAndName";
 export default function UserInfoMobile(userData: UserInfoProps) {
   return (
     <div id="user-info-mobile" className="user-container flex flex-col items-center justify-end">
+      <div id="top-padding" className="h-[20px]"></div> 
       <TopContainer {...userData} />
       <GrowingLine />
     </div>
@@ -33,7 +34,7 @@ function TopContainer({
   urls,
 }: UserInfoProps) {
   return (
-    <div className="md:w-fit flex items-center justify-center gap-8 md:mr-8">
+    <div className="flex items-center justify-center gap-8 md:w-fit md:mr-8">
       <AvatarAndName name={name} lastName={lastName} profilePhotoUrl={profilePhotoUrl} />
       <GoToSection goToUrls={urls} axis="vertical" />
     </div>

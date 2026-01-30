@@ -2,9 +2,11 @@
   /* medium screens */
   .user-page-grid {
     grid-template-columns: 0.2fr 110px 0.2fr 1.8fr 0.2fr;
-    grid-template-rows: auto auto 1fr auto;
-    row-gap: 60px;
-    padding-top: 40px;
+    grid-template-rows: auto 1fr auto auto;
+    row-gap: 16px;
+    height: 100dvh;
+    padding-top: 24px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   .user-container {
@@ -22,6 +24,7 @@
   .navigation-area {
     grid-column: 1 / 6;
     grid-row: 4 / 5;
+    padding: 12px 0;
   }
 }
 
