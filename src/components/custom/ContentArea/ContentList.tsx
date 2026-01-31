@@ -29,7 +29,7 @@ const SCROLL_CONFIG = {
  * - Auto-scrolls to selected content
  */
 
-export function ContentList() {
+export default function ContentList() {
   const {
     selectedContent,
     yearContents,
