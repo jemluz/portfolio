@@ -9,6 +9,7 @@ import { useTimelineBlackBorder } from "../../../hooks/useTimelineBlackBorder";
 import { useTimelineNavigation } from "../../../hooks/useTimelineNavigation";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import TimelineNavButtonsDesktop from "./TimelineNavButtonsDesktop";
+import { cn } from "@/lib/utils";
 
 export default function Timeline() {
   const isDesktop = useMediaQuery("(min-width: 769px)");
@@ -67,7 +68,7 @@ export default function Timeline() {
     <div className="timeline-area flex flex-col">
       <div className="timeline flex ml-[5px]">
         <ScrollArea
-          className="z-1 scroll-area flex flex-col max-h-[290px]"
+          className={cn("scroll-area flex flex-col z-1", isDesktop && "max-h-[290px]")}
           viewportRef={scrollViewportRef}
           onViewportScroll={handleViewportScroll}
           hideScrollbar

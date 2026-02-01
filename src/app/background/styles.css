@@ -1,8 +1,8 @@
 @media (max-width: 768px) {
   /* medium screens */
   .user-page-grid {
-    grid-template-columns: 0.2fr 110px 1.8fr 0.2fr;
-    grid-template-rows: auto 100px 1fr auto auto;
+    grid-template-columns: 2rem 1fr 252px 2rem;
+    grid-template-rows: auto 80px 1fr auto auto;
     height: 100dvh;
     padding-top: 24px;
     padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -13,9 +13,17 @@
     grid-row: 1 / 2;
   }
   .timeline-area {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    transform: rotate(-90deg) translateX(71px) translateY(-86px);
+    /* translateX translateY must be changed manualy and also you should checked at dev server if position is as wished */
+  }
+  .timeline-area .timeline {
+    height: 252px; /* this is inverted width = height but rotated -90deg. Must be multiple of 36px (yearBtn height) */
+  }
+  .year-title {
     grid-column: 2 / 3;
-    grid-row: 3 / 4;
-    display: none;
+    grid-row: 2 / 3;
   }
   .content-area {
     grid-column: 2 / 4;
