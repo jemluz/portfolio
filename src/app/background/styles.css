@@ -8,11 +8,11 @@
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
-  .user-container {
+  .user-area {
     grid-column: 2 / 4;
     grid-row: 1 / 2;
   }
-  .timeline-container {
+  .timeline-area {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
   }
@@ -37,11 +37,11 @@
     justify-content: center;
   }
 
-  .user-container {
+  .user-area {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
   }
-  .timeline-container {
+  .timeline-area {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
   }

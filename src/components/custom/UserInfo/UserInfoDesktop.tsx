@@ -1,6 +1,5 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { GoToSection } from "./GoToSection";
 import { UserInfoProps } from "./user-info.types";
@@ -8,7 +7,7 @@ import AvatarAndName from "./AvatarAndName";
 
 export default function UserInfoDesktop(userData: UserInfoProps) {
   return (
-    <div id="user-info-desktop" className="user-container flex items-start justify-end h-full w-full pt-12 pr-8">
+    <div id="user-info-desktop" className="user-area flex items-start justify-end h-full w-full pt-12 pr-8">
       <GrowingLine />
       <RightContainer {...userData} />
     </div>

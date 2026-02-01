@@ -64,7 +64,7 @@ export default function Timeline() {
   }, [errorButton, handleUpAll, handleDownAll, handleUpOne, handleDownOne, registerTimelineNavigation]);
 
   return (
-    <div className="timeline-container flex flex-col">
+    <div className="timeline-area flex flex-col">
       <div className="timeline flex ml-[5px]">
         <ScrollArea
           className="z-1 scroll-area flex flex-col max-h-[290px]"
