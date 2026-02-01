@@ -15,9 +15,10 @@
   .timeline-area {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
+    display: none;
   }
   .content-area {
-    grid-column: 3 / 4;
+    grid-column: 2 / 4;
     grid-row: 3 / 4;
   }
   .navigation-area {
