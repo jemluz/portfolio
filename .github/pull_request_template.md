@@ -1,4 +1,4 @@
-_Don't forget to keep title's pattern: **[TURMA-<ISSUE_ID>] - Same title as issue**_
+_Don't forget to keep title's pattern: **[TURMA-<ISSUE_ID>][SUB-<SUBISSUE_ID>] - Same title as issue OR as subissue **_
 
 closes #[issue_number]
 

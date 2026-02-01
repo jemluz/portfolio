@@ -1,12 +1,11 @@
 name: General Issue
 description: Feature, enhancement or general suggestion for the project
-title: "[TURMA-<ISSUE_NUMBER>] Title resuming the issue"
-labels: [enhancement, feature, frontend, backend, devops, documentation]
+title: "[TURMA-<ISSUE_ID>][SUB-<SUB_ISSUE_ID>] Title resuming the issue"
 
 body:
   - type: textarea
     attributes:
-      label: /## 🚀 Description
+      label: 🚀 Description
       placeholder: |
         You can describe with a clear and concise description of:
         * what the problem is
@@ -17,7 +16,7 @@ body:
 
   - type: textarea
     attributes:
-      label: /## 🧑‍💻 User stories
+      label: 🧑‍💻 User stories
       placeholder: |
         Describe user stories in the format:
         * As a [type of user], I want [goal] so that [reason/benefit]
@@ -27,11 +26,24 @@ body:
         * As a developer, I want to see code examples so that I can understand how to implement the feature
         * As an end user, I want a responsive interface so that I can access the app on any device
     validations:
-      required: true
+      required: false
 
   - type: textarea
     attributes:
-      label: /## 🥸 References / Attachments
+      label: 🥸 Technical Refinement
+      placeholder: |
+        You can describe technical details, considerations, or constraints related to the issue.
+        * Architecture changes
+        * Data models
+        * API endpoints
+        * Performance considerations
+        * Security implications
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: 📷 References / 🔗 Attachments
       placeholder: |
         You can attach some screenshots or links here.
         * Desktop

@@ -3,6 +3,7 @@ import { YearButtonProps } from "./timeline.types";
 import { suseMono } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import YearBtnLeftBullet from "./YearBtnLeftBullet";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function YearButton({
   year,
@@ -11,6 +12,7 @@ export default function YearButton({
   innerRef,
   showError = false,
 }: YearButtonProps) {
+  const isDesktop = useMediaQuery("(min-width: 769px)");
   const selectedStyle = "bg-accent";
   const errorStyle = "animate-pulse !bg-red-50 !text-red-600";
 
@@ -27,7 +29,8 @@ export default function YearButton({
         onClick={() => onClick(year)}
         aria-pressed={isSelected}
         className={cn(
-          "pr-[8px] rounded-none border-zinc-100 border-l-[3px] cursor-pointer hover:bg-accent",
+          "border-zinc-100 border-l-[3px] cursor-pointer hover:bg-accent rounded-none",
+          isDesktop ? "pr-[8px]" : "pr-[16px]",
           isSelected && selectedStyle,
           showError && errorStyle,
         )}
