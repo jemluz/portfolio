@@ -54,8 +54,11 @@ Complex components in `src/components/custom/` should follow:
 
 - Issues: `[TURMA-XXXXX] + title`
 - Issue branches: `feat/TURMA-XXXXX`
-- Sub issue branches: `feat/TURMA-XXXXX__SUB-YY`
+- Commits at issues: `type(IXXXXX): commit message description whatever`
+
 - Sub issues: `[TURMA-XXXXX] + [SUB-YY] + title`
+- Sub issue branches: `feat/TURMA-XXXXX__SUB-YY`
+- Commits at sub issues: `type(IXXXXX__SYY): commit message description whatever`
 
 ## Important Decisions
 
