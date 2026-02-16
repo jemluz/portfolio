@@ -2,7 +2,17 @@
 
 Cada dev tem uma história - conte a sua para a turma
 
-## Instalation
+## 📚 Documentation
+
+**For AI Agents and Developers:**
+- **[AI Agent Guide](./docs/AI_AGENT_GUIDE.md)** - Comprehensive guide for AI agents
+- **[Architecture](./docs/ARCHITECTURE.md)** - System architecture deep dive
+- **[Component Reference](./docs/COMPONENT_REFERENCE.md)** - Complete component API
+- **[Hooks Reference](./docs/HOOKS_REFERENCE.md)** - Custom hooks documentation
+- **[Development Guide](./docs/DEVELOPMENT_GUIDE.md)** - Development workflows and patterns
+- **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
+
+## Installation
 
 - run `nvm install` to get the npm version defined by `.nvmrc`
 - run `nvm alias default lts/{version_name}` if you want to set that npm version as default
