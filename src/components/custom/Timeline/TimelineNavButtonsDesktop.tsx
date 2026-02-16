@@ -13,7 +13,13 @@ export default function TimelineNavButtonsDesktop() {
 
   if (!timelineNavigation) return null;
 
-  const { errorButton, handleUpAll, handleUpOne, handleDownAll, handleDownOne } = timelineNavigation;
+  const {
+    errorButton,
+    handleUpAll,
+    handleUpOne,
+    handleDownAll,
+    handleDownOne,
+  } = timelineNavigation;
 
   const navButtonErrorStyle =
     "animate-pulse !border-red-400 !bg-red-100 !text-red-600";

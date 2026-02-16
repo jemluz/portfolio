@@ -141,15 +141,15 @@ BackgroundPage
 
 ### Component Responsibilities
 
-| Component | Responsibility | State Source |
-|-----------|---------------|--------------|
-| **BackgroundProvider** | Manages global timeline state | Internal (useState) |
-| **Timeline** | Display year buttons, handle year selection | Context (selectedYear) |
-| **BlackBorder** | Visual indicator for selected year | Context + Hook calculation |
-| **ContentArea** | Display content items for selected year | Context (yearContents) |
-| **ContentItem** | Render individual career/project entry | Props from parent |
-| **UserInfo** | Show profile and navigation controls | Context + userInfo data |
-| **TimelineNavButtons** | Previous/Next navigation | Context (canGoNext/Previous) |
+| Component              | Responsibility                              | State Source                 |
+| ---------------------- | ------------------------------------------- | ---------------------------- |
+| **BackgroundProvider** | Manages global timeline state               | Internal (useState)          |
+| **Timeline**           | Display year buttons, handle year selection | Context (selectedYear)       |
+| **BlackBorder**        | Visual indicator for selected year          | Context + Hook calculation   |
+| **ContentArea**        | Display content items for selected year     | Context (yearContents)       |
+| **ContentItem**        | Render individual career/project entry      | Props from parent            |
+| **UserInfo**           | Show profile and navigation controls        | Context + userInfo data      |
+| **TimelineNavButtons** | Previous/Next navigation                    | Context (canGoNext/Previous) |
 
 ## 🎣 Hook Architecture
 
@@ -212,27 +212,28 @@ useBackgroundContext() [Root Context Hook]
 ```typescript
 // Primary Content Model
 interface Background {
-  id: string;                    // Unique identifier
-  year: number;                  // Year (1997-2025)
-  month?: number;                // Month (1-12, optional)
-  title: string;                 // Job title / Position
-  description: string;           // Detailed description
-  location?: string;             // "City, Country"
-  durationInMonths?: number;     // Duration
-  isCurrent?: boolean;           // Currently active?
-  projects?: Array<{             // Related projects
+  id: string; // Unique identifier
+  year: number; // Year (1997-2025)
+  month?: number; // Month (1-12, optional)
+  title: string; // Job title / Position
+  description: string; // Detailed description
+  location?: string; // "City, Country"
+  durationInMonths?: number; // Duration
+  isCurrent?: boolean; // Currently active?
+  projects?: Array<{
+    // Related projects
     name: string;
     url: string;
   }>;
-  isInactive?: boolean;          // Inactive period flag
+  isInactive?: boolean; // Inactive period flag
 }
 
 // User Profile Model
 interface UserInfo {
-  name: string;                  // First name
-  lastName: string;              // Last name
-  profilePhotoUrl: string;       // Avatar URL
-  urls: string[];                // Social links
+  name: string; // First name
+  lastName: string; // Last name
+  profilePhotoUrl: string; // Avatar URL
+  urls: string[]; // Social links
 }
 
 // Context State Model
@@ -256,6 +257,7 @@ interface BackgroundContextValue {
 ### Data Flow Patterns
 
 **1. Content Loading:**
+
 ```
 background-data.ts → backgroundList
                      userInfo
@@ -270,6 +272,7 @@ BackgroundContext initialization
 ```
 
 **2. Year Selection:**
+
 ```
 User clicks year button
          │
@@ -289,6 +292,7 @@ Timeline BlackBorder repositions
 ```
 
 **3. Scroll-Based Selection:**
+
 ```
 User scrolls ContentArea
          │
@@ -397,6 +401,7 @@ Check context.itemColors[item.id]
 ### Event Flow Patterns
 
 **1. Timeline Year Click:**
+
 ```
 YearButton onClick
     └──► context.setSelectedYear(year)
@@ -405,6 +410,7 @@ YearButton onClick
 ```
 
 **2. Scroll Event:**
+
 ```
 ContentArea scroll event
     └──► useScrollActivation
@@ -413,6 +419,7 @@ ContentArea scroll event
 ```
 
 **3. Navigation Buttons:**
+
 ```
 TimelineNavButtons onClick
     └──► context.goToNextContent()
@@ -423,6 +430,7 @@ TimelineNavButtons onClick
 ```
 
 **4. Responsive Changes:**
+
 ```
 Window resize
     └──► useMediaQuery
@@ -434,6 +442,7 @@ Window resize
 ### Observer Patterns
 
 **ResizeObserver (useScrollPadding):**
+
 ```
 Component Mount
     └──► Create ResizeObserver
@@ -446,6 +455,7 @@ Component Unmount
 ```
 
 **IntersectionObserver (Potential Future Use):**
+
 ```
 Currently NOT used - scroll event handler used instead
 Could optimize with IntersectionObserver for:
@@ -489,22 +499,28 @@ Hook Types (inline or separate)
 ### Optimization Strategies
 
 **1. Memoization:**
+
 ```typescript
 // Derived state memoization
-const yearContents = useMemo(() => 
-  backgroundList
-    .filter(item => item.year === selectedYear)
-    .sort((a, b) => (a.month || 0) - (b.month || 0)),
-  [selectedYear]
+const yearContents = useMemo(
+  () =>
+    backgroundList
+      .filter((item) => item.year === selectedYear)
+      .sort((a, b) => (a.month || 0) - (b.month || 0)),
+  [selectedYear],
 );
 
 // Callback memoization
-const handleYearClick = useCallback((year: number) => {
-  setSelectedYear(year);
-}, [setSelectedYear]);
+const handleYearClick = useCallback(
+  (year: number) => {
+    setSelectedYear(year);
+  },
+  [setSelectedYear],
+);
 ```
 
 **2. Ref Caching:**
+
 ```typescript
 // Color assignment uses ref to avoid re-renders
 const lastColorRef = useRef<string>();
@@ -512,18 +528,21 @@ const getColor = (id: string) => {
   if (itemColors[id]) return itemColors[id];
   const newColor = getRandomColor(lastColorRef.current);
   lastColorRef.current = newColor;
-  setItemColors(prev => ({ ...prev, [id]: newColor }));
+  setItemColors((prev) => ({ ...prev, [id]: newColor }));
   return newColor;
 };
 ```
 
 **3. Event Listener Optimization:**
+
 ```typescript
 // Cleanup on unmount
 useEffect(() => {
-  const handler = () => { /* ... */ };
-  window.addEventListener('scroll', handler);
-  return () => window.removeEventListener('scroll', handler);
+  const handler = () => {
+    /* ... */
+  };
+  window.addEventListener("scroll", handler);
+  return () => window.removeEventListener("scroll", handler);
 }, [dependencies]);
 ```
 
@@ -540,16 +559,19 @@ useEffect(() => {
 ### Architecture Testability
 
 **Component Testing:**
+
 - Components accept props for easy testing
 - Context can be mocked with custom provider
 - Hooks can be tested with `@testing-library/react-hooks`
 
 **Hook Testing:**
+
 - All hooks are pure functions
 - Dependencies are explicit (useCallback/useMemo deps)
 - Side effects are isolated in useEffect
 
 **Integration Testing:**
+
 - BackgroundContext provides single source of truth
 - Navigation flows can be tested end-to-end
 - Responsive behavior testable via matchMedia mocks

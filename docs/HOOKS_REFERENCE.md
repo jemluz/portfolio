@@ -5,6 +5,7 @@
 ## 📚 Overview
 
 All custom hooks in this project are:
+
 - ✅ **Client-only** (`"use client"` directive)
 - ✅ **Fully documented** with JSDoc
 - ✅ **Type-safe** with TypeScript
@@ -13,15 +14,15 @@ All custom hooks in this project are:
 
 ## 🎣 Hook Index
 
-| Hook | Purpose | File Location |
-|------|---------|---------------|
-| **useBackgroundContext** | Access timeline global state | `src/contexts/BackgroundContext.tsx` |
-| **useMediaQuery** | Responsive breakpoint detection | `src/hooks/useMediaQuery.ts` |
-| **useScrollActivation** | Auto-select content on scroll | `src/hooks/useScrollActivation.ts` |
-| **useScrollPadding** | Dynamic scroll container padding | `src/hooks/useScrollPadding.ts` |
-| **useTimelineBlackBorder** | Timeline indicator positioning | `src/hooks/useTimelineBlackBorder.ts` |
-| **useTimelineNavigation** | Timeline navigation logic | `src/hooks/useTimelineNavigation.ts` |
-| **useContentItemRefs** | Ref management for lists | `src/hooks/useContentItemRefs.ts` |
+| Hook                       | Purpose                          | File Location                         |
+| -------------------------- | -------------------------------- | ------------------------------------- |
+| **useBackgroundContext**   | Access timeline global state     | `src/contexts/BackgroundContext.tsx`  |
+| **useMediaQuery**          | Responsive breakpoint detection  | `src/hooks/useMediaQuery.ts`          |
+| **useScrollActivation**    | Auto-select content on scroll    | `src/hooks/useScrollActivation.ts`    |
+| **useScrollPadding**       | Dynamic scroll container padding | `src/hooks/useScrollPadding.ts`       |
+| **useTimelineBlackBorder** | Timeline indicator positioning   | `src/hooks/useTimelineBlackBorder.ts` |
+| **useTimelineNavigation**  | Timeline navigation logic        | `src/hooks/useTimelineNavigation.ts`  |
+| **useContentItemRefs**     | Ref management for lists         | `src/hooks/useContentItemRefs.ts`     |
 
 ---
 
@@ -30,14 +31,17 @@ All custom hooks in this project are:
 **File:** `src/contexts/BackgroundContext.tsx`
 
 ### Description
+
 Access the global timeline state managed by BackgroundContext. This hook provides access to selected year, selected content, navigation functions, and all timeline-related state.
 
 ### Signature
+
 ```typescript
-function useBackgroundContext(): BackgroundContextValue
+function useBackgroundContext(): BackgroundContextValue;
 ```
 
 ### Returns
+
 ```typescript
 interface BackgroundContextValue {
   selectedContent: string | null;
@@ -58,28 +62,29 @@ interface BackgroundContextValue {
 
 ### State Properties
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `selectedContent` | `string \| null` | ID of currently selected content item |
-| `selectedYear` | `number \| null` | Currently selected year |
-| `yearContents` | `Background[]` | Content items for selected year (sorted by month) |
-| `itemColors` | `Record<string, string>` | Cached color assignments for items |
-| `years` | `number[]` | All available years (sorted ascending) |
-| `canGoNext` | `boolean` | Whether next content navigation is available |
-| `canGoPrevious` | `boolean` | Whether previous content navigation is available |
+| Property          | Type                     | Description                                       |
+| ----------------- | ------------------------ | ------------------------------------------------- |
+| `selectedContent` | `string \| null`         | ID of currently selected content item             |
+| `selectedYear`    | `number \| null`         | Currently selected year                           |
+| `yearContents`    | `Background[]`           | Content items for selected year (sorted by month) |
+| `itemColors`      | `Record<string, string>` | Cached color assignments for items                |
+| `years`           | `number[]`               | All available years (sorted ascending)            |
+| `canGoNext`       | `boolean`                | Whether next content navigation is available      |
+| `canGoPrevious`   | `boolean`                | Whether previous content navigation is available  |
 
 ### Methods
 
-| Method | Signature | Description |
-|--------|-----------|-------------|
-| `setSelectedContent` | `(id: string \| null) => void` | Update selected content item |
-| `setSelectedYear` | `(year: number) => void` | Change selected year (triggers scroll reset) |
-| `goToNextContent` | `() => void` | Navigate to next content item |
-| `goToPreviousContent` | `() => void` | Navigate to previous content item |
-| `registerScrollReset` | `(callback: () => void) => void` | Register callback for year changes |
-| `registerTimelineNavigation` | `(handlers: NavigationHandlers) => void` | Register timeline nav handlers |
+| Method                       | Signature                                | Description                                  |
+| ---------------------------- | ---------------------------------------- | -------------------------------------------- |
+| `setSelectedContent`         | `(id: string \| null) => void`           | Update selected content item                 |
+| `setSelectedYear`            | `(year: number) => void`                 | Change selected year (triggers scroll reset) |
+| `goToNextContent`            | `() => void`                             | Navigate to next content item                |
+| `goToPreviousContent`        | `() => void`                             | Navigate to previous content item            |
+| `registerScrollReset`        | `(callback: () => void) => void`         | Register callback for year changes           |
+| `registerTimelineNavigation` | `(handlers: NavigationHandlers) => void` | Register timeline nav handlers               |
 
 ### Usage Example
+
 ```tsx
 "use client";
 
@@ -91,32 +96,28 @@ export function MyComponent() {
     yearContents,
     setSelectedYear,
     canGoNext,
-    goToNextContent
+    goToNextContent,
   } = useBackgroundContext();
 
   return (
     <div>
       <h2>Year: {selectedYear}</h2>
       <p>Items: {yearContents.length}</p>
-      <button onClick={() => setSelectedYear(2024)}>
-        Go to 2024
-      </button>
-      {canGoNext && (
-        <button onClick={goToNextContent}>
-          Next Content
-        </button>
-      )}
+      <button onClick={() => setSelectedYear(2024)}>Go to 2024</button>
+      {canGoNext && <button onClick={goToNextContent}>Next Content</button>}
     </div>
   );
 }
 ```
 
 ### Error Handling
+
 Throws error if used outside of BackgroundProvider:
+
 ```typescript
 if (!context) {
   throw new Error(
-    "useBackgroundContext must be used within a BackgroundProvider"
+    "useBackgroundContext must be used within a BackgroundProvider",
   );
 }
 ```
@@ -128,23 +129,27 @@ if (!context) {
 **File:** `src/hooks/useMediaQuery.ts`
 
 ### Description
+
 Hook to detect if the current viewport matches a given media query. Useful for responsive design and conditional rendering based on screen size.
 
 ### Signature
+
 ```typescript
-function useMediaQuery(query: string): boolean
+function useMediaQuery(query: string): boolean;
 ```
 
 ### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `query` | `string` | ✅ Yes | The media query string to test (e.g., "(min-width: 769px)") |
+| Parameter | Type     | Required | Description                                                 |
+| --------- | -------- | -------- | ----------------------------------------------------------- |
+| `query`   | `string` | ✅ Yes   | The media query string to test (e.g., "(min-width: 769px)") |
 
 ### Returns
+
 `boolean` - True if the media query matches, false otherwise
 
 ### Usage Example
+
 ```tsx
 "use client";
 
@@ -166,12 +171,14 @@ export function ResponsiveComponent() {
 ```
 
 ### Implementation Details
+
 - Uses `window.matchMedia()` API
 - Adds change event listener for dynamic updates
 - Handles server-side rendering (returns `false` if window undefined)
 - Cleans up event listeners on unmount
 
 ### Common Queries
+
 ```typescript
 // Desktop breakpoint (used throughout the app)
 const isDesktop = useMediaQuery("(min-width: 769px)");
@@ -196,27 +203,31 @@ const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 **File:** `src/hooks/useScrollActivation.ts`
 
 ### Description
+
 Hook to automatically select content items based on scroll position. Detects which item is closest to the top of the viewport and updates the selected content accordingly.
 
 ### Signature
+
 ```typescript
 function useScrollActivation(
   itemRefs: Record<string, HTMLElement | null>,
-  onItemActivated: (itemId: string) => void
-): void
+  onItemActivated: (itemId: string) => void,
+): void;
 ```
 
 ### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `itemRefs` | `Record<string, HTMLElement \| null>` | ✅ Yes | Object mapping item IDs to their DOM elements |
-| `onItemActivated` | `(itemId: string) => void` | ✅ Yes | Callback when an item becomes active |
+| Parameter         | Type                                  | Required | Description                                   |
+| ----------------- | ------------------------------------- | -------- | --------------------------------------------- |
+| `itemRefs`        | `Record<string, HTMLElement \| null>` | ✅ Yes   | Object mapping item IDs to their DOM elements |
+| `onItemActivated` | `(itemId: string) => void`            | ✅ Yes   | Callback when an item becomes active          |
 
 ### Returns
+
 `void` - Side effect hook only
 
 ### Usage Example
+
 ```tsx
 "use client";
 
@@ -232,7 +243,7 @@ export function ContentArea() {
 
   return (
     <div className="overflow-auto">
-      {yearContents.map(item => (
+      {yearContents.map((item) => (
         <div key={item.id} ref={setRef(item.id)}>
           {item.title}
         </div>
@@ -243,6 +254,7 @@ export function ContentArea() {
 ```
 
 ### Implementation Details
+
 - Uses **5px threshold** for activation detection
 - Checks distance from element top to viewport top
 - Activates item when within threshold
@@ -250,11 +262,13 @@ export function ContentArea() {
 - Cleans up listener on unmount
 
 ### Algorithm
+
 ```typescript
 const isNearTop = Math.abs(rect.top - topThreshold) <= 5;
 ```
 
 Where:
+
 - `rect.top` - Element's distance from viewport top
 - `topThreshold` - Target scroll position (typically top of viewport)
 - `5` - Pixel threshold for matching
@@ -266,27 +280,31 @@ Where:
 **File:** `src/hooks/useScrollPadding.ts`
 
 ### Description
+
 Hook to calculate dynamic bottom padding for scroll containers based on the total height of content items. Ensures smooth scrolling to the last item by adding appropriate padding.
 
 ### Signature
+
 ```typescript
 function useScrollPadding(
   itemRefs: Record<string, HTMLElement | null>,
-  containerRef: RefObject<HTMLElement>
-): number
+  containerRef: RefObject<HTMLElement>,
+): number;
 ```
 
 ### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `itemRefs` | `Record<string, HTMLElement \| null>` | ✅ Yes | Object mapping item IDs to DOM elements |
-| `containerRef` | `RefObject<HTMLElement>` | ✅ Yes | Ref to the scroll container element |
+| Parameter      | Type                                  | Required | Description                             |
+| -------------- | ------------------------------------- | -------- | --------------------------------------- |
+| `itemRefs`     | `Record<string, HTMLElement \| null>` | ✅ Yes   | Object mapping item IDs to DOM elements |
+| `containerRef` | `RefObject<HTMLElement>`              | ✅ Yes   | Ref to the scroll container element     |
 
 ### Returns
+
 `number` - Bottom padding value in pixels
 
 ### Usage Example
+
 ```tsx
 "use client";
 
@@ -302,7 +320,7 @@ export function ContentArea({ items }) {
   return (
     <div ref={containerRef} className="overflow-auto">
       <div style={{ paddingBottom }}>
-        {items.map(item => (
+        {items.map((item) => (
           <div key={item.id} ref={setRef(item.id)}>
             {item.content}
           </div>
@@ -314,6 +332,7 @@ export function ContentArea({ items }) {
 ```
 
 ### Implementation Details
+
 - Uses **ResizeObserver** to monitor item size changes
 - Calculates total height of all items
 - Subtracts container height from total
@@ -321,6 +340,7 @@ export function ContentArea({ items }) {
 - Disconnects observer on unmount
 
 ### Calculation Logic
+
 ```typescript
 const totalItemsHeight = sum(itemHeights);
 const containerHeight = container.clientHeight;
@@ -334,32 +354,36 @@ const padding = Math.max(0, totalItemsHeight - containerHeight);
 **File:** `src/hooks/useTimelineBlackBorder.ts`
 
 ### Description
+
 Hook to calculate the position and visibility of the timeline's black border indicator. The indicator shows which year is currently selected.
 
 ### Signature
+
 ```typescript
 function useTimelineBlackBorder(
   selectedYear: number | null,
-  years: number[]
-): { translation: number; isVisible: boolean }
+  years: number[],
+): { translation: number; isVisible: boolean };
 ```
 
 ### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `selectedYear` | `number \| null` | ✅ Yes | Currently selected year |
-| `years` | `number[]` | ✅ Yes | Array of all available years (sorted) |
+| Parameter      | Type             | Required | Description                           |
+| -------------- | ---------------- | -------- | ------------------------------------- |
+| `selectedYear` | `number \| null` | ✅ Yes   | Currently selected year               |
+| `years`        | `number[]`       | ✅ Yes   | Array of all available years (sorted) |
 
 ### Returns
+
 ```typescript
 {
-  translation: number;  // Y-axis translation in pixels
-  isVisible: boolean;   // Whether indicator should be shown
+  translation: number; // Y-axis translation in pixels
+  isVisible: boolean; // Whether indicator should be shown
 }
 ```
 
 ### Usage Example
+
 ```tsx
 "use client";
 
@@ -370,7 +394,7 @@ export function BlackBorder() {
   const { selectedYear, years } = useBackgroundContext();
   const { translation, isVisible } = useTimelineBlackBorder(
     selectedYear,
-    years
+    years,
   );
 
   if (!isVisible) return null;
@@ -388,15 +412,17 @@ export function BlackBorder() {
 ```
 
 ### Implementation Details
+
 - Calculates index of selected year in years array
 - Uses button height (48px) and gap (8px) for positioning
 - Formula: `index * (HEIGHT + GAP)`
 - Returns `isVisible: false` if selectedYear is null
 
 ### Constants
+
 ```typescript
 const YEAR_BUTTON_HEIGHT = 48; // pixels
-const YEAR_BUTTON_GAP = 8;     // pixels
+const YEAR_BUTTON_GAP = 8; // pixels
 ```
 
 ---
@@ -406,25 +432,27 @@ const YEAR_BUTTON_GAP = 8;     // pixels
 **File:** `src/hooks/useTimelineNavigation.ts`
 
 ### Description
+
 Hook to manage timeline navigation button handlers (Previous, Next, All). Registers navigation handlers with the context and provides them to timeline navigation components.
 
 ### Signature
+
 ```typescript
-function useTimelineNavigation(
-  context: BackgroundContextValue
-): void
+function useTimelineNavigation(context: BackgroundContextValue): void;
 ```
 
 ### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `context` | `BackgroundContextValue` | ✅ Yes | The background context value |
+| Parameter | Type                     | Required | Description                  |
+| --------- | ------------------------ | -------- | ---------------------------- |
+| `context` | `BackgroundContextValue` | ✅ Yes   | The background context value |
 
 ### Returns
+
 `void` - Side effect hook only (registers handlers via context)
 
 ### Usage Example
+
 ```tsx
 "use client";
 
@@ -433,25 +461,22 @@ import { useBackgroundContext } from "@/contexts/BackgroundContext";
 
 export function TimelineNavButtons() {
   const context = useBackgroundContext();
-  
+
   // Registers navigation handlers
   useTimelineNavigation(context);
 
   // Handlers are now available via context.registerTimelineNavigation
   return (
     <div>
-      <button onClick={() => context.goToPreviousContent()}>
-        Previous
-      </button>
-      <button onClick={() => context.goToNextContent()}>
-        Next
-      </button>
+      <button onClick={() => context.goToPreviousContent()}>Previous</button>
+      <button onClick={() => context.goToNextContent()}>Next</button>
     </div>
   );
 }
 ```
 
 ### Implementation Details
+
 - Uses `registerTimelineNavigation` from context
 - Provides handlers for:
   - **goUp**: Navigate to previous content
@@ -467,30 +492,35 @@ export function TimelineNavButtons() {
 **File:** `src/hooks/useContentItemRefs.ts`
 
 ### Description
+
 Hook to manage refs for a list of content items. Creates stable ref callback functions that can be used to attach refs to dynamic list items.
 
 ### Signature
+
 ```typescript
 function useContentItemRefs<T extends { id: string }>(
-  items: T[]
+  items: T[],
 ): [
   (id: string) => (element: HTMLElement | null) => void,
-  Record<string, HTMLElement | null>
-]
+  Record<string, HTMLElement | null>,
+];
 ```
 
 ### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `items` | `T extends { id: string }[]` | ✅ Yes | Array of items with unique `id` property |
+| Parameter | Type                         | Required | Description                              |
+| --------- | ---------------------------- | -------- | ---------------------------------------- |
+| `items`   | `T extends { id: string }[]` | ✅ Yes   | Array of items with unique `id` property |
 
 ### Returns
+
 Tuple of:
+
 1. `setRef` - Function that creates ref callbacks: `(id: string) => (element) => void`
 2. `refs` - Object containing all current refs: `Record<string, HTMLElement | null>`
 
 ### Usage Example
+
 ```tsx
 "use client";
 
@@ -505,7 +535,7 @@ export function ContentList({ items }) {
 
   return (
     <div>
-      {items.map(item => (
+      {items.map((item) => (
         <div key={item.id} ref={setRef(item.id)}>
           {item.title}
         </div>
@@ -516,6 +546,7 @@ export function ContentList({ items }) {
 ```
 
 ### Implementation Details
+
 - Maintains refs in a mutable ref object
 - Cleans up refs for removed items
 - Creates stable callback functions with useCallback
@@ -523,6 +554,7 @@ export function ContentList({ items }) {
 - Thread-safe ref updates
 
 ### Advanced Usage
+
 ```tsx
 // Access individual ref
 const element = refs[itemId];
@@ -531,7 +563,7 @@ if (element) {
 }
 
 // Get all refs
-Object.values(refs).forEach(el => {
+Object.values(refs).forEach((el) => {
   if (el) console.log(el.offsetHeight);
 });
 ```
@@ -541,18 +573,19 @@ Object.values(refs).forEach(el => {
 ## 🔧 Hook Combination Patterns
 
 ### Pattern 1: Content Area with Scroll Features
+
 ```tsx
 function ContentArea() {
   const context = useBackgroundContext();
   const containerRef = useRef<HTMLDivElement>(null);
   const [setRef, refs] = useContentItemRefs(context.yearContents);
-  
+
   const paddingBottom = useScrollPadding(refs, containerRef);
   useScrollActivation(refs, context.setSelectedContent);
 
   return (
     <div ref={containerRef} style={{ paddingBottom }}>
-      {context.yearContents.map(item => (
+      {context.yearContents.map((item) => (
         <div key={item.id} ref={setRef(item.id)}>
           {/* content */}
         </div>
@@ -563,11 +596,12 @@ function ContentArea() {
 ```
 
 ### Pattern 2: Responsive Timeline Navigation
+
 ```tsx
 function TimelineNav() {
   const context = useBackgroundContext();
   const isDesktop = useMediaQuery("(min-width: 769px)");
-  
+
   useTimelineNavigation(context);
 
   return isDesktop ? (
@@ -579,12 +613,13 @@ function TimelineNav() {
 ```
 
 ### Pattern 3: Black Border Indicator
+
 ```tsx
 function BlackBorder() {
   const { selectedYear, years } = useBackgroundContext();
   const { translation, isVisible } = useTimelineBlackBorder(
     selectedYear,
-    years
+    years,
   );
 
   return (
@@ -603,6 +638,7 @@ function BlackBorder() {
 ## 🎯 Best Practices
 
 ### ✅ DO
+
 - Always use hooks in client components (`"use client"`)
 - Clean up event listeners and observers
 - Use useCallback for event handlers
@@ -612,6 +648,7 @@ function BlackBorder() {
 - Handle edge cases (null, undefined, empty arrays)
 
 ### ❌ DON'T
+
 - Don't use hooks in server components
 - Don't forget cleanup in useEffect
 - Don't create new functions in render

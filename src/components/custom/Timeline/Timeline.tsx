@@ -15,7 +15,8 @@ export default function Timeline() {
   const isDesktop = useMediaQuery("(min-width: 769px)");
 
   // Context
-  const { selectedYear, setSelectedYear, registerTimelineNavigation, years } = useBackground();
+  const { selectedYear, setSelectedYear, registerTimelineNavigation, years } =
+    useBackground();
 
   // Timeline refs
   const scrollViewportRef = useRef<HTMLDivElement | null>(null);
@@ -62,13 +63,23 @@ export default function Timeline() {
       handleUpOne,
       handleDownOne,
     });
-  }, [errorButton, handleUpAll, handleDownAll, handleUpOne, handleDownOne, registerTimelineNavigation]);
+  }, [
+    errorButton,
+    handleUpAll,
+    handleDownAll,
+    handleUpOne,
+    handleDownOne,
+    registerTimelineNavigation,
+  ]);
 
   return (
     <div className="timeline-area flex flex-col">
       <div className="timeline flex ml-[5px]">
         <ScrollArea
-          className={cn("scroll-area flex flex-col z-1", isDesktop && "max-h-[290px]")}
+          className={cn(
+            "scroll-area flex flex-col z-1",
+            isDesktop && "max-h-[290px]",
+          )}
           viewportRef={scrollViewportRef}
           onViewportScroll={handleViewportScroll}
           hideScrollbar
@@ -90,10 +101,7 @@ export default function Timeline() {
           hasError={errorButton !== null}
         />
       </div>
-      { isDesktop &&
-        <TimelineNavButtonsDesktop />
-      }
-
+      {isDesktop && <TimelineNavButtonsDesktop />}
     </div>
   );
 }

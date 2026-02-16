@@ -36,7 +36,8 @@ export function urlToGoToButtonTypeRegex(url: string): GoToButtonType {
 
   // If it's a valid http(s) URL or a host with dot (domain), we consider it a WEBSITE
   const isLikelyUrl =
-    /^(https?:)?\/\//i.test(normalizedUrl) || /[a-z0-9-]+\.[a-z]{2,}/i.test(normalizedUrl);
+    /^(https?:)?\/\//i.test(normalizedUrl) ||
+    /[a-z0-9-]+\.[a-z]{2,}/i.test(normalizedUrl);
   if (isLikelyUrl) return GoToButtonType.WEBSITE;
 
   return GoToButtonType.INVALID;

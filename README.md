@@ -5,6 +5,7 @@ Cada dev tem uma história - conte a sua para a turma
 ## 📚 Documentation
 
 **For AI Agents and Developers:**
+
 - **[AI Agent Guide](./docs/AI_AGENT_GUIDE.md)** - Comprehensive guide for AI agents
 - **[Architecture](./docs/ARCHITECTURE.md)** - System architecture deep dive
 - **[Component Reference](./docs/COMPONENT_REFERENCE.md)** - Complete component API
@@ -40,13 +41,14 @@ At this section we have some patterns defined.
   - `@example` tag with at least one usage example when applicable
 
 **Example:**
-```typescript
+
+````typescript
 /**
  * Hook to detect if the current viewport matches a given media query.
- * 
+ *
  * @param query - The media query string to test (e.g., "(min-width: 769px)")
  * @returns A boolean indicating whether the media query matches
- * 
+ *
  * @example
  * ```tsx
  * const isDesktop = useMediaQuery("(min-width: 769px)");
@@ -55,7 +57,7 @@ At this section we have some patterns defined.
 export function useMediaQuery(query: string): boolean {
   // implementation
 }
-```
+````
 
 ### Working with issues + branchs
 

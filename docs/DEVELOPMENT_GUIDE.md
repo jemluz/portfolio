@@ -5,6 +5,7 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (version specified in `.nvmrc`)
 - npm or yarn
 - Git
@@ -32,6 +33,7 @@ npm run dev
 ### Environment Setup
 
 **.nvmrc Configuration:**
+
 ```bash
 # Set the Node version as default (optional)
 nvm alias default lts/{version_name}
@@ -47,12 +49,14 @@ Ensure your IDE/editor respects the `.editorconfig` file for consistent formatti
 ### 1. Issue-Driven Development
 
 #### Creating an Issue
+
 1. Navigate to GitHub Issues
 2. Create new issue with clear title and description
 3. Add labels (bug, feature, documentation, etc.)
 4. Get issue number (e.g., #86)
 
 #### Issue Naming Convention
+
 ```
 [TURMA-XXXXX] Title of the Issue
 
@@ -63,6 +67,7 @@ Where XXXXX is the zero-padded issue number:
 ```
 
 #### Creating a Branch
+
 ```bash
 # Pattern: feat/TURMA-XXXXX
 git checkout -b feat/TURMA-00086
@@ -86,6 +91,7 @@ git checkout -b feat/TURMA-00086
 ### 3. Code Development
 
 #### File Creation Checklist
+
 - [ ] Create component file (PascalCase.tsx)
 - [ ] Create types file (component-name.types.ts)
 - [ ] Create utils file with JSDoc (component-name.utils.ts)
@@ -95,6 +101,7 @@ git checkout -b feat/TURMA-00086
 - [ ] Test in both mobile and desktop
 
 #### Component Development Pattern
+
 ```tsx
 // 1. Start with types
 // component-name.types.ts
@@ -116,7 +123,7 @@ export function utilityFunction(param1: string): string {
 
 // 3. Build component
 // ComponentName.tsx
-"use client";
+("use client");
 
 import type { ComponentProps } from "./component-name.types";
 import { utilityFunction } from "./component-name.utils";
@@ -166,6 +173,7 @@ git push origin feat/TURMA-00086
 ```
 
 #### Commit Message Convention
+
 ```
 <type>(<scope>): <subject>
 
@@ -175,6 +183,7 @@ git push origin feat/TURMA-00086
 ```
 
 **Types:**
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -184,6 +193,7 @@ git push origin feat/TURMA-00086
 - `chore`: Build/tooling changes
 
 **Example:**
+
 ```
 feat(ContentArea): add project links to content items
 
@@ -197,6 +207,7 @@ Refs TURMA-00042
 ### 6. Pull Request Workflow
 
 #### Creating a PR
+
 1. Push your branch to GitHub
 2. Open Pull Request
 3. Fill in PR template:
@@ -207,27 +218,34 @@ Refs TURMA-00042
    - Checklist completion
 
 #### PR Title Convention
+
 ```
 [TURMA-XXXXX] Brief description of changes
 ```
 
 #### PR Description Template
+
 ```markdown
 ## Description
+
 Brief description of what this PR does.
 
 ## Related Issue
+
 Closes #XX
 
 ## Changes Made
+
 - Change 1
 - Change 2
 - Change 3
 
 ## Screenshots
+
 (If applicable)
 
 ## Testing
+
 - [ ] Tested on desktop
 - [ ] Tested on mobile
 - [ ] Linting passes
@@ -235,6 +253,7 @@ Closes #XX
 - [ ] No console errors
 
 ## Checklist
+
 - [ ] Code follows project conventions
 - [ ] JSDoc added for new utils/hooks
 - [ ] Types defined for new components
@@ -281,17 +300,17 @@ export default function NewPage() {
 touch src/hooks/useNewHook.ts
 ```
 
-```tsx
+````tsx
 "use client";
 
 import { useState, useEffect } from "react";
 
 /**
  * Description of what the hook does.
- * 
+ *
  * @param param1 - Description of parameter
  * @returns Description of return value
- * 
+ *
  * @example
  * ```tsx
  * const result = useNewHook(value);
@@ -299,17 +318,17 @@ import { useState, useEffect } from "react";
  */
 export function useNewHook(param1: string): boolean {
   const [state, setState] = useState(false);
-  
+
   useEffect(() => {
     // Implementation
     return () => {
       // Cleanup
     };
   }, [param1]);
-  
+
   return state;
 }
-```
+````
 
 ### Pattern 3: Adding a New Component
 
@@ -341,18 +360,18 @@ export function processData(input: string): string {
 }
 
 // NewComponent.tsx
-"use client";
+("use client");
 
 import type { NewComponentProps } from "./new-component.types";
 import { processData } from "./new-component.utils";
 
 export function NewComponent({ title, items }: NewComponentProps) {
   const processedTitle = processData(title);
-  
+
   return (
     <div>
       <h2>{processedTitle}</h2>
-      {items.map(item => (
+      {items.map((item) => (
         <div key={item.id}>{item.name}</div>
       ))}
     </div>
@@ -394,7 +413,7 @@ export const backgroundList: Background[] = [
   {
     id: "unique-identifier", // Use descriptive ID
     year: 2024,
-    month: 6,                // 1-12, optional
+    month: 6, // 1-12, optional
     title: "Position Title",
     description: "Detailed description of role/project",
     location: "City, Country",
@@ -403,10 +422,10 @@ export const backgroundList: Background[] = [
     projects: [
       {
         name: "Project Name",
-        url: "https://project-url.com"
-      }
+        url: "https://project-url.com",
+      },
     ],
-    isInactive: false,       // Optional: marks inactive periods
+    isInactive: false, // Optional: marks inactive periods
   },
 ];
 ```
@@ -465,14 +484,16 @@ const { theme, setTheme } = useTheme();
 
 ```tsx
 // Mobile-first approach
-<div className="
+<div
+  className="
   flex-col    // Mobile: column layout
   md:flex-row // Desktop: row layout
   gap-4       // Mobile: 1rem gap
   md:gap-8    // Desktop: 2rem gap
-">
+"
+>
   Content
-</div>
+</div>;
 
 // Using useMediaQuery hook
 const isDesktop = useMediaQuery("(min-width: 769px)");
@@ -493,11 +514,11 @@ import { cn } from "@/lib/utils";
 const classes = cn(
   "base-class",
   conditionalClass && "conditional",
-  "override-class"
+  "override-class",
 );
 
 // Handles conflicts (last wins)
-cn("p-4", "p-6") // → "p-6"
+cn("p-4", "p-6"); // → "p-6"
 ```
 
 ### Font Configuration
@@ -523,6 +544,7 @@ export const fontName = Font_Name({
 ### Manual Testing Checklist
 
 **For Every Change:**
+
 - [ ] Desktop view (≥769px)
 - [ ] Mobile view (<769px)
 - [ ] Tablet view (768-1024px)
@@ -561,7 +583,7 @@ export default function TestPage() {
 // Create test component to use hook
 function TestHookComponent() {
   const result = useYourHook(params);
-  
+
   return (
     <div>
       <pre>{JSON.stringify(result, null, 2)}</pre>
@@ -577,6 +599,7 @@ function TestHookComponent() {
 ## 🐛 Debugging Tips
 
 ### React DevTools
+
 ```bash
 # Install React DevTools browser extension
 # Inspect component tree
@@ -589,7 +612,7 @@ function TestHookComponent() {
 ```tsx
 // Temporary debug logging
 useEffect(() => {
-  console.log('Debug:', { selectedYear, yearContents });
+  console.log("Debug:", { selectedYear, yearContents });
 }, [selectedYear, yearContents]);
 
 // ⚠️ Remove before committing!
@@ -599,7 +622,7 @@ useEffect(() => {
 
 ```tsx
 // Use React Profiler
-import { Profiler } from 'react';
+import { Profiler } from "react";
 
 <Profiler
   id="ComponentName"
@@ -608,7 +631,7 @@ import { Profiler } from 'react';
   }}
 >
   <Component />
-</Profiler>
+</Profiler>;
 ```
 
 ---
@@ -629,6 +652,7 @@ npm run build && npm start
 ```
 
 ### Build Output
+
 ```
 .next/
 ├── cache/              # Build cache
@@ -640,6 +664,7 @@ npm run build && npm start
 ### Environment Variables
 
 Create `.env.local` (not committed):
+
 ```env
 # Example variables
 NEXT_PUBLIC_API_URL=https://api.example.com
@@ -647,6 +672,7 @@ NEXT_PUBLIC_ANALYTICS_ID=abc123
 ```
 
 Usage:
+
 ```tsx
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 ```
@@ -673,6 +699,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 ### During Code Review
 
 **Look for:**
+
 - Proper TypeScript typing
 - Hook dependency arrays
 - Memory leaks (missing cleanup)
@@ -687,6 +714,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 ## 🎯 Best Practices Summary
 
 ### DO ✅
+
 - Use TypeScript for all files
 - Add JSDoc to utilities and hooks
 - Use existing hooks and utilities
@@ -699,6 +727,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 - Optimize with useCallback/useMemo
 
 ### DON'T ❌
+
 - Mix server and client components incorrectly
 - Forget `"use client"` for interactive components
 - Skip TypeScript types

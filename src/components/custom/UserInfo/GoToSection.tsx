@@ -14,9 +14,14 @@ import {
   GoToSectionProps,
 } from "./user-info.types";
 
-export function GoToSection({ goToUrls, axis = "horizontal" }: GoToSectionProps) {
+export function GoToSection({
+  goToUrls,
+  axis = "horizontal",
+}: GoToSectionProps) {
   return (
-    <div className={`flex gap-2 pr-4 ${axis === "vertical" ? "flex-col" : "flex-row"}`}>
+    <div
+      className={`flex gap-2 pr-4 ${axis === "vertical" ? "flex-col" : "flex-row"}`}
+    >
       {goToUrls.map((url: string) => (
         <GoToButton key={url} url={url} axis={axis} />
       ))}
@@ -53,7 +58,7 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
               size={32}
               color="oklch(55.2% 0.016 285.938)"
             />
-            { mobileVersion && "Github" }
+            {mobileVersion && "Github"}
           </Link>
         </Button>
       );
@@ -70,7 +75,7 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
               size={32}
               color="oklch(62.3% 0.214 259.815)"
             />
-            { mobileVersion && "Linkedin" }
+            {mobileVersion && "Linkedin"}
           </Link>
         </Button>
       );
@@ -88,7 +93,7 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
               color="oklch(60.6% 0.25 292.717)"
             />
           </Link>
-          { mobileVersion && "Website" }
+          {mobileVersion && "Website"}
         </Button>
       );
     default:

@@ -7,7 +7,10 @@ import AvatarAndName from "./AvatarAndName";
 
 export default function UserInfoDesktop(userData: UserInfoProps) {
   return (
-    <div id="user-info-desktop" className="user-area flex items-start justify-end h-full w-full pt-12 pr-8">
+    <div
+      id="user-info-desktop"
+      className="user-area flex items-start justify-end h-full w-full pt-12 pr-8"
+    >
       <GrowingLine />
       <RightContainer {...userData} />
     </div>
@@ -16,11 +19,7 @@ export default function UserInfoDesktop(userData: UserInfoProps) {
 
 function GrowingLine() {
   return (
-    <div
-      className={cn(
-        `w-full flex flex-col items-center justify-center`
-      )}
-    >
+    <div className={cn(`w-full flex flex-col items-center justify-center`)}>
       <div className="h-[152px]"></div>
       <div className="w-full h-[2px] mb-4 mt-2 border-b-[2px] border-b-zinc-200"></div>
     </div>
@@ -33,10 +32,13 @@ function RightContainer({
   profilePhotoUrl,
   urls,
 }: UserInfoProps) {
-
   return (
     <div className=" md:w-fit flex flex-col items-center justify-center md:mr-8">
-      <AvatarAndName name={name} lastName={lastName} profilePhotoUrl={profilePhotoUrl} />
+      <AvatarAndName
+        name={name}
+        lastName={lastName}
+        profilePhotoUrl={profilePhotoUrl}
+      />
 
       <div className="w-full h-[2px] mb-4 mt-2 border-b-[2px] border-b-zinc-200"></div>
 

@@ -6,11 +6,12 @@
 
 This is a **Next.js 15** portfolio application showcasing a developer's professional timeline. The app features an interactive vertical timeline (1997-2025) with content areas displaying career history, projects, and professional details.
 
-**Key Tagline**: *"Cada dev tem uma história - conte a sua para a turma"* (Every dev has a story - tell yours to the class)
+**Key Tagline**: _"Cada dev tem uma história - conte a sua para a turma"_ (Every dev has a story - tell yours to the class)
 
 ## 🎯 Project Purpose
 
 **turma.dev** is a personal portfolio/timeline web application that:
+
 - Displays a chronological timeline of a developer's career
 - Allows interactive navigation through years
 - Shows detailed content (work experience, projects, locations) for each period
@@ -21,15 +22,15 @@ This is a **Next.js 15** portfolio application showcasing a developer's professi
 
 ### Technology Stack
 
-| Category | Technologies |
-|----------|-------------|
-| **Framework** | Next.js 15.5.9 (with Turbopack), React 19.1.0 |
-| **Language** | TypeScript 5 |
-| **Styling** | TailwindCSS v4, PostCSS, Custom CSS |
-| **UI Components** | Radix UI, Phosphor Icons, Lucide React |
-| **State Management** | React Context API (BackgroundContext) |
-| **Theme** | next-themes with middleware persistence |
-| **Build Tools** | ESLint 9, Prettier 3.6.2, NVM |
+| Category             | Technologies                                  |
+| -------------------- | --------------------------------------------- |
+| **Framework**        | Next.js 15.5.9 (with Turbopack), React 19.1.0 |
+| **Language**         | TypeScript 5                                  |
+| **Styling**          | TailwindCSS v4, PostCSS, Custom CSS           |
+| **UI Components**    | Radix UI, Phosphor Icons, Lucide React        |
+| **State Management** | React Context API (BackgroundContext)         |
+| **Theme**            | next-themes with middleware persistence       |
+| **Build Tools**      | ESLint 9, Prettier 3.6.2, NVM                 |
 
 ### Core Architecture Principles
 
@@ -120,6 +121,7 @@ npm run lint:fix      # Prettier auto-fix
 The **BackgroundContext** is the central nervous system of the application:
 
 **State Variables:**
+
 - `selectedContent: string | null` - Currently selected content item ID
 - `selectedYear: number | null` - Currently selected year
 - `yearContents: Background[]` - Content items for selected year (sorted by month)
@@ -128,6 +130,7 @@ The **BackgroundContext** is the central nervous system of the application:
 - `canGoNext/Previous: boolean` - Navigation boundary flags
 
 **Key Functions:**
+
 - `setSelectedContent(id: string | null)` - Update selected content
 - `setSelectedYear(year: number)` - Switch year (triggers scroll reset)
 - `goToNextContent()` / `goToPreviousContent()` - Navigate between items
@@ -135,6 +138,7 @@ The **BackgroundContext** is the central nervous system of the application:
 - `registerTimelineNavigation(handlers)` - Register timeline nav handlers
 
 **Usage Pattern:**
+
 ```tsx
 const { selectedYear, setSelectedYear, yearContents } = useBackgroundContext();
 ```
@@ -144,6 +148,7 @@ const { selectedYear, setSelectedYear, yearContents } = useBackgroundContext();
 All hooks are **client-only** (`"use client"` directive) and **fully documented with JSDoc**.
 
 **Core Hooks:**
+
 - `useMediaQuery(query)` - Responsive breakpoint detection
 - `useScrollActivation(refs, callback)` - Auto-select on scroll
 - `useScrollPadding(refs, containerRef)` - Dynamic bottom padding
@@ -156,6 +161,7 @@ See [HOOKS_REFERENCE.md](./HOOKS_REFERENCE.md) for detailed API docs.
 ### 3. Component Organization
 
 Components follow this structure:
+
 ```
 ComponentName/
 ├── ComponentName.tsx           # Main component
@@ -170,6 +176,7 @@ ComponentName/
 ### 4. Color System
 
 **17 Tailwind Colors** with random assignment:
+
 - red, orange, amber, yellow, lime, green, emerald, teal, cyan
 - sky, blue, indigo, violet, purple, fuchsia, pink, rose
 
@@ -178,11 +185,13 @@ ComponentName/
 ### 5. Responsive Design
 
 **Breakpoint:** 769px (desktop)
+
 ```tsx
 const isDesktop = useMediaQuery("(min-width: 769px)");
 ```
 
 **Pattern:** Separate components for mobile/desktop views
+
 - `UserInfoDesktop` / `UserInfoMobile`
 - `TimelineNavButtonsDesktop` / `TimelineNavButtonsMobile`
 
@@ -199,13 +208,13 @@ const isDesktop = useMediaQuery("(min-width: 769px)");
 
 **All hooks and utility functions MUST have JSDoc:**
 
-```typescript
+````typescript
 /**
  * Hook to detect if the current viewport matches a given media query.
- * 
+ *
  * @param query - The media query string to test (e.g., "(min-width: 769px)")
  * @returns A boolean indicating whether the media query matches
- * 
+ *
  * @example
  * ```tsx
  * const isDesktop = useMediaQuery("(min-width: 769px)");
@@ -214,7 +223,7 @@ const isDesktop = useMediaQuery("(min-width: 769px)");
 export function useMediaQuery(query: string): boolean {
   // implementation
 }
-```
+````
 
 ### Issue & Branch Naming
 
@@ -268,6 +277,7 @@ export function useMediaQuery(query: string): boolean {
 ### Adding New Content
 
 Edit `src/background-data.ts`:
+
 ```typescript
 export const backgroundList: Background[] = [
   {
@@ -290,6 +300,7 @@ export const backgroundList: Background[] = [
 ### Scroll Activation Logic
 
 `useScrollActivation` uses a **5px threshold** to determine when an item is "active":
+
 ```typescript
 const isNearTop = Math.abs(rect.top - topThreshold) <= 5;
 ```
@@ -297,6 +308,7 @@ const isNearTop = Math.abs(rect.top - topThreshold) <= 5;
 ### Black Border Positioning
 
 The black indicator bar uses:
+
 - `translateY` based on selected year index
 - Height + gap calculations from timeline buttons
 - Hidden when scrolled out of view
@@ -304,6 +316,7 @@ The black indicator bar uses:
 ### Ref Management
 
 `useContentItemRefs` creates stable ref callbacks:
+
 ```typescript
 const [setRef] = useContentItemRefs(items);
 return <div ref={setRef(item.id)} />;
@@ -312,6 +325,7 @@ return <div ref={setRef(item.id)} />;
 ### Color Assignment
 
 Colors are randomly selected but never repeat consecutively:
+
 ```typescript
 const getRandomColor = (lastColor?: string): string => {
   // Filters out lastColor from available colors

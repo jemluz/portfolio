@@ -13,7 +13,13 @@ export default function TimelineNavButtonsMobile() {
 
   if (!timelineNavigation) return null;
 
-  const { errorButton, handleUpAll, handleUpOne, handleDownAll, handleDownOne } = timelineNavigation;
+  const {
+    errorButton,
+    handleUpAll,
+    handleUpOne,
+    handleDownAll,
+    handleDownOne,
+  } = timelineNavigation;
 
   const navButtonErrorStyle =
     "animate-pulse !border-red-400 !bg-red-100 !text-red-600";
@@ -34,9 +40,7 @@ export default function TimelineNavButtonsMobile() {
           id="up-one"
           variant="outline"
           size="sm"
-          className={cn(
-            errorButton === "up-one" && navButtonErrorStyle,
-          )}
+          className={cn(errorButton === "up-one" && navButtonErrorStyle)}
           onClick={handleUpOne}
         >
           Ant. <ChevronLeftIcon />
@@ -47,12 +51,11 @@ export default function TimelineNavButtonsMobile() {
           id="down-one"
           variant="outline"
           size="sm"
-          className={cn(
-            errorButton === "down-one" && navButtonErrorStyle,
-          )}
+          className={cn(errorButton === "down-one" && navButtonErrorStyle)}
           onClick={handleDownOne}
         >
-          Próx.<ChevronRightIcon />
+          Próx.
+          <ChevronRightIcon />
         </Button>
         <Button
           id="down-all"

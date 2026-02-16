@@ -16,7 +16,11 @@ export default function BackgroundPage() {
 
   return (
     <main className="user-page-grid grid h-screen overflow-hidden">
-      {isDesktop ? <UserInfoDesktop {...userData} /> : <UserInfoMobile {...userData} />}
+      {isDesktop ? (
+        <UserInfoDesktop {...userData} />
+      ) : (
+        <UserInfoMobile {...userData} />
+      )}
 
       <BackgroundProvider>
         {!isDesktop && <YearTitle />}

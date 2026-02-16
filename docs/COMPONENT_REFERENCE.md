@@ -25,6 +25,7 @@ This document provides detailed API documentation for all custom components in t
 Main timeline component displaying year buttons in a vertical scrollable container.
 
 #### Props
+
 ```typescript
 interface TimelineProps {
   // No props - uses BackgroundContext
@@ -32,13 +33,15 @@ interface TimelineProps {
 ```
 
 #### Usage
+
 ```tsx
 import { Timeline } from "@/components/custom/Timeline/Timeline";
 
-<Timeline />
+<Timeline />;
 ```
 
 #### Features
+
 - Vertical scroll area with year buttons (1997-2025)
 - Black border indicator for selected year
 - Auto-scrolls to selected year on mount
@@ -53,15 +56,17 @@ import { Timeline } from "@/components/custom/Timeline/Timeline";
 Individual year button in the timeline.
 
 #### Props
+
 ```typescript
 interface YearButtonProps {
-  year: number;           // Year to display
-  isSelected: boolean;    // Whether this year is selected
-  onClick: () => void;    // Click handler
+  year: number; // Year to display
+  isSelected: boolean; // Whether this year is selected
+  onClick: () => void; // Click handler
 }
 ```
 
 #### Usage
+
 ```tsx
 <YearButton
   year={2024}
@@ -71,6 +76,7 @@ interface YearButtonProps {
 ```
 
 #### Styling
+
 - Selected: Bold text, specific styling
 - Unselected: Regular text, dimmed appearance
 - Hover: Brightness change
@@ -85,6 +91,7 @@ interface YearButtonProps {
 Visual indicator showing the selected year position.
 
 #### Props
+
 ```typescript
 interface BlackBorderProps {
   // No props - uses useTimelineBlackBorder hook
@@ -92,11 +99,13 @@ interface BlackBorderProps {
 ```
 
 #### Usage
+
 ```tsx
 <BlackBorder />
 ```
 
 #### Features
+
 - Smooth translateY animation
 - Fade in/out based on visibility
 - Position calculated from selected year index
@@ -111,6 +120,7 @@ interface BlackBorderProps {
 Navigation buttons for desktop view (Previous/Next/All).
 
 #### Props
+
 ```typescript
 interface TimelineNavButtonsDesktopProps {
   // No props - uses BackgroundContext
@@ -118,14 +128,18 @@ interface TimelineNavButtonsDesktopProps {
 ```
 
 #### Usage
+
 ```tsx
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const isDesktop = useMediaQuery("(min-width: 769px)");
-{isDesktop && <TimelineNavButtonsDesktop />}
+{
+  isDesktop && <TimelineNavButtonsDesktop />;
+}
 ```
 
 #### Features
+
 - Three buttons: Previous, All, Next
 - Disabled states based on context.canGoNext/canGoPrevious
 - Tooltip support
@@ -140,6 +154,7 @@ const isDesktop = useMediaQuery("(min-width: 769px)");
 Navigation buttons for mobile view (Previous/Next).
 
 #### Props
+
 ```typescript
 interface TimelineNavButtonsMobileProps {
   // No props - uses BackgroundContext
@@ -147,12 +162,16 @@ interface TimelineNavButtonsMobileProps {
 ```
 
 #### Usage
+
 ```tsx
 const isMobile = !useMediaQuery("(min-width: 769px)");
-{isMobile && <TimelineNavButtonsMobile />}
+{
+  isMobile && <TimelineNavButtonsMobile />;
+}
 ```
 
 #### Features
+
 - Two buttons: Previous, Next
 - Circular buttons with icons
 - Disabled states
@@ -169,6 +188,7 @@ const isMobile = !useMediaQuery("(min-width: 769px)");
 Main content display area showing career/project information.
 
 #### Props
+
 ```typescript
 interface ContentAreaProps {
   // No props - uses BackgroundContext
@@ -176,11 +196,13 @@ interface ContentAreaProps {
 ```
 
 #### Usage
+
 ```tsx
 <ContentArea />
 ```
 
 #### Features
+
 - Scrollable container with dynamic padding
 - Auto-selects content on scroll
 - Displays ContentList component
@@ -195,24 +217,24 @@ interface ContentAreaProps {
 List container for content items.
 
 #### Props
+
 ```typescript
 interface ContentListProps {
-  items: Background[];                           // Content items to display
-  setRef: (id: string) => (el: HTMLElement | null) => void;  // Ref setter function
+  items: Background[]; // Content items to display
+  setRef: (id: string) => (el: HTMLElement | null) => void; // Ref setter function
 }
 ```
 
 #### Usage
+
 ```tsx
 const [setRef, refs] = useContentItemRefs(items);
 
-<ContentList
-  items={yearContents}
-  setRef={setRef}
-/>
+<ContentList items={yearContents} setRef={setRef} />;
 ```
 
 #### Features
+
 - Maps items to ContentItem components
 - Manages refs for scroll tracking
 - Responsive layout
@@ -226,15 +248,17 @@ const [setRef, refs] = useContentItemRefs(items);
 Individual content card displaying career/project details.
 
 #### Props
+
 ```typescript
 interface ContentItemProps {
-  item: Background;        // Content data
-  isSelected: boolean;     // Whether this item is selected
-  color: string;          // Tailwind color name
+  item: Background; // Content data
+  isSelected: boolean; // Whether this item is selected
+  color: string; // Tailwind color name
 }
 ```
 
 #### Usage
+
 ```tsx
 <ContentItem
   item={backgroundItem}
@@ -244,6 +268,7 @@ interface ContentItemProps {
 ```
 
 #### Features
+
 - Colored left border (border-l-{color}-500)
 - Title, description, month indicator
 - Conditional rendering of DurationInfo, LocationInfo, ProjectList
@@ -259,18 +284,21 @@ interface ContentItemProps {
 Displays duration information for a content item.
 
 #### Props
+
 ```typescript
 interface DurationInfoProps {
-  durationInMonths: number;  // Duration in months
+  durationInMonths: number; // Duration in months
 }
 ```
 
 #### Usage
+
 ```tsx
 <DurationInfo durationInMonths={24} />
 ```
 
 #### Output Examples
+
 - `durationInMonths: 1` → "1 mês"
 - `durationInMonths: 6` → "6 meses"
 - `durationInMonths: 12` → "1 ano"
@@ -286,18 +314,21 @@ interface DurationInfoProps {
 Displays location with icon.
 
 #### Props
+
 ```typescript
 interface LocationInfoProps {
-  location: string;  // Location string (e.g., "São Paulo, Brazil")
+  location: string; // Location string (e.g., "São Paulo, Brazil")
 }
 ```
 
 #### Usage
+
 ```tsx
 <LocationInfo location="São Paulo, Brazil" />
 ```
 
 #### Features
+
 - MapPin icon from Phosphor
 - Responsive text size
 - Dimmed text color
@@ -311,6 +342,7 @@ interface LocationInfoProps {
 Displays list of related projects with links.
 
 #### Props
+
 ```typescript
 interface ProjectListProps {
   projects: Array<{
@@ -321,6 +353,7 @@ interface ProjectListProps {
 ```
 
 #### Usage
+
 ```tsx
 <ProjectList
   projects={[
@@ -331,6 +364,7 @@ interface ProjectListProps {
 ```
 
 #### Features
+
 - Bullet points for each project
 - External links with LinkSimple icon
 - Hover effects
@@ -347,22 +381,25 @@ interface ProjectListProps {
 User profile section for desktop view.
 
 #### Props
+
 ```typescript
 interface UserInfoDesktopProps {
-  userInfo: UserInfo;  // User data
+  userInfo: UserInfo; // User data
 }
 ```
 
 #### Usage
+
 ```tsx
 const isDesktop = useMediaQuery("(min-width: 769px)");
 
-{isDesktop && (
-  <UserInfoDesktop userInfo={userInfo} />
-)}
+{
+  isDesktop && <UserInfoDesktop userInfo={userInfo} />;
+}
 ```
 
 #### Features
+
 - AvatarAndName component
 - GoToSection component
 - TimelineNavButtonsDesktop
@@ -378,22 +415,25 @@ const isDesktop = useMediaQuery("(min-width: 769px)");
 User profile section for mobile view.
 
 #### Props
+
 ```typescript
 interface UserInfoMobileProps {
-  userInfo: UserInfo;  // User data
+  userInfo: UserInfo; // User data
 }
 ```
 
 #### Usage
+
 ```tsx
 const isMobile = !useMediaQuery("(min-width: 769px)");
 
-{isMobile && (
-  <UserInfoMobile userInfo={userInfo} />
-)}
+{
+  isMobile && <UserInfoMobile userInfo={userInfo} />;
+}
 ```
 
 #### Features
+
 - AvatarAndName component
 - TimelineNavButtonsMobile
 - Horizontal layout
@@ -408,18 +448,21 @@ const isMobile = !useMediaQuery("(min-width: 769px)");
 Displays user avatar and name.
 
 #### Props
+
 ```typescript
 interface AvatarAndNameProps {
-  userInfo: UserInfo;  // User data
+  userInfo: UserInfo; // User data
 }
 ```
 
 #### Usage
+
 ```tsx
 <AvatarAndName userInfo={userInfo} />
 ```
 
 #### Features
+
 - Radix UI Avatar component
 - Fallback initials if image fails
 - Full name display
@@ -434,29 +477,32 @@ interface AvatarAndNameProps {
 Section with links to user's social profiles.
 
 #### Props
+
 ```typescript
 interface GoToSectionProps {
-  urls: string[];  // Array of URLs (GitHub, LinkedIn, etc.)
+  urls: string[]; // Array of URLs (GitHub, LinkedIn, etc.)
 }
 ```
 
 #### Usage
+
 ```tsx
 <GoToSection
   urls={[
     "https://github.com/username",
     "https://linkedin.com/in/username",
-    "https://example.com"
+    "https://example.com",
   ]}
 />
 ```
 
 #### Features
+
 - Icon detection from URL
   - GitHub: GithubLogo icon
   - LinkedIn: LinkedinLogo icon
   - Default: Globe icon
-- External links with target="_blank"
+- External links with target="\_blank"
 - Hover effects
 - Responsive layout
 
@@ -471,15 +517,23 @@ interface GoToSectionProps {
 Radix UI Button wrapper with variants.
 
 #### Props
+
 ```typescript
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
   size?: "default" | "sm" | "lg" | "icon";
   asChild?: boolean;
 }
 ```
 
 #### Usage
+
 ```tsx
 <Button variant="outline" size="lg">
   Click Me
@@ -499,6 +553,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 Radix UI Avatar wrapper.
 
 #### Props
+
 ```typescript
 // AvatarImage
 interface AvatarImageProps {
@@ -513,6 +568,7 @@ interface AvatarFallbackProps {
 ```
 
 #### Usage
+
 ```tsx
 <Avatar>
   <AvatarImage src="/avatar.jpg" alt="User" />
@@ -529,6 +585,7 @@ interface AvatarFallbackProps {
 Radix UI ScrollArea wrapper for custom scrollbars.
 
 #### Props
+
 ```typescript
 interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -536,11 +593,10 @@ interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
 ```
 
 #### Usage
+
 ```tsx
 <ScrollArea className="h-96">
-  <div>
-    {/* Scrollable content */}
-  </div>
+  <div>{/* Scrollable content */}</div>
 </ScrollArea>
 ```
 
@@ -553,12 +609,14 @@ interface ScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
 Radix UI Tooltip wrapper.
 
 #### Components
+
 - `TooltipProvider`
 - `Tooltip`
 - `TooltipTrigger`
 - `TooltipContent`
 
 #### Usage
+
 ```tsx
 <TooltipProvider>
   <Tooltip>
@@ -579,6 +637,7 @@ Radix UI Tooltip wrapper.
 Radix UI DropdownMenu wrapper.
 
 #### Components
+
 - `DropdownMenu`
 - `DropdownMenuTrigger`
 - `DropdownMenuContent`
@@ -587,6 +646,7 @@ Radix UI DropdownMenu wrapper.
 - And more...
 
 #### Usage
+
 ```tsx
 <DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
@@ -608,6 +668,7 @@ Radix UI DropdownMenu wrapper.
 next-themes provider wrapper for theme management.
 
 #### Props
+
 ```typescript
 interface ThemeProviderProps {
   children: ReactNode;
@@ -619,12 +680,9 @@ interface ThemeProviderProps {
 ```
 
 #### Usage
+
 ```tsx
-<ThemeProvider
-  attribute="class"
-  defaultTheme="system"
-  enableSystem
->
+<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
   {children}
 </ThemeProvider>
 ```
@@ -634,7 +692,9 @@ interface ThemeProviderProps {
 ## 🎨 Styling Conventions
 
 ### Color Props
+
 Components use Tailwind color names without the shade:
+
 ```tsx
 // ✅ Correct
 <ContentItem color="blue" />
@@ -645,15 +705,31 @@ Components use Tailwind color names without the shade:
 ```
 
 ### Available Colors
+
 ```typescript
 const COLORS = [
-  "red", "orange", "amber", "yellow", "lime", "green",
-  "emerald", "teal", "cyan", "sky", "blue", "indigo",
-  "violet", "purple", "fuchsia", "pink", "rose"
+  "red",
+  "orange",
+  "amber",
+  "yellow",
+  "lime",
+  "green",
+  "emerald",
+  "teal",
+  "cyan",
+  "sky",
+  "blue",
+  "indigo",
+  "violet",
+  "purple",
+  "fuchsia",
+  "pink",
+  "rose",
 ];
 ```
 
 ### Responsive Patterns
+
 ```tsx
 // Pattern 1: Separate components
 {isDesktop ? <DesktopComponent /> : <MobileComponent />}
@@ -672,14 +748,15 @@ const COLORS = [
 **File:** `src/components/custom/Timeline/timeline.utils.ts`
 
 #### calculateBlackBorderTranslation
+
 ```typescript
 /**
  * Calculates the Y translation for the black border indicator.
  */
 function calculateBlackBorderTranslation(
   selectedYear: number | null,
-  years: number[]
-): number
+  years: number[],
+): number;
 ```
 
 ---
@@ -689,22 +766,24 @@ function calculateBlackBorderTranslation(
 **File:** `src/components/custom/ContentArea/colors.utils.ts`
 
 #### getRandomColor
+
 ```typescript
 /**
  * Gets a random color from available Tailwind colors.
  * Avoids repeating the last color used.
  */
-function getRandomColor(lastColor?: string): string
+function getRandomColor(lastColor?: string): string;
 ```
 
 **File:** `src/components/custom/ContentArea/month-bullet.utils.ts`
 
 #### getMonthBulletColor
+
 ```typescript
 /**
  * Returns Tailwind color classes for month bullet.
  */
-function getMonthBulletColor(month: number): string
+function getMonthBulletColor(month: number): string;
 ```
 
 ---
@@ -729,27 +808,28 @@ When creating new components:
 ## 🎯 Best Practices
 
 ### Component Structure
+
 ```tsx
 "use client"; // If needed
 
-import { /* imports */ } from "...";
-import type { /* types */ } from "./component.types";
+import {} from /* imports */ "...";
+import type {} from /* types */ "./component.types";
 
 export function Component({ prop1, prop2 }: ComponentProps) {
   // 1. Hooks
   const context = useBackgroundContext();
   const isDesktop = useMediaQuery("(min-width: 769px)");
-  
+
   // 2. Derived state
   const someValue = useMemo(() => {
     // calculation
   }, [dependencies]);
-  
+
   // 3. Event handlers
   const handleClick = useCallback(() => {
     // handler
   }, [dependencies]);
-  
+
   // 4. Effects
   useEffect(() => {
     // effect
@@ -757,17 +837,14 @@ export function Component({ prop1, prop2 }: ComponentProps) {
       // cleanup
     };
   }, [dependencies]);
-  
+
   // 5. Render
-  return (
-    <div>
-      {/* JSX */}
-    </div>
-  );
+  return <div>{/* JSX */}</div>;
 }
 ```
 
 ### Props Validation
+
 ```typescript
 // ✅ Good: Explicit types
 interface Props {
@@ -783,6 +860,7 @@ interface Props {
 ```
 
 ### Context Usage
+
 ```typescript
 // ✅ Good: Destructure only what you need
 const { selectedYear, setSelectedYear } = useBackgroundContext();
