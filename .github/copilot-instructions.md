@@ -36,8 +36,8 @@ Complex components in `src/components/custom/` should follow:
 
 - Separate into `ui/` (shadcn) and `custom/` (project-specific)
 - Always create `.types.ts` for complex types
-- Always create `.utils.ts` for reusable logic
-- Always create `.constants.ts` for fixed values
+- Always create `.utils.ts` for reusable logic AND constants
+- Use barrel exports in `index.tsx` for public API
 
 ### Documentation
 

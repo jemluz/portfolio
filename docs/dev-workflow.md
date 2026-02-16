@@ -8,19 +8,46 @@
 - There is an `.editorconfig` file to set what is expected as code formatting standards
 - Prettier was installed here so you can use the scripts `npm run lint:check` and `npm run lint:fix` to solve formatting issues
 
-### Working with issues + branchs
+## 🌳 Git Conventions
 
-1. First create a issue
-2. Set the issue title rightly, use the pattern `[TMPLT-XXXXX] + issue_title`
-3. Use the generated issue number (#X...) to fill the `XXXXX` part
+### Issues
+```
+[TURMA-XXXXX] Title describing the issue
 
-   3.1 As example: if the issue is `#86` the code will be `TMPLT-00086`
+Sub-issues:
+[TURMA-XXXXX] [SUB-YY] Sub-issue title
+```
 
-   3.2 As another: if is `#3` will be `TMPLT-00003`
+### Branches
+```bash
+# Main issues
+feat/TURMA-XXXXX
+fix/TURMA-XXXXX
+refactor/TURMA-XXXXX
 
-4. Follow the pattern `feat/TMPLT-XXXXX` to create branchs based on the issue that was opened
+# Sub-issues
+feat/TURMA-XXXXX__SUB-YY
+fix/TURMA-XXXXX__SUB-YY
+```
 
-### Issue + Branch Example
+### Commits
+```bash
+# Main issue commits
+type(IXXXXX): commit message description
 
-This [issue #1](https://github.com/jemluz/turma.dev/issues/1) is linked with [feat/TURMA-00001](https://github.com/jemluz/turma.dev/tree/feat%2FTURMA-00001) branch
-<img width="1254" height="807" alt="image" src="https://github.com/user-attachments/assets/eb301820-9742-416d-8656-16cfc5f580fd" />
+# Sub-issue commits
+type(IXXXXX__SYY): commit message description
+
+# Examples
+feat(I00065): add timeline navigation
+fix(I00065__S67): correct scroll behavior
+refactor(I00065__S67): reorganize component structure
+```
+
+### Commit Types
+- `feat`: New feature
+- `fix`: Bug fix
+- `refactor`: Code refactoring
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting)
+- `chore`: Maintenance tasks

@@ -8,7 +8,7 @@ import {
   calculateItemVisibility,
 } from "./content-list.utils";
 import ContentItem from "./ContentItem";
-import { CONTENT_VIEW_HEIGHT } from "./content-area.constants";
+import { CONTENT_VIEW_HEIGHT } from "./content-list.utils";
 import { useScrollPadding } from "@/hooks/useScrollPadding";
 import { useScrollActivation } from "@/hooks/useScrollActivation";
 import { useContentItemRefs } from "@/hooks/useContentItemRefs";
