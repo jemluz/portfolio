@@ -4,15 +4,19 @@ Cada dev tem uma história - conte a sua para a turma
 
 ## 📚 Documentation
 
-**For AI Agents and Developers:**
+**🚀 Start Here (AI Agents):**
 
-- **[Quick Reference](./docs/QUICK_REFERENCE.md)** ⚡ - Fast lookup guide for common tasks
-- **[AI Agent Guide](./docs/AI_AGENT_GUIDE.md)** - Comprehensive guide for AI agents
-- **[Architecture](./docs/ARCHITECTURE.md)** - System architecture deep dive
-- **[Component Reference](./docs/COMPONENT_REFERENCE.md)** - Complete component API
-- **[Hooks Reference](./docs/HOOKS_REFERENCE.md)** - Custom hooks documentation
-- **[Development Guide](./docs/DEVELOPMENT_GUIDE.md)** - Development workflows and patterns
-- **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
+- **[AI Agent Essentials](./docs/AI_AGENT_ESSENTIALS.md)** ⚡ **← Comece aqui!** Tudo que você precisa em ~400 linhas
+
+**📖 Complete Documentation (Optional):**
+
+- [Quick Reference](./docs/QUICK_REFERENCE.md) - Fast lookup guide
+- [AI Agent Guide](./docs/AI_AGENT_GUIDE.md) - Comprehensive overview
+- [Architecture](./docs/ARCHITECTURE.md) - System design deep dive
+- [Component Reference](./docs/COMPONENT_REFERENCE.md) - Component APIs
+- [Hooks Reference](./docs/HOOKS_REFERENCE.md) - Hook documentation
+- [Development Guide](./docs/DEVELOPMENT_GUIDE.md) - Workflows & patterns
+- [Troubleshooting](./docs/TROUBLESHOOTING.md) - Problem solutions
 
 ## Installation
 

@@ -1,40 +1,69 @@
 # turma.dev Documentation
 
-> **State-of-the-art documentation for AI agents and developers**
+> **Documentação otimizada para agentes de IA - Acesso rápido e eficiente**
 
-## 📚 Documentation Index
+## ⚡ Comece Aqui (Recomendado para AI Agents)
 
-This directory contains comprehensive documentation for the turma.dev project. The documentation is organized to help AI agents and developers quickly understand and work with the codebase.
+**[AI Agent Essentials](./AI_AGENT_ESSENTIALS.md)** - **Documento PRINCIPAL para agentes de IA**
+- ✅ Tudo essencial em ~400 linhas (~2.5k palavras)
+- ✅ Informação concisa e acionável
+- ✅ Padrões mais comuns
+- ✅ Regras críticas
+- ✅ Top 10 problemas
+- ✅ Exemplos práticos
 
-### 🚀 Getting Started
+**💡 Use este documento primeiro. Só consulte as docs completas se precisar de detalhes específicos.**
 
-**Start here:**
+---
 
-1. **[Quick Reference](./QUICK_REFERENCE.md)** ⚡ - Fast lookup for common tasks, patterns, and commands
-2. **[AI Agent Guide](./AI_AGENT_GUIDE.md)** - Comprehensive overview of the entire project
+## 📚 Documentação Completa (Opcional)
+
+Use apenas quando precisar de informações detalhadas que não estão no Essentials:
+
+### 🚀 Referências Rápidas
+
+- **[Quick Reference](./QUICK_REFERENCE.md)** (295 linhas) - Comandos, patterns, troubleshooting rápido
+- **[AI Agent Guide](./AI_AGENT_GUIDE.md)** (358 linhas) - Overview completo do projeto
 
 ### 📖 Deep Dive Documentation
 
-**For detailed understanding:**
+**Use apenas quando precisar de detalhes não cobertos no Essentials:**
 
-- **[Architecture](./ARCHITECTURE.md)** - System architecture, data flow, and design patterns
-- **[Component Reference](./COMPONENT_REFERENCE.md)** - Complete API documentation for all components
-- **[Hooks Reference](./HOOKS_REFERENCE.md)** - Detailed documentation for all custom hooks
-- **[Development Guide](./DEVELOPMENT_GUIDE.md)** - Development workflows, patterns, and best practices
-- **[Troubleshooting](./TROUBLESHOOTING.md)** - Common issues and their solutions
+- **[Architecture](./ARCHITECTURE.md)** (595 linhas) - Diagramas, fluxo de dados, design patterns
+- **[Component Reference](./COMPONENT_REFERENCE.md)** (544 linhas) - API completa de componentes
+- **[Hooks Reference](./HOOKS_REFERENCE.md)** (693 linhas) - API completa de hooks
+- **[Development Guide](./DEVELOPMENT_GUIDE.md)** (588 linhas) - Workflows detalhados
+- **[Troubleshooting](./TROUBLESHOOTING.md)** (575 linhas) - 40+ soluções detalhadas
 
-## 📊 Documentation Overview
+## 📊 Tamanho da Documentação
 
-| Document               | Size | Lines | Purpose                              |
-| ---------------------- | ---- | ----- | ------------------------------------ |
-| QUICK_REFERENCE.md     | 6KB  | 295   | Fast lookup guide                    |
-| AI_AGENT_GUIDE.md      | 12KB | 358   | Comprehensive project overview       |
-| ARCHITECTURE.md        | 19KB | 595   | System architecture deep dive        |
-| COMPONENT_REFERENCE.md | 15KB | 544   | Component API documentation          |
-| HOOKS_REFERENCE.md     | 17KB | 693   | Custom hooks documentation           |
-| DEVELOPMENT_GUIDE.md   | 14KB | 588   | Development workflows and patterns   |
-| TROUBLESHOOTING.md     | 15KB | 575   | Common issues and solutions          |
-| **Total**              | 98KB | 4,446 | Complete documentation for AI agents |
+| Documento                  | Linhas | Palavras | Quando Usar                           |
+| -------------------------- | ------ | -------- | ------------------------------------- |
+| **AI_AGENT_ESSENTIALS.md** | **400**| **2,500**| **SEMPRE - Comece aqui** ⚡           |
+| QUICK_REFERENCE.md         | 295    | 800      | Lookup rápido de comando/pattern      |
+| AI_AGENT_GUIDE.md          | 358    | 1,539    | Overview geral do projeto             |
+| ARCHITECTURE.md            | 595    | 1,613    | Mudanças arquiteturais                |
+| COMPONENT_REFERENCE.md     | 544    | 1,720    | Trabalhando com componente específico |
+| HOOKS_REFERENCE.md         | 693    | 2,134    | Trabalhando com hook específico       |
+| DEVELOPMENT_GUIDE.md       | 588    | 1,998    | Processo de desenvolvimento           |
+| TROUBLESHOOTING.md         | 575    | 2,005    | Debugando problema                    |
+| **Total**                  | 4,619  | 12,573   | Documentação completa                 |
+
+## 🎯 Abordagem em Camadas (Evita Sobrecarga)
+
+```
+Nível 1: AI_AGENT_ESSENTIALS.md (~400 linhas)
+    ↓ (se precisar de mais)
+Nível 2: QUICK_REFERENCE.md ou AI_AGENT_GUIDE.md
+    ↓ (se precisar de API específica)
+Nível 3: COMPONENT_REFERENCE.md ou HOOKS_REFERENCE.md
+    ↓ (se precisar de troubleshooting detalhado)
+Nível 4: TROUBLESHOOTING.md ou DEVELOPMENT_GUIDE.md
+    ↓ (se precisar de arquitetura completa)
+Nível 5: ARCHITECTURE.md
+```
+
+**💡 Recomendação para AI Agents**: Sempre comece com **AI_AGENT_ESSENTIALS.md**. Ele contém 90% do que você precisa. Só consulte docs completas para casos específicos.
 
 ## 🎯 Use Cases
 
