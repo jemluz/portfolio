@@ -6,6 +6,7 @@ Cada dev tem uma história - conte a sua para a turma
 
 **For AI Agents and Developers:**
 
+- **[Quick Reference](./docs/QUICK_REFERENCE.md)** ⚡ - Fast lookup guide for common tasks
 - **[AI Agent Guide](./docs/AI_AGENT_GUIDE.md)** - Comprehensive guide for AI agents
 - **[Architecture](./docs/ARCHITECTURE.md)** - System architecture deep dive
 - **[Component Reference](./docs/COMPONENT_REFERENCE.md)** - Complete component API
