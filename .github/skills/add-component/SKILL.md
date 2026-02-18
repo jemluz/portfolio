@@ -5,8 +5,6 @@ description: Add a new React component to the codebase following the project con
 
 To add a new component, follow the guidelines below to keep structure, naming, and documentation consistent.
 
----
-
 # 📌 Rules
 
 - MUST place component under `src/components/custom/ComponentName/`
@@ -18,8 +16,6 @@ To add a new component, follow the guidelines below to keep structure, naming, a
 - MUST add JSDoc to exported utils (see `add-jsdoc` skill)
 - MUST add `index.tsx` barrel export for the public API
 - MUST NOT modify files in `src/components/ui/`
-
----
 
 ## 🧱 File Structure
 
@@ -33,13 +29,13 @@ src/components/custom/ComponentName/
 └── styles.css (optional)
 ```
 
----
-
 ## 🧪 Example
 
 Component structure is a bit complex, the real examples were separated into a dedicated file.
 
 See **component-example.md** for a complete real example (Timeline): [component-example.md](component-example.md).
+
+---
 
 ## ✅ Validation Checklist
 

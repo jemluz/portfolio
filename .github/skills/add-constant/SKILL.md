@@ -6,8 +6,6 @@ license: Complete terms in LICENSE.txt
 
 To add a new constant, follow the guidelines below to keep naming and placement consistent.
 
----
-
 # Rules
 
 - MUST use SCREAMING_SNAKE_CASE naming
@@ -16,8 +14,6 @@ To add a new constant, follow the guidelines below to keep naming and placement 
 - MUST place constants at the top of the utils file
 - MUST NOT create `.constants.ts` files (use `.utils.ts` instead)
 - MUST add JSDoc when the constant is not self-explanatory (see `add-jsdoc` skill)
-
----
 
 ## Where to Place
 

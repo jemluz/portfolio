@@ -5,8 +5,6 @@ description: Add a new React Context provider and hook following the project con
 
 To add a new context to the codebase, follow the guidelines below to keep structure, naming, and documentation consistent.
 
----
-
 # 📌 Rules
 
 - MUST place the context file under `src/contexts/ContextName.tsx`
@@ -18,8 +16,6 @@ To add a new context to the codebase, follow the guidelines below to keep struct
 - MUST export the context as default export
 - MUST use `@/` alias for imports from `src/`
 - MUST include clear error message in the hook when used outside provider
-
----
 
 ## 🧱 File Structure
 
@@ -35,7 +31,7 @@ src/contexts/
 
 ### 👍 Good Example
 
-````tsx
+```tsx
 "use client";
 
 import React, { createContext, useContext, useMemo, useState } from "react";
@@ -66,7 +62,7 @@ export function useTheme() {
 }
 
 export default ThemeContext;
-````
+```
 
 ### ❌ Bad Example
 

@@ -5,15 +5,11 @@ description: Add JSDoc comments to functions and hooks for better documentation 
 
 To add or update JSDoc comments in our codebase, follow the guidelines below to ensure consistency and completeness in our documentation.
 
----
-
-# 📌 JSDoc is **required** for:
+# 📌 JSDoc is **required** for
 
 - ✓ All functions in `src/hooks/`
 - ✓ All exported functions in `src/components/**/utils.ts`
 - ✓ All exported utility functions in `src/lib/`
-
----
 
 ## 🧩 JSDoc Template
 

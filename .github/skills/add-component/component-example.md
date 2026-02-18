@@ -2,8 +2,6 @@
 
 Real component from the codebase demonstrating all code style rules.
 
----
-
 ## 📁 Directory Structure
 
 ```
@@ -121,6 +119,7 @@ src/components/custom/Timeline/index.tsx
 5. [ ] Relative imports (mesma pasta)
 6. [ ] CSS file imports
 
+---
 
 ## ✅ Analysis
 

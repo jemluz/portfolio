@@ -5,8 +5,6 @@ description: Add a new custom React hook to the codebase, following our conventi
 
 To add a new custom React hook to our codebase, follow the guidelines below to ensure consistency in structure, naming, and documentation.
 
----
-
 # 📌 Rules
 
 - MUST use named export (do NOT use default export)
@@ -149,6 +147,8 @@ export function useCounter() {
 
 - Type `CounterState` is exported (`export type`) but is only used internally by the hook.
 - This clutters the public API unnecessarily.
+
+---
 
 ## ✅ Validation Checklist
 

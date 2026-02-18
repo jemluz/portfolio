@@ -5,8 +5,6 @@ description: Create a new skill following the project's skill structure and docu
 
 To create a new skill, follow the guidelines below to ensure consistency in structure, naming, and documentation.
 
----
-
 # 📌 Rules
 
 - MUST place skill under `.github/skills/skill-name/`
@@ -17,7 +15,42 @@ To create a new skill, follow the guidelines below to ensure consistency in stru
 - MUST add the new skill to the skills list in `.github/copilot-instructions.md`
 - MUST NOT create duplicate or overlapping skills
 
----
+## 🎯 When to Create a New Skill
+
+Create a new skill when:
+
+- ✓ A task is repeated frequently across the project
+- ✓ There are specific conventions/rules to follow
+- ✓ The task requires multiple steps or validation
+- ✓ New team members need guidance on a specific process
+
+Do NOT create a skill when:
+
+- ✗ It's a one-time task
+- ✗ It duplicates an existing skill
+- ✗ It's too generic (e.g., "write good code")
+- ✗ It's well-documented in standard framework docs
+
+## 📝 Skill Naming Guidelines
+
+### Folder and File Names
+
+- Use **kebab-case** for folders: `add-component`, `create-skill`
+- Main file MUST be `SKILL.md` (uppercase)
+- Additional files use kebab-case: `component-example.md`
+
+### Skill Name Pattern
+
+- Use verb "add" + noun format: `add-component`, `add-hook`
+- Keep it concise (2-3 words max)
+- Be specific about the action
+
+### Examples
+
+- ✅ `add-component` - Clear action + target
+- ✅ `add-jsdoc` - Clear action + target
+- ❌ `component` - No action verb
+- ❌ `add-new-react-component-to-project` - Too verbose
 
 ## 🧱 File Structure
 
@@ -26,8 +59,6 @@ To create a new skill, follow the guidelines below to ensure consistency in stru
 ├── SKILL.md              # Main skill documentation (required)
 └── skill-example.md      # Additional examples (optional)
 ```
-
----
 
 ## 📄 SKILL.md File Format
 
@@ -163,47 +194,6 @@ After creating the skill, you MUST add it to `.github/copilot-instructions.md`:
 ```
 
 **Location**: Inside the `<skills>` section, maintain alphabetical order.
-
----
-
-## 📝 Skill Naming Guidelines
-
-### Folder and File Names
-
-- Use **kebab-case** for folders: `add-component`, `create-skill`
-- Main file MUST be `SKILL.md` (uppercase)
-- Additional files use kebab-case: `component-example.md`
-
-### Skill Name Pattern
-
-- Use verb "add" + noun format: `add-component`, `add-hook`
-- Keep it concise (2-3 words max)
-- Be specific about the action
-
-### Examples
-
-- ✅ `add-component` - Clear action + target
-- ✅ `add-jsdoc` - Clear action + target
-- ❌ `component` - No action verb
-- ❌ `add-new-react-component-to-project` - Too verbose
-
----
-
-## 🎯 When to Create a New Skill
-
-Create a new skill when:
-
-- ✓ A task is repeated frequently across the project
-- ✓ There are specific conventions/rules to follow
-- ✓ The task requires multiple steps or validation
-- ✓ New team members need guidance on a specific process
-
-Do NOT create a skill when:
-
-- ✗ It's a one-time task
-- ✗ It duplicates an existing skill
-- ✗ It's too generic (e.g., "write good code")
-- ✗ It's well-documented in standard framework docs
 
 ---
 

@@ -5,8 +5,6 @@ description: Add a new enum to the codebase following the project conventions fo
 
 To add a new enum to the codebase, follow the guidelines below to ensure consistency in structure, naming, and placement.
 
----
-
 # 📌 Rules
 
 - MUST use named export (do NOT use default export)
@@ -16,8 +14,6 @@ To add a new enum to the codebase, follow the guidelines below to ensure consist
 - MUST use SCREAMING_SNAKE_CASE for string values that represent fixed options (e.g., `CURRENT`, `PAST`)
 - MUST be used only for fixed, known values (not for dynamic or runtime values)
 - MUST NOT contain logic or functions
-
----
 
 ## 📍 Where to Place
 
