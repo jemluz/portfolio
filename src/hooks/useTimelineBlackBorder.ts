@@ -4,7 +4,7 @@ import {
   isElementVisible,
 } from "../components/custom/Timeline/timeline.utils";
 
-interface UseTimelineBlackBorderProps {
+type UseTimelineBlackBorderProps = {
   selectedYear: number | null;
   years: number[];
   scrollViewportRef: React.RefObject<HTMLDivElement | null>;

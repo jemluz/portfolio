@@ -5,11 +5,11 @@ export type UserInfoProps = {
   urls: string[];
 };
 
-export enum GoToButtonType {
-  GITHUB,
-  LINKEDIN,
-  WEBSITE,
-  INVALID,
+export enum GoToButtonTypeEnum {
+  GITHUB = "GITHUB",
+  LINKEDIN = "LINKEDIN",
+  WEBSITE = "WEBSITE",
+  INVALID = "INVALID",
 }
 
 type Axis = "horizontal" | "vertical";
@@ -25,7 +25,7 @@ export type GoToButtonProps = {
 };
 
 export type GetGoButtonProps = {
-  type: GoToButtonType;
+  type: GoToButtonTypeEnum;
   url: string;
   axis?: Axis;
 };

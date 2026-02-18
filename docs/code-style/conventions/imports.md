@@ -82,7 +82,7 @@ EDITING component-name.types.ts
 May require:
 - Update import in ComponentName.tsx
 - Update JSDoc examples in utils.ts if type renamed
-- Check index.tsx if type is re-exported
+- Search for type previous name on all codebase to update it
 ```
 
 ### Adding Hook to Component

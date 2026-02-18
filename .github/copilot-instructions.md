@@ -2,7 +2,7 @@
 
 ## Project Context
 
-- Platform for developers to share their professional experiences
+- Platform for developers to show their professional experiences
 
 ## 🏗️ Tech Stack
 
@@ -24,45 +24,74 @@
 - `src/hooks/` - Custom React hooks
 - `src/lib/` - General utilities
 
-### Component File Convention
+### Naming Convention
 
-Complex components in `src/components/custom/` should follow:
+| Type                  | Convention                        | Examples                                          |
+| --------------------- | --------------------------------- | ------------------------------------------------- |
+| Component name        | PascalCase                        | `Timeline`, `UserInfo`, `ContentArea`             |
+| Component Files       | PascalCase                        | `Timeline.tsx`, `UserInfo.tsx`, `ContentArea.tsx` |
+| Component Type Files  | kebab-case                        | `timeline.types.ts`, `user-info.types.ts`         |
+| Component Utils Files | kebab-case                        | `timeline.utils.ts`, `content-area.utils.ts`      |
+| Hooks                 | camelCase with `use` prefix       | `useMediaQuery`, `useScrollPadding`               |
+| Context Providers     | PascalCase with `Provider` suffix | `ThemeProvider`, `AuthProvider`                   |
+| Context Files         | PascalCase with `Provider` suffix | `ThemeProvider.tsx`, `AuthProvider.tsx`           |
+| Context Hooks         | camelCase with `use` prefix       | `useTheme`, `useAuth`                             |
 
-(reference the code style file)
+## 💻 Code Standards
 
-## Code Standards
+**Types/Functions/Constants Naming Convention**
 
-### Components
+| Type                | Convention                                            | Examples                                    |
+| ------------------- | ----------------------------------------------------- | ------------------------------------------- |
+| Functions/variables | camelCase                                             | `getActiveYear`, `handleClick`, `isDesktop` |
+| Constants           | SCREAMING_SNAKE_CASE                                  | `YEAR_BUTTON_HEIGHT`, `MAX_ITEMS`           |
+| Types/Interfaces    | PascalCase                                            | `TimelineProps`, `UserData`, `ViewMode`     |
+| Enums               | PascalCase (name), SCREAMING_SNAKE_CASE (keys/values) | `enum Period { CURRENT = "CURRENT" }`       |
+
+**Components**
 
 - Separate into `ui/` (shadcn) and `custom/` (project-specific)
-- Always create `.types.ts` for complex types
-- Always create `.utils.ts` for reusable logic AND constants
 - Use barrel exports in `index.tsx` for public API
 
-### Documentation
-
-- JSDoc mandatory for all hooks (`src/hooks/`)
-- JSDoc mandatory for all utils (`src/components/**/utils.ts`)
-- Include `@param`, `@returns`, `@example`
-
-### State
+**State**
 
 - Use Context API for global state
 - Custom hooks for reusable logic
 
-### Issues/Branches
+**Documentation**
 
-- Issues: `[TURMA-XXXXX] + title`
-- Issue branches: `feat/TURMA-XXXXX`
-- Commits at issues: `type(IXXXXX): commit message description whatever`
+- JSDoc mandatory for all hooks and utils (`src/hooks/`, `src/components/**/utils.ts`)
 
-- Sub issues: `[TURMA-XXXXX] + [SUB-YY] + title`
-- Sub issue branches: `feat/TURMA-XXXXX__SUB-YY`
-- Commits at sub issues: `type(IXXXXX__SYY): commit message description whatever`
-
-## Important Decisions
+## 🥸 Important Decisions
 
 - Use App Router (not Pages Router)
 - Prefer Server Components when possible
 - Use CVA for component variants
 - Use Tailwind CSS (not CSS Modules)
+
+## 💪 Skills
+
+Skills are modular, context-specific knowledge modules that guide AI assistants on how to perform common tasks following project conventions.
+
+Available skills:
+
+- **add-component**: Add a new React component to the codebase following the project conventions
+  - Location: `.github/skills/add-component/SKILL.md`
+
+- **add-constant**: Add constants following the project conventions for utils files
+  - Location: `.github/skills/add-constant/SKILL.md`
+
+- **add-context**: Add a new React Context provider and hook following the project conventions
+  - Location: `.github/skills/add-context/SKILL.md`
+
+- **add-enum**: Add a new enum to the codebase following the project conventions for TypeScript enums
+  - Location: `.github/skills/add-enum/SKILL.md`
+
+- **add-hook**: Add a new custom React hook to the codebase, following our conventions for structure, naming, and documentation
+  - Location: `.github/skills/add-hook/SKILL.md`
+
+- **add-jsdoc**: Add JSDoc comments to functions and hooks for better documentation and code clarity
+  - Location: `.github/skills/add-jsdoc/SKILL.md`
+
+- **create-skill**: Create a new skill following the project's skill structure and documentation conventions
+  - Location: `.github/skills/create-skill/SKILL.md`
