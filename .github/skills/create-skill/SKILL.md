@@ -13,6 +13,7 @@ To create a new skill, follow the guidelines below to ensure consistency in stru
 - MUST use kebab-case for skill name in frontmatter
 - MUST include clear description, rules, examples, and validation checklist
 - MUST add the new skill to the skills list in `.github/copilot-instructions.md`
+- MUST reference related skills in the content (at rules section) when applicable
 - MUST NOT create duplicate or overlapping skills
 
 ## 🎯 When to Create a New Skill
@@ -60,7 +61,7 @@ Do NOT create a skill when:
 └── skill-example.md      # Additional examples (optional)
 ```
 
-## 📄 SKILL.md File Format
+## 📄 File Format (`SKILL.md`)
 
 ### Frontmatter (Required)
 

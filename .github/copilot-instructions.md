@@ -71,12 +71,62 @@ Skills are modular, context-specific knowledge modules that guide AI assistants 
 
 Available skills:
 
-| Skill         | Description                                                                                                     | Path                                  |
-| ------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| add-component | Add a new React component to the codebase following the project conventions                                     | .github/skills/add-component/SKILL.md |
-| add-constant  | Add constants following the project conventions for utils files                                                 | .github/skills/add-constant/SKILL.md  |
-| add-context   | Add a new React Context provider and hook following the project conventions                                     | .github/skills/add-context/SKILL.md   |
-| add-enum      | Add a new enum to the codebase following the project conventions for TypeScript enums                           | .github/skills/add-enum/SKILL.md      |
-| add-hook      | Add a new custom React hook to the codebase, following our conventions for structure, naming, and documentation | .github/skills/add-hook/SKILL.md      |
-| add-jsdoc     | Add JSDoc comments to functions and hooks for better documentation and code clarity                             | .github/skills/add-jsdoc/SKILL.md     |
-| create-skill  | Create a new skill following the project's skill structure and documentation conventions                        | .github/skills/create-skill/SKILL.md  |
+| Skill          | Description                                                                                                     | Path                                   |
+| -------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| add-component  | Add a new React component to the codebase following the project conventions                                     | .github/skills/add-component/SKILL.md  |
+| add-constant   | Add constants following the project conventions for utils files                                                 | .github/skills/add-constant/SKILL.md   |
+| add-context    | Add a new React Context provider and hook following the project conventions                                     | .github/skills/add-context/SKILL.md    |
+| add-enum       | Add a new enum to the codebase following the project conventions for TypeScript enums                           | .github/skills/add-enum/SKILL.md       |
+| add-hook       | Add a new custom React hook to the codebase, following our conventions for structure, naming, and documentation | .github/skills/add-hook/SKILL.md       |
+| add-jsdoc      | Add JSDoc comments to functions and hooks for better documentation and code clarity                             | .github/skills/add-jsdoc/SKILL.md      |
+| add-types-file | Add a new types file following the project conventions for TypeScript type definitions.                         | .github/skills/add-types-file/SKILL.md |
+| add-utils-file | Add a new utils file following the project conventions for utilities and constants.                             | .github/skills/add-utils-file/SKILL.md |
+| create-skill   | Create a new skill following the project's skill structure and documentation conventions                        | .github/skills/create-skill/SKILL.md   |
+
+<skills>
+<skill>
+<name>add-component</name>
+<description>Add a new React component to the codebase following the project conventions.</description>
+<file>/workspaces/turma.dev/.github/skills/add-component/SKILL.md</file>
+</skill>
+<skill>
+<name>add-constant</name>
+<description>Add constants following the project conventions for utils files.</description>
+<file>/workspaces/turma.dev/.github/skills/add-constant/SKILL.md</file>
+</skill>
+<skill>
+<name>add-context</name>
+<description>Add a new React Context provider and hook following the project conventions.</description>
+<file>/workspaces/turma.dev/.github/skills/add-context/SKILL.md</file>
+</skill>
+<skill>
+<name>add-enum</name>
+<description>Add a new enum to the codebase following the project conventions for TypeScript enums.</description>
+<file>/workspaces/turma.dev/.github/skills/add-enum/SKILL.md</file>
+</skill>
+<skill>
+<name>add-hook</name>
+<description>Add a new custom React hook to the codebase, following our conventions for structure, naming, and documentation.</description>
+<file>/workspaces/turma.dev/.github/skills/add-hook/SKILL.md</file>
+</skill>
+<skill>
+<name>add-jsdoc</name>
+<description>Add JSDoc comments to functions and hooks for better documentation and code clarity.</description>
+<file>/workspaces/turma.dev/.github/skills/add-jsdoc/SKILL.md</file>
+</skill>
+<skill>
+<name>add-types-file</name>
+<description>Add a new types file following the project conventions for TypeScript type definitions.</description>
+<file>/workspaces/turma.dev/.github/skills/add-types-file/SKILL.md</file>
+</skill>
+<skill>
+<name>add-utils-file</name>
+<description>Add a new utils file following the project conventions for utilities and constants.</description>
+<file>/workspaces/turma.dev/.github/skills/add-utils-file/SKILL.md</file>
+</skill>
+<skill>
+<name>create-skill</name>
+<description>Create a new skill following the project's skill structure and documentation conventions.</description>
+<file>/workspaces/turma.dev/.github/skills/create-skill/SKILL.md</file>
+</skill>
+</skills>

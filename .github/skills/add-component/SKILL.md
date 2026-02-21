@@ -8,14 +8,11 @@ To add a new component, follow the guidelines below to keep structure, naming, a
 # 📌 Rules
 
 - MUST place component under `src/components/custom/ComponentName/`
-- MUST export the main component as default export
-- MUST add `"use client"` at line 1 when using hooks/events/browser APIs, or `next/navigation`
-- MUST use `@/` alias for imports from `src/`
 - MUST type props via `ComponentNameProps` from `./component-name.types.ts`
-- MUST create `component-name.utils.ts` for reusable logic and constants
-- MUST add JSDoc to exported utils (see `add-jsdoc` skill)
-- MUST add `index.tsx` barrel export for the public API
 - MUST NOT modify files in `src/components/ui/`
+- MUST use SKILL [add-utils-file](../add-utils-file/SKILL.md) to implement reusable logic in `component-name.utils.ts`
+- MUST use SKILL [add-types-file](../add-types-file/SKILL.md) to define types in `component-name.types.ts`
+- MUST use [import and export instructions](../../instructions/import-export.instructions.md) for all imports/exports
 
 ## 🧱 File Structure
 
