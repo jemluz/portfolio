@@ -1,42 +1,39 @@
----
-name: create-skill
-description: Create a new skill following the project's skill structure and documentation conventions.
----
+# Create Skill Instructions
 
-To create a new skill, follow the guidelines below to ensure consistency in structure, naming, and documentation.
+Use this guide to create new skills in a consistent, maintainable way.
 
-# 📌 Rules
+## Rules
 
-- MUST place skill under `.github/skills/skill-name/`
+- MUST place the skill under `.github/skills/skill-name/`
 - MUST create a `SKILL.md` file with proper frontmatter
-- MUST use kebab-case for skill folder name
-- MUST use kebab-case for skill name in frontmatter
+- MUST use kebab-case for the skill folder name
+- MUST use kebab-case for the skill name in frontmatter
 - MUST include clear description, rules, examples, and validation checklist
 - MUST add the new skill to the skills list in `.github/copilot-instructions.md`
-- MUST reference related skills in the content (at rules section) when applicable
+- MUST reference related skills in the content when applicable
 - MUST NOT create duplicate or overlapping skills
 
-## 🎯 When to Create a New Skill
+## When to Create a New Skill
 
 Create a new skill when:
 
-- ✓ A task is repeated frequently across the project
-- ✓ There are specific conventions/rules to follow
-- ✓ The task requires multiple steps or validation
-- ✓ New team members need guidance on a specific process
+- A task is repeated frequently across the project
+- There are specific conventions or rules to follow
+- The task requires multiple steps or validation
+- New team members need guidance on a specific process
 
 Do NOT create a skill when:
 
-- ✗ It's a one-time task
-- ✗ It duplicates an existing skill
-- ✗ It's too generic (e.g., "write good code")
-- ✗ It's well-documented in standard framework docs
+- It is a one-time task
+- It duplicates an existing skill
+- It is too generic (for example, "write good code")
+- It is already well-documented in standard framework docs
 
-## 📝 Skill Naming Guidelines
+## Skill Naming Guidelines
 
 ### Folder and File Names
 
-- Use **kebab-case** for folders: `add-component`, `create-skill`
+- Use kebab-case for folders: `add-component`, `create-skill`
 - Main file MUST be `SKILL.md` (uppercase)
 - Additional files use kebab-case: `component-example.md`
 
@@ -48,12 +45,12 @@ Do NOT create a skill when:
 
 ### Examples
 
-- ✅ `add-component` - Clear action + target
-- ✅ `add-jsdoc` - Clear action + target
-- ❌ `component` - No action verb
-- ❌ `add-new-react-component-to-project` - Too verbose
+- OK: `add-component` - Clear action + target
+- OK: `add-jsdoc` - Clear action + target
+- Avoid: `component` - No action verb
+- Avoid: `add-new-react-component-to-project` - Too verbose
 
-## 🧱 File Structure
+## File Structure
 
 ```
 .github/skills/skill-name/
@@ -61,7 +58,7 @@ Do NOT create a skill when:
 └── skill-example.md      # Additional examples (optional)
 ```
 
-## 📄 File Format (`SKILL.md`)
+## File Format (`SKILL.md`)
 
 ### Frontmatter (Required)
 
@@ -74,19 +71,17 @@ description: Brief description of what the skill does.
 
 ### Content Structure (Recommended Order)
 
-1. **Introduction** - Brief explanation of the skill's purpose
-2. **📌 Rules** - Mandatory requirements (MUST/MUST NOT)
-3. **🧱 File Structure** - Visual representation of expected structure (if applicable)
-4. **🧪 Examples** - Good and bad examples with explanations
-5. **✅ Validation Checklist** - Step-by-step verification
+1. Introduction - Brief explanation of the skill's purpose
+2. Rules - Mandatory requirements (MUST/MUST NOT)
+3. File Structure - Expected structure (if applicable)
+4. Examples - Good and bad examples with explanations
+5. Validation Checklist - Step-by-step verification
 
----
-
-## 🧪 Example
+## Example
 
 ### Good Example
 
-**File**: `.github/skills/add-test/SKILL.md`
+File: `.github/skills/add-test/SKILL.md`
 
 ````markdown
 ---
@@ -98,16 +93,16 @@ To add tests to the codebase, follow the guidelines below.
 
 ---
 
-# 📌 Rules
+# Rules
 
 - MUST place tests in `__tests__/` folder next to component
 - MUST name test files with `.test.tsx` extension
 - MUST use descriptive test names
-- MUST test all exported functions/components
+- MUST test all exported functions or components
 
 ---
 
-## 🧱 File Structure
+## File Structure
 
 src/components/custom/ComponentName/
 ├── ComponentName.tsx
@@ -119,9 +114,9 @@ src/components/custom/ComponentName/
 
 ---
 
-## 🧪 Examples
+## Examples
 
-### 👍 Good Example
+### Good Example
 
 ```typescript
 import { render, screen } from "@testing-library/react";
@@ -135,7 +130,7 @@ describe("ComponentName", () => {
 });
 ```
 
-### ❌ Bad Example
+### Bad Example
 
 ```typescript
 test("works", () => {
@@ -143,7 +138,7 @@ test("works", () => {
 });
 ```
 
-**Why this is wrong**:
+Why this is wrong:
 
 - Test name is not descriptive
 - Tests nothing meaningful
@@ -151,7 +146,7 @@ test("works", () => {
 
 ---
 
-## ✅ Validation Checklist
+## Validation Checklist
 
 - [ ] Test file is in `__tests__/` folder
 - [ ] File name ends with `.test.tsx` or `.test.ts`
@@ -162,7 +157,7 @@ test("works", () => {
 
 ### Bad Example
 
-**File**: `.github/skills/do-stuff/SKILL.md`
+File: `.github/skills/do-stuff/SKILL.md`
 
 ```markdown
 # Do Stuff
@@ -172,7 +167,7 @@ Just do stuff correctly.
 Use best practices.
 ```
 
-**Why this is wrong**:
+Why this is wrong:
 
 - Missing frontmatter
 - No clear rules or structure
@@ -180,11 +175,9 @@ Use best practices.
 - Too vague and not actionable
 - Missing validation checklist
 
----
+## Add Skill to Copilot Instructions
 
-## 🔄 Adding Skill to Copilot Instructions
-
-After creating the skill, you MUST add it to `.github/copilot-instructions.md`:
+After creating the skill, add it to `.github/copilot-instructions.md`:
 
 ```markdown
 <skill>
@@ -194,7 +187,7 @@ After creating the skill, you MUST add it to `.github/copilot-instructions.md`:
 </skill>
 ```
 
-**Location**: Inside the `<skills>` section, maintain alphabetical order.
+Location: inside the `<skills>` section, maintain alphabetical order.
 
 ---
 
