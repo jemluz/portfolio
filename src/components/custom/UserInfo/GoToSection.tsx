@@ -10,7 +10,7 @@ import { urlToGoToButtonTypeRegex } from "./user-info.utils";
 import {
   GetGoButtonProps,
   GoToButtonProps,
-  GoToButtonType,
+  GoToButtonTypeEnum,
   GoToSectionProps,
 } from "./user-info.types";
 
@@ -25,10 +25,10 @@ export function GoToSection({ goToUrls, axis = "horizontal" }: GoToSectionProps)
 }
 
 function GoToButton({ url, axis }: GoToButtonProps) {
-  const type: GoToButtonType = urlToGoToButtonTypeRegex(url);
+  const type: GoToButtonTypeEnum = urlToGoToButtonTypeRegex(url);
   const renderGoToButton: ReactNode = getGoButton({ type, url, axis });
 
-  if (type === GoToButtonType.INVALID) {
+  if (type === GoToButtonTypeEnum.INVALID) {
     console.error(`Invalid URL provided to GoToButton: ${url}`);
     return null;
   }
@@ -40,7 +40,7 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
   const mobileVersion = axis === "vertical";
 
   switch (type) {
-    case GoToButtonType.GITHUB:
+    case GoToButtonTypeEnum.GITHUB:
       return (
         <Button
           variant="outline"
@@ -57,7 +57,7 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
           </Link>
         </Button>
       );
-    case GoToButtonType.LINKEDIN:
+    case GoToButtonTypeEnum.LINKEDIN:
       return (
         <Button
           variant="outline"
@@ -74,7 +74,7 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
           </Link>
         </Button>
       );
-    case GoToButtonType.WEBSITE:
+    case GoToButtonTypeEnum.WEBSITE:
       return (
         <Button
           variant="outline"

@@ -1,9 +1,13 @@
 import { RefObject } from "react";
 
-const SCROLL_ANIMATION_DURATION = 600;
-const DEFAULT_SCROLL_THRESHOLD = 10;
-const DEFAULT_SCROLL_TIME_RESET = 300;
-const DEFAULT_TOUCH_THRESHOLD = 50; // pixels for touch swipe
+/**
+ * ContentArea constants
+ */
+export const CONTENT_VIEW_HEIGHT = 230;
+export const SCROLL_ANIMATION_DURATION = 600;
+export const DEFAULT_SCROLL_THRESHOLD = 10;
+export const DEFAULT_SCROLL_TIME_RESET = 300;
+export const DEFAULT_TOUCH_THRESHOLD = 50; // pixels for touch swipe
 
 /**
  * Scrolls to the selected item

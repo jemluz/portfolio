@@ -1,4 +1,8 @@
-import { YEAR_BUTTON_HEIGHT } from "./timeline.constants";
+/**
+ * Timeline constants
+ */
+export const YEAR_BUTTON_HEIGHT = 36;
+export const ERROR_BLINK_DURATION = 300;
 
 /**
  * Calculate the Y translation for the black border based on the selected year position
