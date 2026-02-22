@@ -1,11 +1,13 @@
 "use client";
 
+import { memo } from "react";
+
 import { cn } from "@/lib/utils";
 import { GoToSection } from "./GoToSection";
 import { UserInfoProps } from "./user-info.types";
 import AvatarAndName from "./AvatarAndName";
 
-export default function UserInfoMobile(userData: UserInfoProps) {
+function UserInfoMobile(userData: UserInfoProps) {
   return (
     <div id="user-info-mobile" className="user-area flex flex-col items-center justify-end">
       <div id="top-padding" className="h-[20px]"></div> 
@@ -40,3 +42,5 @@ function TopContainer({
     </div>
   );
 }
+
+export default memo(UserInfoMobile);

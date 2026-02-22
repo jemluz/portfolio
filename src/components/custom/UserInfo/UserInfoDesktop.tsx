@@ -1,11 +1,13 @@
 "use client";
 
+import { memo } from "react";
+
 import { cn } from "@/lib/utils";
 import { GoToSection } from "./GoToSection";
 import { UserInfoProps } from "./user-info.types";
 import AvatarAndName from "./AvatarAndName";
 
-export default function UserInfoDesktop(userData: UserInfoProps) {
+function UserInfoDesktop(userData: UserInfoProps) {
   return (
     <div id="user-info-desktop" className="user-area flex items-start justify-end h-full w-full pt-12 pr-8">
       <GrowingLine />
@@ -44,3 +46,5 @@ function RightContainer({
     </div>
   );
 }
+
+export default memo(UserInfoDesktop);
