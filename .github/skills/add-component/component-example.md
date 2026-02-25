@@ -35,6 +35,7 @@ src/components/custom/Timeline/timeline.types.ts
 ```
 
 **Key points**:
+
 - ✓ Named exports only
 - ✓ `TimelineProps` type for component props (`{ComponentName}Props` name format)
 - ✓ Union types for complex data shapes
@@ -51,6 +52,7 @@ src/components/custom/Timeline/timeline.utils.ts
 ```
 
 **Key points**:
+
 - ✓ Constants at top with SCREAMING_SNAKE_CASE (ver **03-utils.md#constants**)
 - ✓ Complete JSDoc with @param, @returns, @example
 - ✓ Pure functions (no side effects)
@@ -67,6 +69,7 @@ src/components/custom/Timeline/Timeline.tsx
 ```
 
 **Key points**:
+
 - ✓ "use client" at line 1 (uses hooks)
 - ✓ Imports ordered correctly
 - ✓ Component name matches file name
@@ -86,6 +89,7 @@ src/components/custom/Timeline/YearButton.tsx
 ```
 
 **Key points**:
+
 - ✗ NO "use client" (presentational only)
 - ✓ Props interface inline (small subcomponent)
 - ✓ Uses `memo` for performance
@@ -103,6 +107,7 @@ src/components/custom/Timeline/index.tsx
 ```
 
 **Key points**:
+
 - ✓ Exports only public API
 - ✓ Main component + public subcomponents
 - ✓ Internal components not exposed
@@ -124,6 +129,7 @@ src/components/custom/Timeline/index.tsx
 ## ✅ Analysis
 
 ### ✓ Follows all rules:
+
 1. **File organization**: Separate files for types, utils, components
 2. **"use client"**: Only on Timeline.tsx (uses hooks)
 3. **Imports**: Correct order, uses `@/` alias
@@ -133,6 +139,7 @@ src/components/custom/Timeline/index.tsx
 7. **Exports**: Barrel export for public API
 
 ### Component hierarchy:
+
 See the component tree in **src/components/custom/Timeline**.
 
 ```

@@ -7,7 +7,7 @@ type UseTimelineNavigationProps = {
   setSelectedYear: (year: number) => void;
   scrollToYear: (year: number) => void;
   scrollViewportRef: React.RefObject<HTMLDivElement | null>;
-}
+};
 
 /**
  * Custom hook that manages timeline navigation logic and button interactions.

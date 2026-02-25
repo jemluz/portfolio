@@ -138,7 +138,7 @@ export type CounterState = {
 
 export function useCounter() {
   const [state, setState] = useState<CounterState>({ count: 0 });
-  
+
   return state;
 }
 ```

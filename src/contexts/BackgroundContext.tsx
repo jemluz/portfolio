@@ -41,7 +41,7 @@ type BackgroundContextType = {
   registerScrollReset: (callback: () => void) => void;
   setSelectedContent: (contentId: string | null) => void;
   setSelectedYear: (year: number | null) => void;
-  
+
   // Timeline navigation
   registerTimelineNavigation: (handlers: TimelineNavigationHandlers) => void;
   timelineNavigation: TimelineNavigationHandlers | null;
@@ -52,11 +52,7 @@ const BackgroundContext = createContext<BackgroundContextType | undefined>(
   undefined,
 );
 
-export function BackgroundProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export function BackgroundProvider({ children }: { children: ReactNode }) {
   // ========== Memoized Values ==========
   // Get all unique years from content data
   const years = useMemo(() => {
@@ -66,14 +62,15 @@ export function BackgroundProvider({
   // ========== State ==========
   const [selectedContent, setSelectedContent] = useState<string | null>(null);
   const [selectedYear, setSelectedYear] = useState<number | null>(
-    years.length > 0 ? years[0] : null
+    years.length > 0 ? years[0] : null,
   );
 
   // ========== Refs ==========
   const colorCacheRef = useRef<Record<string, ColorKey>>({});
   const scrollResetCallbackRef = useRef<(() => void) | null>(null);
   const timelineNavigationRef = useRef<TimelineNavigationHandlers | null>(null);
-  const [timelineNavigation, setTimelineNavigation] = useState<TimelineNavigationHandlers | null>(null);
+  const [timelineNavigation, setTimelineNavigation] =
+    useState<TimelineNavigationHandlers | null>(null);
 
   // ========== Derived State & Memoized Values ==========
   // Get content list for selected year, sorted by month (oldest first)
@@ -127,10 +124,13 @@ export function BackgroundProvider({
     scrollResetCallbackRef.current = callback;
   }, []);
 
-  const registerTimelineNavigation = useCallback((handlers: TimelineNavigationHandlers) => {
-    timelineNavigationRef.current = handlers;
-    setTimelineNavigation(handlers);
-  }, []);
+  const registerTimelineNavigation = useCallback(
+    (handlers: TimelineNavigationHandlers) => {
+      timelineNavigationRef.current = handlers;
+      setTimelineNavigation(handlers);
+    },
+    [],
+  );
 
   const goToNextContent = useCallback(() => {
     if (canGoNext) {
