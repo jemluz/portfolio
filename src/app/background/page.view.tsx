@@ -1,7 +1,13 @@
 "use client";
 
-import { UserInfoDesktop, UserInfoMobile } from "../../components/custom/UserInfo";
-import { Timeline, TimelineNavButtonsMobile } from "../../components/custom/Timeline";
+import {
+  UserInfoDesktop,
+  UserInfoMobile,
+} from "../../components/custom/UserInfo";
+import {
+  Timeline,
+  TimelineNavButtonsMobile,
+} from "../../components/custom/Timeline";
 import "./styles.css";
 import { userData } from "@/background-data";
 import { BackgroundProvider } from "../../contexts/BackgroundContext";
@@ -14,7 +20,11 @@ export default function BackgroundPage() {
 
   return (
     <main className="user-page-grid grid h-screen overflow-hidden">
-      {isDesktop ? <UserInfoDesktop {...userData} /> : <UserInfoMobile {...userData} />}
+      {isDesktop ? (
+        <UserInfoDesktop {...userData} />
+      ) : (
+        <UserInfoMobile {...userData} />
+      )}
 
       <BackgroundProvider>
         {!isDesktop && <YearTitle />}

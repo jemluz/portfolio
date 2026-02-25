@@ -9,7 +9,7 @@ type UseTimelineBlackBorderProps = {
   years: number[];
   scrollViewportRef: React.RefObject<HTMLDivElement | null>;
   itemRefs: React.RefObject<Record<number, HTMLDivElement | null>>;
-}
+};
 
 /**
  * Custom hook to manage the black border/bar indicator movement in the timeline

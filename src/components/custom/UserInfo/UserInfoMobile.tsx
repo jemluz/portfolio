@@ -9,8 +9,11 @@ import AvatarAndName from "./AvatarAndName";
 
 function UserInfoMobile(userData: UserInfoProps) {
   return (
-    <div id="user-info-mobile" className="user-area flex flex-col items-center justify-end">
-      <div id="top-padding" className="h-[20px]"></div> 
+    <div
+      id="user-info-mobile"
+      className="user-area flex flex-col items-center justify-end"
+    >
+      <div id="top-padding" className="h-[20px]"></div>
       <TopContainer {...userData} />
       <GrowingLine />
     </div>
@@ -19,11 +22,7 @@ function UserInfoMobile(userData: UserInfoProps) {
 
 function GrowingLine() {
   return (
-    <div
-      className={cn(
-        `w-full flex flex-col items-center justify-center`
-      )}
-    >
+    <div className={cn(`w-full flex flex-col items-center justify-center`)}>
       <div className="w-full h-[2px] mt-4 border-b-[2px] border-b-zinc-200"></div>
     </div>
   );
@@ -37,7 +36,11 @@ function TopContainer({
 }: UserInfoProps) {
   return (
     <div className="flex items-center justify-center gap-8 md:w-fit md:mr-8">
-      <AvatarAndName name={name} lastName={lastName} profilePhotoUrl={profilePhotoUrl} />
+      <AvatarAndName
+        name={name}
+        lastName={lastName}
+        profilePhotoUrl={profilePhotoUrl}
+      />
       <UserExternalLinks goToUrls={urls} axis="vertical" />
     </div>
   );

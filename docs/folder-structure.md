@@ -1,6 +1,7 @@
 ## 📂 File Naming
 
 ### Next.js Pages
+
 ```
 src/app/
 ├── page.view.tsx           # Page component (separated view logic)
@@ -11,6 +12,7 @@ src/app/
 ```
 
 ### Components
+
 ```
 ComponentName.tsx           # PascalCase for components
 component-name.types.ts     # kebab-case for supporting files

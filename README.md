@@ -28,7 +28,3 @@ Focus on: `docs/dev-workflow.md` to understand the dev workflow
 - Carousel-like navigation (wheel + touch)
 - Calculates item visibility
 - Synchronizes with BackgroundContext
-
-
-
-

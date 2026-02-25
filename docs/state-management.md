@@ -32,10 +32,10 @@ Manages shared state between multiple components using React Context API.
 
 #### Active Contexts
 
-| Context               | Scope         | Responsibility                                          | Documentation                                     |
-| --------------------- | ------------- | ------------------------------------------------------- | ------------------------------------------------- |
-| `ThemeProvider`       | App-wide      | Manages theme (dark/light mode) via next-themes         | [theme-provider.tsx][theme-provider]              |
-| `BackgroundProvider`  | `/background` | Coordinates navigation, filtering and background colors | [background-context.md][background-context]       |
+| Context              | Scope         | Responsibility                                          | Documentation                               |
+| -------------------- | ------------- | ------------------------------------------------------- | ------------------------------------------- |
+| `ThemeProvider`      | App-wide      | Manages theme (dark/light mode) via next-themes         | [theme-provider.tsx][theme-provider]        |
+| `BackgroundProvider` | `/background` | Coordinates navigation, filtering and background colors | [background-context.md][background-context] |
 
 [theme-provider]: /workspaces/turma.dev/src/components/theme-provider.tsx
 [background-context]: /workspaces/turma.dev/src/contexts/background-context.md
@@ -60,6 +60,7 @@ Custom hooks are divided into **general hooks** (such as media query detection) 
 ### 3. Local State (useState)
 
 Individual components use `useState` for internal state that doesn't need to be shared:
+
 - UI toggles (dropdowns, tooltips)
 - Form state
 - Local animations and transitions
@@ -97,6 +98,7 @@ ContentArea Component
 ## Future Evolution
 
 This document is living and will be updated as:
+
 - New pages are implemented
 - New global contexts are created
 - More complex state patterns emerge (e.g., state machines, external stores)

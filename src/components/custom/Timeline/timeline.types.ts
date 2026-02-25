@@ -21,4 +21,4 @@ export type TimelineNavButtonsProps = {
   onDownAll: () => void;
   onDownOne: () => void;
   errorButton: string | null;
-}
+};
