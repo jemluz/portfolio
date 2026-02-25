@@ -11,10 +11,10 @@ import {
   GetGoButtonProps,
   GoToButtonProps,
   GoToButtonTypeEnum,
-  GoToSectionProps,
+  UserExternalLinksProps,
 } from "./user-info.types";
 
-export function GoToSection({ goToUrls, axis = "horizontal" }: GoToSectionProps) {
+export function UserExternalLinks({ goToUrls, axis = "horizontal" }: UserExternalLinksProps) {
   return (
     <div className={`flex gap-2 pr-4 ${axis === "vertical" ? "flex-col" : "flex-row"}`}>
       {goToUrls.map((url: string) => (
