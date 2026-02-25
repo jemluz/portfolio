@@ -14,7 +14,7 @@ export enum GoToButtonTypeEnum {
 
 type Axis = "horizontal" | "vertical";
 
-export type GoToSectionProps = {
+export type UserExternalLinksProps = {
   goToUrls: string[];
   axis?: Axis;
 };

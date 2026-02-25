@@ -3,7 +3,7 @@
 import { memo } from "react";
 
 import { cn } from "@/lib/utils";
-import { GoToSection } from "./GoToSection";
+import { UserExternalLinks } from "./UserExternalLinks";
 import { UserInfoProps } from "./user-info.types";
 import AvatarAndName from "./AvatarAndName";
 
@@ -42,7 +42,7 @@ function RightContainer({
 
       <div className="w-full h-[2px] mb-4 mt-2 border-b-[2px] border-b-zinc-200"></div>
 
-      <GoToSection goToUrls={urls} />
+      <UserExternalLinks goToUrls={urls} />
     </div>
   );
 }
