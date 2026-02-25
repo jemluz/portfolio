@@ -1,10 +1,10 @@
 # State Management
 
-## Visão Geral
+## Overview
 
-O gerenciamento de estado do **turma.dev** utiliza uma arquitetura híbrida que combina **React Context API** para estado global e **custom hooks** para lógica reutilizável e estado local. A abordagem prioriza simplicidade, performance e separação de responsabilidades.
+**turma.dev** state management uses a hybrid architecture that combines **React Context API** for global state and **custom hooks** for reusable logic and local state. The approach prioritizes simplicity, performance, and separation of concerns.
 
-## Arquitetura
+## Architecture
 
 ```
 ┌───────────────────────────────────────────────────────────────────────┐
@@ -24,55 +24,55 @@ O gerenciamento de estado do **turma.dev** utiliza uma arquitetura híbrida que 
 └───────────────────────────────────────────────────────────────────────┘
 ```
 
-## Camadas de Estado
+## State Layers
 
-### 1. Estado Global (Context API)
+### 1. Global State (Context API)
 
-Gerencia estado compartilhado entre múltiplos componentes utilizando React Context API.
+Manages shared state between multiple components using React Context API.
 
-#### Contextos Ativos
+#### Active Contexts
 
-| Contexto              | Escopo        | Responsabilidade                                        | Documentação                                      |
+| Context               | Scope         | Responsibility                                          | Documentation                                     |
 | --------------------- | ------------- | ------------------------------------------------------- | ------------------------------------------------- |
-| `ThemeProvider`       | App-wide      | Gerencia tema (dark/light mode) via next-themes         | [theme-provider.tsx][theme-provider]              |
-| `BackgroundProvider`  | `/background` | Coordena navegação, filtragem e cores do background     | [background-context.md][background-context]       |
+| `ThemeProvider`       | App-wide      | Manages theme (dark/light mode) via next-themes         | [theme-provider.tsx][theme-provider]              |
+| `BackgroundProvider`  | `/background` | Coordinates navigation, filtering and background colors | [background-context.md][background-context]       |
 
 [theme-provider]: /workspaces/turma.dev/src/components/theme-provider.tsx
 [background-context]: /workspaces/turma.dev/src/contexts/background-context.md
 
-#### Características dos Contextos
+#### Context Characteristics
 
-- **Imutabilidade**: Callbacks memoizados com `useCallback`
-- **Performance**: Valores derivados com `useMemo` para evitar recálculos
-- **Registros**: Pattern de callbacks registráveis para comunicação entre componentes (ex: `registerScrollReset`)
-- **Type Safety**: TypeScript estrito em todos os contextos
+- **Immutability**: Callbacks memoized with `useCallback`
+- **Performance**: Derived values with `useMemo` to avoid recalculations
+- **Registrations**: Registrable callback pattern for component communication (e.g., `registerScrollReset`)
+- **Type Safety**: Strict TypeScript across all contexts
 
-### 2. Hooks Customizados
+### 2. Custom Hooks
 
-Encapsulam lógica reutilizável e complexa. Divididos em categorias:
+Encapsulate reusable and complex logic. Divided into categories:
 
-Os hooks customizados são divididos em **hooks gerais** (como detecção de media queries) e **hooks específicos de página** (como os da página background, que gerenciam scroll, navegação na timeline e sincronização de UI).
+Custom hooks are divided into **general hooks** (such as media query detection) and **page-specific hooks** (such as those for the background page, which manage scroll, timeline navigation, and UI synchronization).
 
-**Documentação completa**: [hooks-summary.md][hooks-summary]
+**Complete documentation**: [hooks-summary.md][hooks-summary]
 
 [hooks-summary]: /workspaces/turma.dev/src/hooks/hooks-summary.md
 
-### 3. Estado Local (useState)
+### 3. Local State (useState)
 
-Componentes individuais utilizam `useState` para estado interno que não precisa ser compartilhado:
-- Toggle de UI (dropdowns, tooltips)
-- Estado de formulários
-- Animações e transições locais
+Individual components use `useState` for internal state that doesn't need to be shared:
+- UI toggles (dropdowns, tooltips)
+- Form state
+- Local animations and transitions
 
-## Fluxo de Dados
+## Data Flow
 
-### Exemplo: Background Page
+### Example: Background Page
 
 ```
 User Action (scroll/click)
     ↓
 Timeline Component
-    ├─→ useTimelineNavigation (detecta mudança)
+    ├─→ useTimelineNavigation (detects change)
     ├─→ setSelectedYear (context action)
     ↓
 BackgroundContext (state update)
@@ -86,22 +86,22 @@ ContentArea Component
     └─→ Renders updated content
 ```
 
-## Princípios de Design
+## Design Principles
 
-1. **Single Source of Truth**: Estado compartilhado em contextos, derivações memoizadas
-2. **Unidirectional Data Flow**: Dados fluem de cima para baixo via props/context
-3. **Separation of Concerns**: Hooks isolam lógica, componentes focam em UI
-4. **Performance First**: Memoização agressiva e refs para evitar re-renders
-5. **Type Safety**: TypeScript garante contratos claros entre camadas
+1. **Single Source of Truth**: Shared state in contexts, memoized derivations
+2. **Unidirectional Data Flow**: Data flows top-down via props/context
+3. **Separation of Concerns**: Hooks isolate logic, components focus on UI
+4. **Performance First**: Aggressive memoization and refs to avoid re-renders
+5. **Type Safety**: TypeScript ensures clear contracts between layers
 
-## Evolução Futura
+## Future Evolution
 
-Este documento é vivo e será atualizado conforme:
-- Novas páginas forem implementadas
-- Novos contextos globais forem criados
-- Padrões de estado mais complexos emergirem (ex: state machines, external stores)
-- Integrações com APIs externas forem adicionadas
+This document is living and will be updated as:
+- New pages are implemented
+- New global contexts are created
+- More complex state patterns emerge (e.g., state machines, external stores)
+- Integrations with external APIs are added
 
 ---
 
-**Última atualização**: Fevereiro 2026
+**Last updated**: February 2026
