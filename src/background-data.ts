@@ -20,7 +20,6 @@ export type CareerMilestone = {
   isCurrent?: boolean;
   month?: number;
   projects?: Project[];
-  isInactive?: boolean;
 };
 
 type UserBackground = CareerMilestone[];
