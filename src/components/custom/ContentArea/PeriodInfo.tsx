@@ -1,4 +1,4 @@
-import { Background } from "@/background-data";
+import { CareerMilestone } from "@/background-data";
 import { changaSans } from "@/lib/fonts";
 import LocationInfo from "./LocationInfo";
 import DurationInfo from "./DurationInfo";
@@ -9,7 +9,7 @@ export default function PeriodInfo({
   location,
   durationInMonths,
   isInactive = false,
-}: Omit<Background, "year" | "month" | "projects" | "id">) {
+}: Omit<CareerMilestone, "year" | "month" | "projects" | "id">) {
   const transparencyClass = isInactive
     ? "border-transparent"
     : "border-zinc-900";

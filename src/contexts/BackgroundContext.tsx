@@ -10,7 +10,7 @@ import React, {
   useCallback,
   useEffect,
 } from "react";
-import { contentData, Background } from "@/background-data";
+import { contentData, CareerMilestone } from "@/background-data";
 import { getRandomColor } from "@/components/custom/ContentArea/colors.utils";
 import { ColorKey } from "@/components/custom/ContentArea/content-item.types";
 
@@ -30,10 +30,10 @@ type BackgroundContextType = {
   selectedYear: number | null;
 
   // State - complex objects
-  initialContent: Background | null;
+  initialContent: CareerMilestone | null;
   itemColors: Record<string, ColorKey>;
   years: number[];
-  yearContents: Background[];
+  yearContents: CareerMilestone[];
 
   // Actions/callbacks
   goToNextContent: () => void;

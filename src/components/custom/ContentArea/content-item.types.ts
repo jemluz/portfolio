@@ -1,7 +1,7 @@
-import { Background, Project } from "@/background-data";
+import { CareerMilestone, Project } from "@/background-data";
 
 export type ContentItemProps = {
-  background: Background;
+  milestone: CareerMilestone;
   isNotUniqueOrLast: boolean;
   color: ColorKey;
   isNext: boolean;

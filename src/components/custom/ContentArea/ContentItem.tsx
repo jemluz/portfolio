@@ -30,7 +30,7 @@ import PeriodInfo from "./PeriodInfo";
 const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
   (props, forwardedRef) => {
     const {
-      background,
+      milestone,
       isNotUniqueOrLast,
       color,
       isNext,
@@ -47,7 +47,7 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
       location,
       durationInMonths,
       projects,
-    } = background;
+    } = milestone;
 
     const internalRef = useRef<HTMLLIElement>(null);
 
