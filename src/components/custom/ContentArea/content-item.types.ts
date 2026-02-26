@@ -25,6 +25,15 @@ export type MonthBulletProps = {
   isGrayScale?: boolean;
 };
 
+export type BulletProps = {
+  isActive: boolean;
+  onClick: () => void;
+};
+
+export type PeriodInfoProps = Omit<CareerMilestone, "year" | "month" | "projects" | "id" | "isCurrent"> & {
+  isInactive?: boolean;
+};
+
 export type LocationInfoProps = {
   location: string;
 };

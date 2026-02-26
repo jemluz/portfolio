@@ -1,9 +1,5 @@
 import { useBackground } from "@/contexts/BackgroundContext";
-
-type BulletProps = {
-  isActive: boolean;
-  onClick: () => void;
-};
+import { BulletProps } from "./content-item.types";
 
 /**
  * ## BulletList

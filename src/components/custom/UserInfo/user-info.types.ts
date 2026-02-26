@@ -5,6 +5,8 @@ export type UserInfoProps = {
   urls: string[];
 };
 
+export type AvatarAndNameProps = Omit<UserInfoProps, "urls">;
+
 export enum GoToButtonTypeEnum {
   GITHUB = "GITHUB",
   LINKEDIN = "LINKEDIN",
