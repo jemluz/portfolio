@@ -141,7 +141,7 @@ export default function ContentList() {
           <ContentItem
             key={period.id}
             ref={setItemRef(period.id)}
-            background={period}
+            milestone={period}
             isNotUniqueOrLast={isNotUniqueOrLast}
             color={color}
             isNext={isNext}

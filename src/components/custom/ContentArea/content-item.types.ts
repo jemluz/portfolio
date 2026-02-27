@@ -1,7 +1,7 @@
-import { Background, Project } from "@/background-data";
+import { CareerMilestone, Project } from "@/background-data";
 
 export type ContentItemProps = {
-  background: Background;
+  milestone: CareerMilestone;
   isNotUniqueOrLast: boolean;
   color: ColorKey;
   isNext: boolean;
@@ -23,6 +23,15 @@ export type MonthBulletProps = {
   color: ColorKey;
   month: number;
   isGrayScale?: boolean;
+};
+
+export type BulletProps = {
+  isActive: boolean;
+  onClick: () => void;
+};
+
+export type PeriodInfoProps = Omit<CareerMilestone, "year" | "month" | "projects" | "id" | "isCurrent"> & {
+  isInactive?: boolean;
 };
 
 export type LocationInfoProps = {

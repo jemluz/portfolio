@@ -1,10 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-type AvatarAndNameProps = {
-  name: string;
-  lastName: string;
-  profilePhotoUrl: string;
-};
+import { AvatarAndNameProps } from "./user-info.types";
 
 export default function AvatarAndName({
   name,

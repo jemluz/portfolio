@@ -10,7 +10,7 @@ export type Project = {
   name: string;
 };
 
-export type Background = {
+export type CareerMilestone = {
   id: string;
   year: number;
   title: string;
@@ -20,14 +20,9 @@ export type Background = {
   isCurrent?: boolean;
   month?: number;
   projects?: Project[];
-  isInactive?: boolean;
 };
 
-type UserBackground = Background[];
-
-export const listOfYears = [
-  1997, 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
-];
+type UserBackground = CareerMilestone[];
 
 export const userData: UserInfo = {
   name: "Jemimma",
