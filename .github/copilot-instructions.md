@@ -65,6 +65,19 @@
 - Documentation: JSDoc mandatory for all hooks and utils (`src/hooks/`, `src/components/**/utils.ts`)
 - Use Tailwind CSS (not CSS Modules) + shadcn/ui for styling
 
+## 📚 Documentation
+
+| Doc | Description |
+| --- | ----------- |
+| [Vision](../docs/vision.md) | Project purpose, values, and long-term goals |
+| [Architecture](../docs/architecture.md) | Conceptual layers and component relationships |
+| [Dev Workflow](../docs/dev-workflow.md) | Branching, commit, and PR patterns |
+| [Folder Structure](../docs/folder-structure.md) | Project directory map |
+| [State Management](../docs/state-management.md) | Context API and hooks architecture |
+| [UI Guidelines](../docs/ui-guidelines.md) | Experience principles and design patterns |
+| [Project Setup](../docs/project-setup.md) | Installation and available scripts |
+| [Future](../docs/future.md) | Possible future directions |
+
 ## 💪 Skills
 
 Skills are modular, context-specific knowledge modules that guide AI assistants on how to perform common tasks following project conventions.
