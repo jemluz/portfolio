@@ -65,6 +65,24 @@
 - Documentation: JSDoc mandatory for all hooks and utils (`src/hooks/`, `src/components/**/utils.ts`)
 - Use Tailwind CSS (not CSS Modules) + shadcn/ui for styling
 
+## 🧭 Instructions Map (Single Source of Truth)
+
+Use this map to find authoritative rules. Avoid duplicating detailed rules in this file.
+
+| Topic | Source | When to consult |
+| ----- | ------ | --------------- |
+| Create new skills | `.github/instructions/create-skill.instructions.md` | When creating/updating a skill under `.github/skills/` |
+| Git workflow | `.github/instructions/git-workflow.instructions.md` | Before branching, commits, PR title/base branch, and merge strategy |
+| Imports/Exports | `.github/instructions/import-export.instructions.md` | When editing imports, barrels (`index.tsx`), or file dependencies |
+| State management | `.github/instructions/state-management.instructions.md` | When choosing between local state, hooks, and Context API |
+| UI rules | `.github/instructions/ui-guidelines.instructions.md` | When implementing layout, interactions, responsive behavior, and motion |
+| `"use client"` decision | `.github/instructions/use-client.instructions.md` | When deciding Server vs Client Components |
+
+Maintenance rule:
+
+- If a rule changes, update only the corresponding file in `.github/instructions/`.
+- Keep this map concise and update only links/topic descriptions.
+
 ## 💪 Skills
 
 Skills are modular, context-specific knowledge modules that guide AI assistants on how to perform common tasks following project conventions.
