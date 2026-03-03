@@ -10,13 +10,18 @@ import { urlToGoToButtonTypeRegex } from "./user-info.utils";
 import {
   GetGoButtonProps,
   GoToButtonProps,
-  GoToButtonType,
-  GoToSectionProps,
+  GoToButtonTypeEnum,
+  UserExternalLinksProps,
 } from "./user-info.types";
 
-export function GoToSection({ goToUrls, axis = "horizontal" }: GoToSectionProps) {
+export function UserExternalLinks({
+  goToUrls,
+  axis = "horizontal",
+}: UserExternalLinksProps) {
   return (
-    <div className={`flex gap-2 pr-4 ${axis === "vertical" ? "flex-col" : "flex-row"}`}>
+    <div
+      className={`flex gap-2 pr-4 ${axis === "vertical" ? "flex-col" : "flex-row"}`}
+    >
       {goToUrls.map((url: string) => (
         <GoToButton key={url} url={url} axis={axis} />
       ))}
@@ -25,10 +30,10 @@ export function GoToSection({ goToUrls, axis = "horizontal" }: GoToSectionProps)
 }
 
 function GoToButton({ url, axis }: GoToButtonProps) {
-  const type: GoToButtonType = urlToGoToButtonTypeRegex(url);
+  const type: GoToButtonTypeEnum = urlToGoToButtonTypeRegex(url);
   const renderGoToButton: ReactNode = getGoButton({ type, url, axis });
 
-  if (type === GoToButtonType.INVALID) {
+  if (type === GoToButtonTypeEnum.INVALID) {
     console.error(`Invalid URL provided to GoToButton: ${url}`);
     return null;
   }
@@ -40,7 +45,7 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
   const mobileVersion = axis === "vertical";
 
   switch (type) {
-    case GoToButtonType.GITHUB:
+    case GoToButtonTypeEnum.GITHUB:
       return (
         <Button
           variant="outline"
@@ -53,11 +58,11 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
               size={32}
               color="oklch(55.2% 0.016 285.938)"
             />
-            { mobileVersion && "Github" }
+            {mobileVersion && "Github"}
           </Link>
         </Button>
       );
-    case GoToButtonType.LINKEDIN:
+    case GoToButtonTypeEnum.LINKEDIN:
       return (
         <Button
           variant="outline"
@@ -70,11 +75,11 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
               size={32}
               color="oklch(62.3% 0.214 259.815)"
             />
-            { mobileVersion && "Linkedin" }
+            {mobileVersion && "Linkedin"}
           </Link>
         </Button>
       );
-    case GoToButtonType.WEBSITE:
+    case GoToButtonTypeEnum.WEBSITE:
       return (
         <Button
           variant="outline"
@@ -88,7 +93,7 @@ function getGoButton({ type, url, axis }: GetGoButtonProps): ReactNode {
               color="oklch(60.6% 0.25 292.717)"
             />
           </Link>
-          { mobileVersion && "Website" }
+          {mobileVersion && "Website"}
         </Button>
       );
     default:

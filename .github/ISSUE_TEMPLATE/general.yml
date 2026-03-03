@@ -1,6 +1,6 @@
 name: General Issue
 description: Feature, enhancement or general suggestion for the project
-title: "[TURMA-<ISSUE_ID>][SUB-<SUB_ISSUE_ID>] Title resuming the issue"
+title: "[TURMA-<ISSUE_ID>][**OPTIONAL** SUB-<SUB_ISSUE_ID>] Title resuming the issue"
 
 body:
   - type: textarea

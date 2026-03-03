@@ -1,7 +1,7 @@
-import { Background, Project } from "@/background-data";
+import { CareerMilestone, Project } from "@/background-data";
 
 export type ContentItemProps = {
-  background: Background;
+  milestone: CareerMilestone;
   isNotUniqueOrLast: boolean;
   color: ColorKey;
   isNext: boolean;
@@ -23,6 +23,15 @@ export type MonthBulletProps = {
   color: ColorKey;
   month: number;
   isGrayScale?: boolean;
+};
+
+export type BulletProps = {
+  isActive: boolean;
+  onClick: () => void;
+};
+
+export type PeriodInfoProps = Omit<CareerMilestone, "year" | "month" | "projects" | "id" | "isCurrent"> & {
+  isInactive?: boolean;
 };
 
 export type LocationInfoProps = {
@@ -54,3 +63,22 @@ export const colorMap = {
   pink: { bg: "bg-pink-200", border: "border-pink-400" },
   rose: { bg: "bg-rose-200", border: "border-rose-400" },
 } as const;
+
+/**
+ * Maps month numbers to English month names using a numeric enum.
+ * The enum values start at 1 so we can use reverse-mapping: NumberToMonthEnum[1] === 'JANUARY'
+ */
+export enum NumberToMonthEnum {
+  JANUARY = 1,
+  FEBRUARY,
+  MARCH,
+  APRIL,
+  MAY,
+  JUNE,
+  JULY,
+  AUGUST,
+  SEPTEMBER,
+  OCTOBER,
+  NOVEMBER,
+  DECEMBER,
+}

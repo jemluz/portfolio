@@ -1,4 +1,12 @@
-_Don't forget to keep title's pattern: **[TURMA-<ISSUE_ID>][SUB-<SUBISSUE_ID>] - Same title as issue OR as subissue **_
+_Don't forget to keep title's pattern:_
+
+- _Issue PR: **[TURMA-<ISSUE_ID>] + title (PR #<PR_NUMBER>)**_
+- _Sub-issue PR: **[TURMA-<ISSUE_ID>][SUB-<SUBISSUE_ID>] + title (PR #<PR_NUMBER>)**_
+
+_Base branch:_
+
+- _Issue PR → `dev`_
+- _Sub-issue PR → parent issue branch (`feat/TURMA-<ISSUE_ID>`)_
 
 closes #[issue_number]
 
