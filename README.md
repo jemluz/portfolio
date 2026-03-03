@@ -23,12 +23,19 @@ turma.dev is a portfolio storytelling platform where developers can present thei
 - Consolidated project knowledge into a single documentation hub with architecture, workflow, and data model references.
 - Auxiliar documentation for AI asisted development
 
-## 📚 Libraries
+## 📚 Tech Stack
 
-- Core: [Next.js 15](https://nextjs.org/), [React 19](https://react.dev/), [TypeScript 5](https://www.typescriptlang.org/)
-- Styling: [Tailwind CSS 4](https://tailwindcss.com/), [class-variance-authority](https://cva.style/docs), [clsx](https://github.com/lukeed/clsx), [tailwind-merge](https://github.com/dcastil/tailwind-merge), [tw-animate-css](https://www.npmjs.com/package/tw-animate-css)
-- Icons: [Phosphor Icons](https://phosphoricons.com/), [Lucide React](https://lucide.dev/guide/packages/lucide-react)
-- Theme: [next-themes](https://github.com/pacocoursey/next-themes)
+| Layer            | Technology                                    |
+| ---------------- | --------------------------------------------- |
+| Framework        | [Next.js 15](https://nextjs.org/) (App Router, Turbopack) |
+| UI Library       | [React 19](https://react.dev/)                |
+| Language         | [TypeScript 5](https://www.typescriptlang.org/) |
+| Styling          | [Tailwind CSS 4](https://tailwindcss.com/)    |
+| Component Kit    | [Radix UI](https://www.radix-ui.com/primitives) primitives + [shadcn/ui](https://ui.shadcn.com/) |
+| Icons            | [Phosphor Icons](https://phosphoricons.com/), [Lucide React](https://lucide.dev/guide/packages/lucide-react) |
+| Theme            | [next-themes](https://github.com/pacocoursey/next-themes) (light/dark support) |
+| Linting/Format   | [ESLint 9](https://eslint.org/), [Prettier 3](https://prettier.io/) |
+
 
 ## 🚀 Start Here
 
