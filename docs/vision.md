@@ -9,6 +9,7 @@
 Most developers face a common dilemma: create a custom portfolio website from scratch (time-consuming, maintenance burden) or settle for generic platforms that don't reflect their technical identity.
 
 turma.dev solves this by offering:
+
 - A ready-to-use, customizable profile platform
 - No need to build your own site
 - A professional, developer-focused presentation
@@ -81,16 +82,16 @@ No matter what technologies change, these core features define turma.dev:
 turma.dev is successful when:
 
 1. **It becomes the reference for dev portfolios**
-  When someone says "portfolio for devs," turma.dev comes to mind.
+   When someone says "portfolio for devs," turma.dev comes to mind.
 
 2. **It becomes a meeting point/reference for developers**
-  Developers use turma.dev as a go-to place to connect, showcase, and discover other devs.
+   Developers use turma.dev as a go-to place to connect, showcase, and discover other devs.
 
 3. **Better discoverability than LinkedIn**
-  Developers are found by opportunities through their turma.dev presence.
+   Developers are found by opportunities through their turma.dev presence.
 
 4. **Developers get hired using turma.dev profiles**
-  Recruiters and hiring managers recognize and value profiles from the platform.
+   Recruiters and hiring managers recognize and value profiles from the platform.
 
 ---
 

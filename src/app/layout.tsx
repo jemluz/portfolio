@@ -3,6 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { suseMono } from "@/lib/fonts";
 import { headers } from "next/headers";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Turma.dev",
@@ -16,20 +18,24 @@ export default async function RootLayout({
 }>) {
   const headersList = await headers();
   const theme = headersList.get("x-theme") || "light";
+  const locale = await getLocale();
+  const messages = await getMessages();
 
   return (
-    <html lang="en" className={theme} style={{ colorScheme: theme }}>
+    <html lang={locale} className={theme} style={{ colorScheme: theme }}>
       <body
         className={`bg-background text-foreground ${suseMono.className} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-        >
-          {/* <ThemeToggle/> */}
-          {children}
-        </ThemeProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem={false}
+          >
+            {/* <ThemeToggle/> */}
+            {children}
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

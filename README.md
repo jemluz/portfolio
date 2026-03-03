@@ -10,8 +10,8 @@ turma.dev is a portfolio storytelling platform where developers can present thei
 
 ### 🖼️ Spoilers
 
-| 🖥️ Desktop | 📱 Mobile |
-| --- | --- |
+| 🖥️ Desktop                                                                                                                      | 📱 Mobile                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | <img src="docs/imgs/print%20desktop.png" alt="turma.dev desktop preview" height="420" style="width:auto;object-fit:contain;" /> | <img src="docs/imgs/print%20mobile.png" alt="turma.dev mobile preview" height="420" style="width:auto;object-fit:contain;" /> |
 
 ## ✨ Key Features
@@ -25,17 +25,16 @@ turma.dev is a portfolio storytelling platform where developers can present thei
 
 ## 📚 Tech Stack
 
-| Layer            | Technology                                    |
-| ---------------- | --------------------------------------------- |
-| Framework        | [Next.js 15](https://nextjs.org/) (App Router, Turbopack) |
-| UI Library       | [React 19](https://react.dev/)                |
-| Language         | [TypeScript 5](https://www.typescriptlang.org/) |
-| Styling          | [Tailwind CSS 4](https://tailwindcss.com/)    |
-| Component Kit    | [Radix UI](https://www.radix-ui.com/primitives) primitives + [shadcn/ui](https://ui.shadcn.com/) |
-| Icons            | [Phosphor Icons](https://phosphoricons.com/), [Lucide React](https://lucide.dev/guide/packages/lucide-react) |
-| Theme            | [next-themes](https://github.com/pacocoursey/next-themes) (light/dark support) |
-| Linting/Format   | [ESLint 9](https://eslint.org/), [Prettier 3](https://prettier.io/) |
-
+| Layer          | Technology                                                                                                   |
+| -------------- | ------------------------------------------------------------------------------------------------------------ |
+| Framework      | [Next.js 15](https://nextjs.org/) (App Router, Turbopack)                                                    |
+| UI Library     | [React 19](https://react.dev/)                                                                               |
+| Language       | [TypeScript 5](https://www.typescriptlang.org/)                                                              |
+| Styling        | [Tailwind CSS 4](https://tailwindcss.com/)                                                                   |
+| Component Kit  | [Radix UI](https://www.radix-ui.com/primitives) primitives + [shadcn/ui](https://ui.shadcn.com/)             |
+| Icons          | [Phosphor Icons](https://phosphoricons.com/), [Lucide React](https://lucide.dev/guide/packages/lucide-react) |
+| Theme          | [next-themes](https://github.com/pacocoursey/next-themes) (light/dark support)                               |
+| Linting/Format | [ESLint 9](https://eslint.org/), [Prettier 3](https://prettier.io/)                                          |
 
 ## 🚀 Start Here
 
@@ -70,5 +69,3 @@ turma.dev is a portfolio storytelling platform where developers can present thei
 - Source of truth for project standards and AI instructions: [.github/copilot-instructions.md](.github/copilot-instructions.md)
 - Topic-specific rules: [.github/instructions/](.github/instructions/)
 - Reusable skills for recurring tasks: [.github/skills/](.github/skills/)
-
-

@@ -148,6 +148,7 @@ src/
 ```
 
 ## 📁 `src/app/` - Next.js Routes (App Router)
+
 **What it is:** A special Next.js 13+ folder that defines the application's routes.
 
 **How it works:**
@@ -157,6 +158,7 @@ src/
 - `layout.tsx` = shared layout
 
 **Practical example in turma.dev:**
+
 ```
 src/app/
 └── [locale]/              # ⬅️ Dynamic route (for future i18n)
@@ -183,9 +185,11 @@ src/app/
 ## 🧱 Component Structure
 
 ### 💅 `src/components/ui/` - Shadcn/ui components
+
 **What it is:** Ready-made components from the [shadcn/ui](https://ui.shadcn.com/) library.
 
 **Examples:**
+
 ```
 src/components/ui/
 ├── button.tsx           # Componente Button
@@ -202,7 +206,6 @@ src/components/ui/
 - They are generated automatically by the shadcn CLI
 - If you modify them, you cannot update later
 - If you need to customize, create a wrapper in custom/
-
 
 ### 🧩 `src/components/custom/` - Custom Components
 
@@ -233,18 +236,22 @@ Difference between `ui/` and `custom/`:
 | **DO NOT MODIFY** | **YOU CONTROL** |
 
 ## 🌐 `src/contexts/` - React Context (Global State)
+
 **What it is:** Folder to manage global state with the Context API.
 
 **Example:**
+
 ```
 src/contexts/
 └── BackgroundContext.tsx   # ⬅️ Manages selected year/content
 ```
 
 ## 😎 `src/hooks/` - Custom React Hooks
+
 **What it is:** Folder for reusable hooks that encapsulate logic.
 
 **Project examples:**
+
 ```
 src/hooks/
 ├── useMediaQuery.ts        # ⬅️ Detects screen size
@@ -254,9 +261,11 @@ src/hooks/
 ```
 
 ## 🔧 **src/lib/** - Utilitários Gerais
+
 **O que é:** Funções auxiliares que não são hooks nem componentes.
 
 **Exemplos:**
+
 ```
 src/lib/
 ├── utils.ts     # ⬅️ Funções genéricas (cn helper)
@@ -264,30 +273,30 @@ src/lib/
 ```
 
 ## 📊 `src/background-data.ts` - Mock Data (Temporary)
+
 **What it is:** File with mock data for development.
 
 **Why "temporary"?**
 In the future, this data will come from an API or database.
 
-
 ## 🏷️ File Naming Conventions
 
-| Type | Convention | Example |
-|------|-----------|---------|
-| Components | PascalCase | `Timeline.tsx`, `UserInfo.tsx` |
-| Type files | kebab-case | `timeline.types.ts`, `user-info.types.ts` |
-| Utils files | kebab-case | `timeline.utils.ts`, `content-area.utils.ts` |
-| Hooks | camelCase with `use` prefix | `useMediaQuery`, `useScrollPadding` |
-| Contexts | PascalCase with `Provider` | `ThemeProvider.tsx`, `BackgroundContext.tsx` |
+| Type        | Convention                  | Example                                      |
+| ----------- | --------------------------- | -------------------------------------------- |
+| Components  | PascalCase                  | `Timeline.tsx`, `UserInfo.tsx`               |
+| Type files  | kebab-case                  | `timeline.types.ts`, `user-info.types.ts`    |
+| Utils files | kebab-case                  | `timeline.utils.ts`, `content-area.utils.ts` |
+| Hooks       | camelCase with `use` prefix | `useMediaQuery`, `useScrollPadding`          |
+| Contexts    | PascalCase with `Provider`  | `ThemeProvider.tsx`, `BackgroundContext.tsx` |
 
 ## 🤔 When to use each folder
 
-| If you are creating... | Put it in... |
-|------------------------|---------------|
-| A new **page** | `src/app/route-name/page.tsx` |
-| A **project-specific component** for turma.dev | `src/components/custom/` |
-| A **generic component** (Button, Card) | `src/components/ui/` (via shadcn CLI) |
-| **Global state** | `src/contexts/` |
-| A **reusable hook** | `src/hooks/` |
-| A **utility function** | `src/lib/` |
-| **Test data** | `src/background-data.ts` |
+| If you are creating...                         | Put it in...                          |
+| ---------------------------------------------- | ------------------------------------- |
+| A new **page**                                 | `src/app/route-name/page.tsx`         |
+| A **project-specific component** for turma.dev | `src/components/custom/`              |
+| A **generic component** (Button, Card)         | `src/components/ui/` (via shadcn CLI) |
+| **Global state**                               | `src/contexts/`                       |
+| A **reusable hook**                            | `src/hooks/`                          |
+| A **utility function**                         | `src/lib/`                            |
+| **Test data**                                  | `src/background-data.ts`              |

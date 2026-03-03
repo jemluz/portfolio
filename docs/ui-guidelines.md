@@ -53,6 +53,7 @@ Animations should support understanding, never distract from it:
 - **Consistency**: Repeated interactions should use identical motion patterns
 
 Animations guide attention to:
+
 - State changes (selected → deselected)
 - Navigation transitions (year → year)
 - Content visibility (fade in/out)
@@ -62,6 +63,7 @@ Animations guide attention to:
 ## Feedback & Interaction
 
 Users need to understand:
+
 - Which element is interactive (affordance)
 - What will happen if they interact (predictability)
 - What happened after interaction (feedback)
@@ -75,6 +77,7 @@ Users need to understand:
 - **Multiple layers**: Combining weak signals (opacity + scale + color) for clarity without noise
 
 **States to indicate across interactive elements**:
+
 - Default: Normalized appearance
 - Hover: Visual signal that element is interactive
 - Active: Clear indication of current selection
@@ -102,27 +105,32 @@ The interface must adapt to context without changing its purpose:
 These decisions have been made and serve the principles above:
 
 **Colors**:
+
 - OKLCH color space for predictable perceptual lightness
 - Light mode: Light backgrounds (#ededed) with dark text
 - Dark mode: Dark backgrounds with light text
 - Accent and interaction colors support but don't dominate
 
 **Typography**:
+
 - Display/heading fonts: Monomaniac One, Coustard (distinctive but legible)
 - Body/UI fonts: Changa, SUSE (clear and distinctive)
 - Font choice supports visual hierarchy
 
 **Components**:
+
 - Radix UI for unstyled, accessible primitives
 - shadcn/ui for themed component implementations
 - Custom components layer for domain-specific patterns
 
 **Animation patterns**:
+
 - Standard duration: 300ms
 - Easing: Prefer ease-out for responsiveness
 - Scope: Individual elements, not full-page transitions
 
 **Interaction patterns**:
+
 - Year selection: Visual indicator with smooth transitions
 - Content navigation: Smooth fades and opacity changes
 - State indication: Opacity and scale for active/inactive states

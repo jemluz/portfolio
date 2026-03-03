@@ -112,7 +112,7 @@ All PRs should use the squash merge type. Avoid other types.
 
 ### 📋 Summary
 
-| Type | Title | Branch Naming | Commit Format |
-|------|-------|---------------|---------------|
-| **Issues** | `[TURMA-XXXXX] + title` | `feat/TURMA-XXXXX` | `type(IXXXXX): commit message` |
+| Type           | Title                           | Branch Naming              | Commit Format                      |
+| -------------- | ------------------------------- | -------------------------- | ---------------------------------- |
+| **Issues**     | `[TURMA-XXXXX] + title`         | `feat/TURMA-XXXXX`         | `type(IXXXXX): commit message`     |
 | **Sub-issues** | `[TURMA-XXXXX][SUB-YY] + title` | `feat/TURMA-XXXXX__SUB-YY` | `type(IXXXXX_SYY): commit message` |

@@ -1,0 +1,14 @@
+{
+  "DurationInfo": {
+    "months": "{count} {count, plural, one {mês} other {meses}}"
+  },
+  "LocaleSwitcher": {
+    "label": "Idioma",
+    "en": "English",
+    "pt": "Português"
+  },
+  "Metadata": {
+    "title": "Turma.dev",
+    "description": "Cada dev tem uma história - conte a sua para a turma"
+  }
+}

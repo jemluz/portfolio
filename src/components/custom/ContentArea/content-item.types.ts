@@ -30,7 +30,10 @@ export type BulletProps = {
   onClick: () => void;
 };
 
-export type PeriodInfoProps = Omit<CareerMilestone, "year" | "month" | "projects" | "id" | "isCurrent"> & {
+export type PeriodInfoProps = Omit<
+  CareerMilestone,
+  "year" | "month" | "projects" | "id" | "isCurrent"
+> & {
   isInactive?: boolean;
 };
 

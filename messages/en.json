@@ -1,0 +1,14 @@
+{
+  "DurationInfo": {
+    "months": "{count} {count, plural, one {month} other {months}}"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "pt": "Português"
+  },
+  "Metadata": {
+    "title": "Turma.dev",
+    "description": "Every dev has a story – tell yours to the crew"
+  }
+}

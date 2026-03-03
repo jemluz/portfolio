@@ -99,18 +99,21 @@ Projects & Details
 **Navigation Flows**:
 
 **Temporal Navigation**:
+
 ```
 User selects year → Timeline updates → Content filters by year →
 First item auto-selected → Display updates
 ```
 
 **Content Navigation**:
+
 ```
 User scrolls/swipes → Visibility detection → Active item updates →
 Timeline syncs → Active milestone color changes leaving grayscale
 ```
 
 **State Flow**:
+
 ```
 User Action
     ↓
@@ -165,17 +168,20 @@ This layer answers _how things connect_, not _how they are built_.
 **Data Flow**:
 
 **Inputs**:
+
 - User interaction events (click, scroll, swipe)
 - Static career data (imported JSON-like structure)
 - Initial state (selected year)
 
 **Processing**:
+
 - Filtering by year
 - Sorting by month
 - Visibility calculation
 - Color assignment (persistent)
 
 **Outputs**:
+
 - Rendered UI components
 - Active state indicators
 - Background color updates
@@ -190,28 +196,33 @@ This layer may evolve or remain minimal.
 The following should remain stable even if implementation changes:
 
 **Core Concepts**:
+
 - A developer has a temporal career history
 - Career milestones are organized by years
 - Years contain multiple content items
 - Navigation is both temporal (years) and sequential (items/milestones)
 
 **Vocabulary**:
+
 - User, CareerMilestone, Timeline, Content, Year, Current
 - Must remain consistent across documentation and code
 
 **Structural Relationships**:
+
 - UserInfo is independent
 - Timeline controls temporal context
 - ContentArea depends on Timeline selection
 - State flows unidirectionally
 
 **Design Principles**:
+
 - Clarity first: Interface serves content
 - Simplicity by design: Minimal, intentional elements
 - Hierarchy over decoration: Structure communicates meaning
 - Content-centered: Reading and understanding over effects
 
 **Interaction Principles**:
+
 - Temporal navigation is primary
 - Content navigation is secondary
 - Synchronization between Timeline and ContentArea
@@ -230,11 +241,13 @@ If a decision:
 It should be postponed.
 
 **Examples of Good Decisions**:
+
 - "Career milestones are organized by year" → Conceptual, clear
 - "Timeline synchronizes with ContentArea" → Structural relationship
 - "Clarity over decoration" → Guiding principle
 
 **Examples of Premature Decisions**:
+
 - "Use React Context for state" → Implementation detail
 - "Animate with Framer Motion" → Tool-specific
 - "Store data in MongoDB" → Solves undefined problem
