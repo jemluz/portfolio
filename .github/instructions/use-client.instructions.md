@@ -28,7 +28,7 @@ START: Analyzing component file
 │  └─ YES → MUST ADD "use client" ✓
 │
 ├─ DOES FILE IMPORT COMPONENTS THAT NEED "use client"?
-│  └─ YES → MUST ADD "use client" (to use those components)✓
+│  └─ YES → You can keep this file as Server Component if it has no client-only APIs itself ✓
 │
 └─ DEFAULT → Server Component (no "use client" needed) ✓
 ```
@@ -49,7 +49,7 @@ START: Analyzing component file
 
 ## Critical Rule
 
-**If ANY child component needs `"use client"`, parent MUST also have `"use client"` to be able to use it.**
+**A Server Component CAN render a Client Component. Add `"use client"` only when the current file itself uses client-only features (hooks, events, `next/navigation`, browser APIs).**
 
 ---
 
