@@ -12,7 +12,7 @@ turma.dev is a portfolio storytelling platform where developers can present thei
 
 | 🖥️ Desktop | 📱 Mobile |
 | --- | --- |
-| <img src="docs/imgs/print%20desktop.png" alt="turma.dev desktop preview" height="420" style="width:auto;object-fit:contain;" /> | <img src="docs/imgs/print%20mobile%5D.png" alt="turma.dev mobile preview" height="420" style="width:auto;object-fit:contain;" /> |
+| <img src="docs/imgs/print%20desktop.png" alt="turma.dev desktop preview" height="420" style="width:auto;object-fit:contain;" /> | <img src="docs/imgs/print%20mobile.png" alt="turma.dev mobile preview" height="420" style="width:auto;object-fit:contain;" /> |
 
 ## ✨ Key Features
 
