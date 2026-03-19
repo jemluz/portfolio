@@ -11,8 +11,8 @@ import React, {
   useEffect,
 } from "react";
 import { contentData, CareerMilestone } from "@/background-data";
-import { getRandomColor } from "@/components/custom/ContentArea/colors.utils";
-import { ColorKey } from "@/components/custom/ContentArea/content-item.types";
+import { getRandomColor } from "@/components/custom/background-page/ContentArea/colors.utils";
+import { ColorKey } from "@/components/custom/background-page/ContentArea/content-item.types";
 
 export type TimelineNavigationHandlers = {
   errorButton: string | null;
