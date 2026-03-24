@@ -1,6 +1,10 @@
 import Link from "next/link";
-import { Button } from "../../ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../../ui/tooltip";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { ProjectButtonProps } from "./content-item.types";
 import { cn } from "@/lib/utils";
 
