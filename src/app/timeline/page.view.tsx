@@ -15,7 +15,7 @@ import { ContentArea } from "@/components/custom/ContentArea";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import YearTitle from "@/components/custom/ContentArea/YearTitle";
 
-export default function BackgroundPage() {
+export default function TimelinePage() {
   const isDesktop = useMediaQuery("(min-width: 769px)");
 
   return (
