@@ -10,7 +10,7 @@ import React, {
   useCallback,
   useEffect,
 } from "react";
-import { contentData, CareerMilestone } from "@/background-data";
+import { contentData, CareerMilestone } from "@/timeline-data";
 import { getRandomColor } from "@/components/custom/ContentArea/colors.utils";
 import { ColorKey } from "@/components/custom/ContentArea/content-item.types";
 

@@ -9,7 +9,7 @@ import {
   TimelineNavButtonsMobile,
 } from "../../components/custom/Timeline";
 import "./styles.css";
-import { userData } from "@/background-data";
+import { userData } from "@/timeline-data";
 import { BackgroundProvider } from "../../contexts/BackgroundContext";
 import { ContentArea } from "@/components/custom/ContentArea";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
