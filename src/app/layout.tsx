@@ -5,8 +5,8 @@ import { suseMono } from "@/lib/fonts";
 import { headers } from "next/headers";
 
 export const metadata: Metadata = {
-  title: "Turma.dev",
-  description: "Cada dev tem uma história - conte a sua para a turma",
+  title: "Jemluz ",
+  description: "Software developer since 2018. Specialized in React and Next.",
 };
 
 export default async function RootLayout({
