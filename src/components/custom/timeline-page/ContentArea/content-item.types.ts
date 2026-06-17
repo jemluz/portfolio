@@ -1,4 +1,4 @@
-import { CareerMilestone, Project } from "@/background-data";
+import { CareerMilestone, Project } from "@/timeline-data";
 
 export type ContentItemProps = {
   milestone: CareerMilestone;
