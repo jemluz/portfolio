@@ -3,17 +3,17 @@
 import {
   UserInfoDesktop,
   UserInfoMobile,
-} from "../../components/custom/UserInfo";
+} from "../../components/custom/timeline-page/UserInfo";
 import {
   Timeline,
   TimelineNavButtonsMobile,
-} from "../../components/custom/Timeline";
+} from "../../components/custom/timeline-page/Timeline";
 import "./styles.css";
 import { userData } from "@/timeline-data";
 import { BackgroundProvider } from "../../contexts/BackgroundContext";
-import { ContentArea } from "@/components/custom/ContentArea";
+import { ContentArea } from "@/components/custom/timeline-page/ContentArea";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import YearTitle from "@/components/custom/ContentArea/YearTitle";
+import YearTitle from "@/components/custom/timeline-page/ContentArea/YearTitle";
 
 export default function TimelinePage() {
   const isDesktop = useMediaQuery("(min-width: 769px)");
