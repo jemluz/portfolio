@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 
+import { NavigationMenuLink } from "@/components/ui/navigation-menu";
+
 import Breadcrumb from "./Breadcrumb";
 
 type ActiveLinkProps = {
@@ -18,7 +20,9 @@ export default function ActiveLink({
   shouldRenderShowcaseBreadcrumb,
   pathname,
 }: ActiveLinkProps) {
+  // Determine if the active link is an exact match to the current pathname for styling purposes.
   const linkHref = activeHref ?? pathname;
+  const isExactActive = pathname === linkHref;
 
   // Add a space after the leading slash for better readability
   const activeHrefLabel = activeHref ? activeHref.replace(/^\//, "/ ") : "";
@@ -27,6 +31,7 @@ export default function ActiveLink({
     ? "text-black hover:text-orange-800"
     : "text-black";
 
+  // Only render breadcrumb segments for the "Showcase" page when there are subpath segments to display.
   const breadcrumbSegments = shouldRenderShowcaseBreadcrumb
     ? subpathSegments
     : [];
@@ -37,12 +42,15 @@ export default function ActiveLink({
       <div className="text-sm font-semibold text-black tracking-wide flex items-center gap-2 min-w-0">
         {activeHref ? (
           <>
-            <Link
-              href={linkHref}
-              className={`transition-colors inline-block shrink-0  ${rootLinkColorClass}`}
-            >
-              {activeHrefLabel}
-            </Link>
+            <NavigationMenuLink asChild active={isExactActive}>
+              <Link
+                href={linkHref}
+                aria-current={isExactActive ? "page" : undefined}
+                className={`transition-colors inline-block shrink-0 ${rootLinkColorClass}`}
+              >
+                {activeHrefLabel}
+              </Link>
+            </NavigationMenuLink>
             {breadcrumbSegments.map((segment) => (
               <Breadcrumb key={segment} segment={segment} />
             ))}
