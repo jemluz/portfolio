@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import {
   calculateBlackBorderTranslation,
   isElementVisible,
-} from "@/components/custom/background-page/Timeline/timeline.utils";
+} from "@/components/custom/timeline-page/Timeline/timeline.utils";
 
 type UseTimelineBlackBorderProps = {
   selectedYear: number | null;
