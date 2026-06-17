@@ -13,7 +13,7 @@ export default function BinaryArt() {
     {
       text: "10",
       rot: -25,
-      right: "15%",
+      right: "5%",
       top: "20%",
       size: "text-5xl",
       opacity: 0.2,
@@ -37,18 +37,10 @@ export default function BinaryArt() {
     {
       text: "01",
       rot: 80,
-      right: "20%",
+      right: "14%",
       top: "60%",
-      size: "text-6xl",
+      size: "text-4xl",
       opacity: 0.1,
-    },
-    {
-      text: "10101",
-      rot: -5,
-      right: "10%",
-      top: "75%",
-      size: "text-xl",
-      opacity: 0.2,
     },
     {
       text: "00",
@@ -69,7 +61,7 @@ export default function BinaryArt() {
     {
       text: "01001",
       rot: 10,
-      right: "18%",
+      right: "5%",
       top: "25%",
       size: "text-xl",
       opacity: 0.2,
@@ -85,7 +77,7 @@ export default function BinaryArt() {
     {
       text: "00010",
       rot: 20,
-      right: "22%",
+      right: "2%",
       top: "80%",
       size: "text-sm",
       opacity: 0.3,
@@ -101,9 +93,9 @@ export default function BinaryArt() {
     {
       text: "0110",
       rot: 50,
-      right: "14%",
+      right: "10%",
       top: "40%",
-      size: "text-2xl",
+      size: "text-4xl",
       opacity: 0.2,
     },
     {
@@ -115,9 +107,17 @@ export default function BinaryArt() {
       opacity: 0.25,
     },
     {
+      text: "0201",
+      rot: 5,
+      right: "5%",
+      top: "50%",
+      size: "text-5xl",
+      opacity: 0.04,
+    },
+    {
       text: "001",
       rot: 5,
-      right: "25%",
+      right: "15%",
       top: "70%",
       size: "text-5xl",
       opacity: 0.04,
@@ -129,6 +129,79 @@ export default function BinaryArt() {
       top: "30%",
       size: "text-xl",
       opacity: 0.15,
+    },
+    {
+      text: "01111",
+      rot: 28,
+      right: "14%",
+      top: "12%",
+      size: "text-sm",
+      opacity: 0.28,
+    },
+    {
+      text: "100001",
+      rot: -18,
+      right: "14%",
+      top: "48%",
+      size: "text-2xl",
+      opacity: 0.14,
+    },
+    {
+      text: "11",
+      rot: 62,
+      right: "7%",
+      top: "66%",
+      size: "text-6xl",
+      opacity: 0.06,
+    },
+    {
+      text: "10110",
+      rot: 8,
+      right: "11%",
+      top: "6%",
+      size: "text-3xl",
+      opacity: 0.11,
+    },
+    {
+      text: "010",
+      rot: -12,
+      right: "17%",
+      top: "18%",
+      size: "text-base",
+      opacity: 0.22,
+    },
+    {
+      text: "11100",
+      rot: 36,
+      right: "13%",
+      top: "33%",
+      size: "text-2xl",
+      opacity: 0.12,
+    },
+    {
+      text: "011",
+      rot: -33,
+      right: "10%",
+      top: "78%",
+      size: "text-4xl",
+      opacity: 0.09,
+    },
+    {
+      text: "1",
+      rot: 48,
+      right: "25%",
+      top: "91%",
+      size: "text-2xl",
+      opacity: 0.2,
+    },
+
+    {
+      text: "001001",
+      rot: 14,
+      right: "10%",
+      top: "97%",
+      size: "text-xl",
+      opacity: 0.08,
     },
   ];
 
@@ -152,7 +225,7 @@ export default function BinaryArt() {
             style={
               {
                 "--binary-target-opacity": el.opacity,
-                "--binary-delay": `${i * 140}ms`,
+                "--binary-delay": `${i * 70}ms`,
               } as CSSProperties
             }
           >

@@ -171,13 +171,14 @@
       120deg,
       rgba(14, 165, 233, 0.45),
       rgba(16, 185, 129, 0.45),
-      rgba(245, 11, 245, 0.45),
-      rgba(14, 165, 233, 0.45)
+      rgba(245, 11, 245, 0.271),
+      rgba(186, 180, 186, 0.45),
+      rgba(50, 206, 234, 0.45)
     );
     background-size: 220% 220%;
     background-clip: text;
     -webkit-background-clip: text;
-    animation: binary-art-gradient-shift 3.6s ease-in-out infinite;
+    animation: binary-art-gradient-shift 10s ease-in-out infinite;
   }
 
   @media (prefers-reduced-motion: reduce) {
