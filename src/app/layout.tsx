@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { suseMono } from "@/lib/fonts";
 import { headers } from "next/headers";
+import Menu from "@/components/custom/Common/Menu/Menu";
 
 export const metadata: Metadata = {
   title: "Jemluz ",
@@ -28,6 +29,7 @@ export default async function RootLayout({
           enableSystem={false}
         >
           {/* <ThemeToggle/> */}
+          <Menu />
           {children}
         </ThemeProvider>
       </body>
