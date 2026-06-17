@@ -129,6 +129,70 @@
 }
 
 @layer utilities {
+  @keyframes binary-art-reveal {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -14px, 0) scale(0.94);
+    }
+
+    100% {
+      opacity: var(--binary-target-opacity, 0.2);
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  @keyframes binary-art-gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .binary-art-element {
+    opacity: 0;
+    animation-name: binary-art-reveal;
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: forwards;
+    animation-delay: var(--binary-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .binary-art-brand {
+    color: transparent;
+    background-image: linear-gradient(
+      120deg,
+      rgba(14, 165, 233, 0.45),
+      rgba(16, 185, 129, 0.45),
+      rgba(245, 11, 245, 0.45),
+      rgba(14, 165, 233, 0.45)
+    );
+    background-size: 220% 220%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: binary-art-gradient-shift 3.6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .binary-art-element {
+      animation: none;
+      opacity: var(--binary-target-opacity, 0.2);
+      transform: none;
+    }
+
+    .binary-art-brand {
+      animation: none;
+      background-position: 50% 50%;
+    }
+  }
+
   .hide-scrollbar {
     scrollbar-width: none !important; /* Firefox */
     -ms-overflow-style: none !important; /* IE and Edge */

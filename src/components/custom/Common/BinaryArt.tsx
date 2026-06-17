@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 export default function BinaryArt() {
   const elements = [
     {
@@ -6,7 +8,7 @@ export default function BinaryArt() {
       right: "5%",
       top: "10%",
       size: "text-2xl",
-      op: "opacity-10",
+      opacity: 0.1,
     },
     {
       text: "10",
@@ -14,7 +16,7 @@ export default function BinaryArt() {
       right: "15%",
       top: "20%",
       size: "text-5xl",
-      op: "opacity-20",
+      opacity: 0.2,
     },
     {
       text: "0",
@@ -22,7 +24,7 @@ export default function BinaryArt() {
       right: "8%",
       top: "35%",
       size: "text-7xl",
-      op: "opacity-[0.03]",
+      opacity: 0.03,
     },
     {
       text: "110",
@@ -30,7 +32,7 @@ export default function BinaryArt() {
       right: "2%",
       top: "45%",
       size: "text-3xl",
-      op: "opacity-15",
+      opacity: 0.15,
     },
     {
       text: "01",
@@ -38,7 +40,7 @@ export default function BinaryArt() {
       right: "20%",
       top: "60%",
       size: "text-6xl",
-      op: "opacity-10",
+      opacity: 0.1,
     },
     {
       text: "10101",
@@ -46,7 +48,7 @@ export default function BinaryArt() {
       right: "10%",
       top: "75%",
       size: "text-xl",
-      op: "opacity-20",
+      opacity: 0.2,
     },
     {
       text: "00",
@@ -54,7 +56,7 @@ export default function BinaryArt() {
       right: "4%",
       top: "85%",
       size: "text-8xl",
-      op: "opacity-[0.03]",
+      opacity: 0.03,
     },
     {
       text: "1",
@@ -62,7 +64,7 @@ export default function BinaryArt() {
       right: "12%",
       top: "90%",
       size: "text-4xl",
-      op: "opacity-15",
+      opacity: 0.15,
     },
     {
       text: "01001",
@@ -70,7 +72,7 @@ export default function BinaryArt() {
       right: "18%",
       top: "25%",
       size: "text-xl",
-      op: "opacity-20",
+      opacity: 0.2,
     },
     {
       text: "111",
@@ -78,7 +80,7 @@ export default function BinaryArt() {
       right: "6%",
       top: "55%",
       size: "text-4xl",
-      op: "opacity-10",
+      opacity: 0.1,
     },
     {
       text: "00010",
@@ -86,7 +88,7 @@ export default function BinaryArt() {
       right: "22%",
       top: "80%",
       size: "text-sm",
-      op: "opacity-30",
+      opacity: 0.3,
     },
     {
       text: "1001",
@@ -94,7 +96,7 @@ export default function BinaryArt() {
       right: "1%",
       top: "95%",
       size: "text-3xl",
-      op: "opacity-10",
+      opacity: 0.1,
     },
     {
       text: "0110",
@@ -102,7 +104,7 @@ export default function BinaryArt() {
       right: "14%",
       top: "40%",
       size: "text-2xl",
-      op: "opacity-20",
+      opacity: 0.2,
     },
     {
       text: "1100",
@@ -110,7 +112,7 @@ export default function BinaryArt() {
       right: "9%",
       top: "15%",
       size: "text-lg",
-      op: "opacity-25",
+      opacity: 0.25,
     },
     {
       text: "001",
@@ -118,7 +120,7 @@ export default function BinaryArt() {
       right: "25%",
       top: "70%",
       size: "text-5xl",
-      op: "opacity-[0.04]",
+      opacity: 0.04,
     },
     {
       text: "101",
@@ -126,26 +128,36 @@ export default function BinaryArt() {
       right: "3%",
       top: "30%",
       size: "text-xl",
-      op: "opacity-15",
+      opacity: 0.15,
     },
   ];
 
   return (
     <div className="fixed top-0 right-0 w-1/3 h-screen pointer-events-none overflow-hidden z-0 hidden lg:block select-none">
-      <div className="absolute top-1/2 -right-[150px] -translate-y-1/2 -rotate-90 text-[8rem] font-bold tracking-[1.5rem] text-gray-100 opacity-50 z-0 whitespace-nowrap">
-        mindexe
+      <div className="binary-art-brand absolute top-1/2 -right-[180px] -translate-y-1/2 -rotate-90 text-[8rem] font-bold tracking-[1.5rem] opacity-20 z-0 whitespace-nowrap">
+        meindexe
       </div>
       {elements.map((el, i) => (
         <div
           key={i}
-          className={`absolute font-mono font-bold text-black ${el.size} ${el.op} transition-transform duration-1000 ease-in-out`}
+          className="absolute"
           style={{
             right: el.right,
             top: el.top,
             transform: `rotate(${el.rot}deg)`,
           }}
         >
-          {el.text}
+          <span
+            className={`binary-art-element block font-mono font-bold text-black ${el.size}`}
+            style={
+              {
+                "--binary-target-opacity": el.opacity,
+                "--binary-delay": `${i * 140}ms`,
+              } as CSSProperties
+            }
+          >
+            {el.text}
+          </span>
         </div>
       ))}
     </div>
