@@ -2,11 +2,11 @@
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useCallback, useEffect, useRef } from "react";
-import { useBackground } from "../../../contexts/BackgroundContext";
+import { useBackground } from "@/contexts/BackgroundContext";
 import YearButton from "./YearButton";
 import BlackBorder from "./BlackBorder";
-import { useTimelineBlackBorder } from "../../../hooks/useTimelineBlackBorder";
-import { useTimelineNavigation } from "../../../hooks/useTimelineNavigation";
+import { useTimelineBlackBorder } from "@/hooks/useTimelineBlackBorder";
+import { useTimelineNavigation } from "@/hooks/useTimelineNavigation";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import TimelineNavButtonsDesktop from "./TimelineNavButtonsDesktop";
 import { cn } from "@/lib/utils";

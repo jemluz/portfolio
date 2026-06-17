@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { ERROR_BLINK_DURATION } from "../components/custom/Timeline/timeline.utils";
+import { ERROR_BLINK_DURATION } from "@/components/custom/background-page/Timeline/timeline.utils";
 
 type UseTimelineNavigationProps = {
   years: number[];
