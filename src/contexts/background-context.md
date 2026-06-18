@@ -8,7 +8,7 @@ The `BackgroundContext` is a React context that manages state and interactions r
 
 - **File**: [src/contexts/BackgroundContext.tsx](src/contexts/BackgroundContext.tsx)
 - **Dependencies**:
-  - `@/background-data` - Content data
+  - `@/timeline-data` - Content data
   - `@/components/custom/ContentItem/utils` - Color utilities
 
 ## Structure
