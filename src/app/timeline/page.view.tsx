@@ -10,10 +10,10 @@ import {
 } from "../../components/custom/timeline-page/Timeline";
 import "./styles.css";
 import { userData } from "@/timeline-data";
-import { BackgroundProvider } from "../../contexts/BackgroundContext";
 import { ContentArea } from "@/components/custom/timeline-page/ContentArea";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import YearTitle from "@/components/custom/timeline-page/ContentArea/YearTitle";
+import { TimelinePageProvider } from "@/contexts/TimelinePageContext";
 
 export default function TimelinePage() {
   const isDesktop = useMediaQuery("(min-width: 769px)");
@@ -26,13 +26,13 @@ export default function TimelinePage() {
         <UserInfoMobile {...userData} />
       )}
 
-      <BackgroundProvider>
+      <TimelinePageProvider>
         {!isDesktop && <YearTitle />}
 
         <Timeline />
         <ContentArea />
         {!isDesktop && <TimelineNavButtonsMobile />}
-      </BackgroundProvider>
+      </TimelinePageProvider>
     </main>
   );
 }

@@ -11,8 +11,8 @@ import React, {
   useEffect,
 } from "react";
 import { contentData, CareerMilestone } from "@/timeline-data";
-import { getRandomColor } from "@/components/custom/timeline-page/ContentArea/colors.utils";
-import { ColorKey } from "@/components/custom/timeline-page/ContentArea/content-item.types";
+import { ColorKey } from "@/lib/constants";
+import { getRandomColor } from "@/lib/utils";
 
 export type TimelineNavigationHandlers = {
   errorButton: string | null;
@@ -22,7 +22,7 @@ export type TimelineNavigationHandlers = {
   handleDownOne: () => void;
 };
 
-type BackgroundContextType = {
+type TimelinePageContextType = {
   // State - primitives
   canGoNext: boolean;
   canGoPrevious: boolean;
@@ -48,11 +48,11 @@ type BackgroundContextType = {
 };
 
 // Will be initialized in BackgroundProvider, if used outside will throw error
-const BackgroundContext = createContext<BackgroundContextType | undefined>(
+const TimelinePageContext = createContext<TimelinePageContextType | undefined>(
   undefined,
 );
 
-export function BackgroundProvider({ children }: { children: ReactNode }) {
+export function TimelinePageProvider({ children }: { children: ReactNode }) {
   // ========== Memoized Values ==========
   // Get all unique years from content data
   const years = useMemo(() => {
@@ -160,7 +160,7 @@ export function BackgroundProvider({ children }: { children: ReactNode }) {
   }, [selectedYear, yearContents, initialContent]);
 
   return (
-    <BackgroundContext.Provider
+    <TimelinePageContext.Provider
       value={{
         // State - primitives
         canGoNext,
@@ -187,15 +187,15 @@ export function BackgroundProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </BackgroundContext.Provider>
+    </TimelinePageContext.Provider>
   );
 }
 
-export function useBackground() {
-  const ctx = useContext(BackgroundContext);
+export function useTimelinePage() {
+  const ctx = useContext(TimelinePageContext);
   if (!ctx)
-    throw new Error("useBackground must be used within BackgroundProvider");
+    throw new Error("useTimelinePage must be used within TimelinePageProvider");
   return ctx;
 }
 
-export default BackgroundContext;
+export default TimelinePageContext;

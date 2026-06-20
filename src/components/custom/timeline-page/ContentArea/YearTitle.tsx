@@ -1,9 +1,9 @@
-import { useBackground } from "@/contexts/BackgroundContext";
+import { useTimelinePage } from "@/contexts/TimelinePageContext";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
 
 export default function YearTitle() {
-  const { selectedYear } = useBackground();
+  const { selectedYear } = useTimelinePage();
   const isDesktop = useMediaQuery("(min-width: 769px)");
 
   return (
