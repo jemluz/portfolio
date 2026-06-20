@@ -1,4 +1,4 @@
-import { useBackground } from "@/contexts/BackgroundContext";
+import { useTimelinePage } from "@/contexts/TimelinePageContext";
 import { BulletProps } from "./content-item.types";
 
 /**
@@ -13,7 +13,8 @@ import { BulletProps } from "./content-item.types";
  */
 
 export default function BulletList() {
-  const { yearContents, selectedContent, setSelectedContent } = useBackground();
+  const { yearContents, selectedContent, setSelectedContent } =
+    useTimelinePage();
 
   if (!yearContents || yearContents.length <= 1) return null;
 

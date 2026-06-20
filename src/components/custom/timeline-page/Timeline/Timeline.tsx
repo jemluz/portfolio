@@ -2,7 +2,7 @@
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useCallback, useEffect, useRef } from "react";
-import { useBackground } from "@/contexts/BackgroundContext";
+import { useTimelinePage } from "@/contexts/TimelinePageContext";
 import YearButton from "./YearButton";
 import BlackBorder from "./BlackBorder";
 import { useTimelineBlackBorder } from "@/hooks/useTimelineBlackBorder";
@@ -16,7 +16,7 @@ export default function Timeline() {
 
   // Context
   const { selectedYear, setSelectedYear, registerTimelineNavigation, years } =
-    useBackground();
+    useTimelinePage();
 
   // Timeline refs
   const scrollViewportRef = useRef<HTMLDivElement | null>(null);

@@ -6,10 +6,10 @@ import {
   ChevronsLeftIcon,
   ChevronsRightIcon,
 } from "lucide-react";
-import { useBackground } from "@/contexts/BackgroundContext";
+import { useTimelinePage } from "@/contexts/TimelinePageContext";
 
 export default function TimelineNavButtonsMobile() {
-  const { timelineNavigation } = useBackground();
+  const { timelineNavigation } = useTimelinePage();
 
   if (!timelineNavigation) return null;
 

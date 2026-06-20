@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { usePathname } from "next/navigation";
-import { MENU_LINKS } from "@/components/custom/Common/Menu/menu.utils";
+import { MENU_LINKS } from "@/components/custom/common/Menu/menu.utils";
 
 type UseNavigationPathState = {
   pathname: string;

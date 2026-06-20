@@ -8,9 +8,9 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 export default function YearButton({
   year,
   isSelected = false,
+  showError = false,
   onClick,
   innerRef,
-  showError = false,
 }: YearButtonProps) {
   const isDesktop = useMediaQuery("(min-width: 769px)");
   const selectedStyle = "bg-accent";
@@ -35,7 +35,7 @@ export default function YearButton({
           showError && errorStyle,
         )}
       >
-        <span className={`text-[18px] ${suseMono.variable}`}>{year}</span>
+        <span className={`text-[1.2rem] ${suseMono.variable}`}>{year}</span>
       </Button>
     </div>
   );
