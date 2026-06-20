@@ -4,6 +4,12 @@ import ProjectInfoButtons from "./ProjectInfoButtons";
 import { ProjectItemInfoProps } from "./showcase.types";
 import { courstardSans } from "@/lib/fonts";
 
+/**
+ * Renders the textual details for a project item.
+ *
+ * Includes title/category, description, optional language tags,
+ * and the primary action buttons.
+ */
 export default function ProjectItemInfo({
   title,
   slug,
@@ -36,6 +42,7 @@ export default function ProjectItemInfo({
         {description}
       </p>
 
+      {/* Show language tags only when the project has a stack defined. */}
       {hasLanguageStack && <LanguageStackList languageStack={languageStack} />}
 
       <ProjectInfoButtons slug={slug} webLink={webLink} />
