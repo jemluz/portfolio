@@ -1,12 +1,14 @@
+import { ProjectItem } from "@/components/custom/showcase-page/ProjectItem";
+import { PROJECTS } from "@/showcase-data";
+
 export default function ShowcasePage() {
   return (
-    <div className="min-h-[70vh] flex flex-col items-center justify-center animate-fade-in-up">
-      <div className="text-center max-w-md">
-        <h1 className="text-4xl font-bold mb-4 tracking-tight">Showcase Page</h1>
-        <p className="text-gray-500 leading-relaxed text-lg">
-          Esta página está temporariamente vazia. Em breve novidades por aqui!
-        </p>
-      </div>
-    </div>
+    <main className="flex flex-col items-start w-fit mx-auto gap-12 px-4 pt-8">
+      {PROJECTS.slice()
+        .reverse()
+        .map((project) => (
+          <ProjectItem key={crypto.randomUUID()} project={project} />
+        ))}
+    </main>
   );
 }
