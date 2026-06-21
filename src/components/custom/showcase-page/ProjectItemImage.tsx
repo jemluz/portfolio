@@ -23,13 +23,20 @@ export default function ProjectItemImage({
     ? "bg-transparent"
     : "border-2 border-white shadow-lg rounded-lg";
 
+  const hoverAnimationStyle =
+    "transform-gpu origin-center transition-transform duration-300 ease-out hover:-rotate-[3deg] hover:scale-[1.03]";
+
   return (
     <figure className={className}>
       <img
         // Images are stored in S3 and served from the configured bucket URL.
         src={`${s3BucketUrl}/${img.src}`}
         alt={`${title} screenshot`}
-        className={cn("project-item-image object-cover ", transparentBgStyle)}
+        className={cn(
+          "project-item-image object-cover ",
+          transparentBgStyle,
+          hoverAnimationStyle,
+        )}
       />
     </figure>
   );
