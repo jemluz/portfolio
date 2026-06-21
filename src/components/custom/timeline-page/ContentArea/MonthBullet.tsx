@@ -1,5 +1,6 @@
-import { colorMap, MonthBulletProps } from "./content-item.types";
-import { numberToMonthPTBR } from "./month-bullet.utils";
+import { numberToMonthPTBR } from "@/lib/utils";
+import { MonthBulletProps } from "./content-item.types";
+import { colorMap } from "@/lib/constants";
 
 export default function MonthBullet({
   color,

@@ -26,6 +26,13 @@ A release is a functional version with new features/fixes, usually nesting one o
 
 A milestone is a package of one or more related issues that usually define important achievements for the project.
 
+**Milestone field usage:**
+
+- Only main/parent issues and PRs should have the `Milestone` field filled.
+- Sub-issues and PRs created from sub-issues should not have any `Milestone` attached.
+
+This approach will make easy to understand the main features/updates which was delivered into each a new version/release.
+
 ### 📌 (Main/Parent) Issues
 
 An issue is a key point to be done within a milestone. It could have sub-issues or not.
@@ -112,7 +119,7 @@ All PRs should use the squash merge type. Avoid other types.
 
 ### 📋 Summary
 
-| Type | Title | Branch Naming | Commit Format |
-|------|-------|---------------|---------------|
-| **Issues** | `[TURMA-XXXXX] + title` | `feat/TURMA-XXXXX` | `type(IXXXXX): commit message` |
+| Type           | Title                           | Branch Naming              | Commit Format                      |
+| -------------- | ------------------------------- | -------------------------- | ---------------------------------- |
+| **Issues**     | `[TURMA-XXXXX] + title`         | `feat/TURMA-XXXXX`         | `type(IXXXXX): commit message`     |
 | **Sub-issues** | `[TURMA-XXXXX][SUB-YY] + title` | `feat/TURMA-XXXXX__SUB-YY` | `type(IXXXXX_SYY): commit message` |

@@ -1,4 +1,3 @@
-import { useBackground } from "@/contexts/BackgroundContext";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import {
   createWheelHandler,
@@ -12,6 +11,7 @@ import { CONTENT_VIEW_HEIGHT } from "./content-list.utils";
 import { useScrollPadding } from "@/hooks/useScrollPadding";
 import { useScrollActivation } from "@/hooks/useScrollActivation";
 import { useContentItemRefs } from "@/hooks/useContentItemRefs";
+import { useTimelinePage } from "@/contexts/TimelinePageContext";
 
 const SCROLL_CONFIG = {
   THRESHOLD: 1,
@@ -38,7 +38,7 @@ export default function ContentList() {
     goToPreviousContent,
     registerScrollReset,
     setSelectedContent,
-  } = useBackground();
+  } = useTimelinePage();
 
   // Ref to the content list element
   const contentListRef = useRef<HTMLUListElement>(null);

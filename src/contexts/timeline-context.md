@@ -2,11 +2,11 @@
 
 ## Overview
 
-The `BackgroundContext` is a React context that manages state and interactions related to background content (academic education and professional experiences) organized by year. It provides navigation functionalities, filtering by year, and item color management.
+The `TimelinePageContext` is a React context that manages state and interactions related to timeline content (academic education and professional experiences) organized by year. It provides navigation functionalities, filtering by year, and item color management.
 
 ## Location
 
-- **File**: [src/contexts/BackgroundContext.tsx](src/contexts/BackgroundContext.tsx)
+- **File**: [src/contexts/TimelinePageContext.tsx](src/contexts/TimelinePageContext.tsx)
 - **Dependencies**:
   - `@/timeline-data` - Content data
   - `@/components/custom/ContentItem/utils` - Color utilities
@@ -16,7 +16,9 @@ The `BackgroundContext` is a React context that manages state and interactions r
 ### Provider
 
 ```tsx
-<BackgroundProvider initialYear={number | null}>{children}</BackgroundProvider>
+<TimelinePageProvider initialYear={number | null}>
+  {children}
+</TimelinePageProvider>
 ```
 
 #### Props
@@ -27,10 +29,10 @@ The `BackgroundContext` is a React context that manages state and interactions r
 ### Access Hook
 
 ```tsx
-const context = useBackground();
+const context = useTimelinePage();
 ```
 
-**Important**: This hook must be used only within a `BackgroundProvider`, otherwise it will throw an error.
+**Important**: This hook must be used only within a `TimelinePageProvider`, otherwise it will throw an error.
 
 ## Context State
 
@@ -47,9 +49,9 @@ const context = useBackground();
 
 | Property         | Type                   | Description                                                 |
 | ---------------- | ---------------------- | ----------------------------------------------------------- |
-| `initialContent` | Background \| null     | First content of the selected year (sorted by month)        |
+| `initialContent` | Timeline \| null       | First content of the selected year (sorted by month)        |
 | `itemColors`     | Record<string, string> | Mapping of item ID to its color (with persistent cache)     |
-| `yearContents`   | Background[]           | List of contents filtered by selected year, sorted by month |
+| `yearContents`   | Timeline[]             | List of contents filtered by selected year, sorted by month |
 
 ## Actions/Callbacks
 
@@ -118,16 +120,16 @@ When `selectedYear` changes:
 
 ```tsx
 import {
-  BackgroundProvider,
-  useBackground,
-} from "@/contexts/BackgroundContext";
+  TimelinePageProvider,
+  useTimelinePage,
+} from "@/contexts/TimelinePageContext";
 
 // In root component or layout
 function App() {
   return (
-    <BackgroundProvider initialYear={2024}>
+    <TimelinePageProvider initialYear={2024}>
       <MyComponent />
-    </BackgroundProvider>
+    </TimelinePageProvider>
   );
 }
 
@@ -142,7 +144,7 @@ function MyComponent() {
     goToNextContent,
     goToPreviousContent,
     setSelectedYear,
-  } = useBackground();
+  } = useTimelinePage();
 
   return (
     <div>
@@ -204,4 +206,4 @@ canGoNext/canGoPrevious are updated
 - The context uses `"use client"` indicating it's a Client Component in Next.js
 - Colors are generated using `getRandomColor()` but are cached for consistency
 - The current index is calculated dynamically based on `selectedContent` and `yearContents`
-- Protection against usage outside the provider through validation in the `useBackground` hook
+- Protection against usage outside the provider through validation in the `useTimelinePage` hook
