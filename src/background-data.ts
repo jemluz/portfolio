@@ -1,3 +1,9 @@
+export const resumePdfPTUrl = "docs/resume-jun-2026-pt.pdf";
+export const resumePdfENUrl = "docs/resume-jun-2026-en.pdf";
+
+export const summary =
+  "Frontend Engineer with 7 years of experience, entirely on B2B field, building scalable web and mobile applications (web mainly). Proficient in Typescript, specialized in React and Next.js, with a strong foundation in UI/UX. Also have worked with Angular and Vue, and Flutter.";
+
 export const EXPERIENCES = [
   {
     company: "Levva",
