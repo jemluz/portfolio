@@ -12,7 +12,6 @@ export default function YearButton({
   onClick,
   innerRef,
 }: YearButtonProps) {
-  const isDesktop = useMediaQuery("(min-width: 769px)");
   const selectedStyle = "bg-accent";
   const errorStyle = "animate-pulse !bg-red-50 !text-red-600";
 
@@ -29,8 +28,7 @@ export default function YearButton({
         onClick={() => onClick(year)}
         aria-pressed={isSelected}
         className={cn(
-          "border-zinc-100 border-l-[3px] cursor-pointer hover:bg-accent rounded-none",
-          isDesktop ? "pr-[8px]" : "pr-[16px]",
+          "border-zinc-100 border-l-[3px] cursor-pointer hover:bg-accent rounded-none pr-[16px] md:pr-[8px]",
           isSelected && selectedStyle,
           showError && errorStyle,
         )}
