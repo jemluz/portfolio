@@ -24,8 +24,12 @@ export default function ActiveLink({
   const linkHref = activeHref ?? pathname;
   const isExactActive = pathname === linkHref;
 
-  // Add a space after the leading slash for better readability
-  const activeHrefLabel = activeHref ? activeHref.replace(/^\//, "/ ") : "";
+  // Keep root route as "/" but render it visually as "/home" in the menu.
+  const activeHrefLabel = activeHref
+    ? activeHref === "/"
+      ? "Home"
+      : activeHref.replace(/^\//, "/ ")
+    : "";
 
   const rootLinkColorClass = shouldRenderShowcaseBreadcrumb
     ? "text-black hover:text-orange-800"

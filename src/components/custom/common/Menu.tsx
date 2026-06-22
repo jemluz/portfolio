@@ -6,9 +6,8 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-
-import ActiveLink from "./ActiveLink";
-import MenuItem from "./MenuItem";
+import MenuItem from "./Menu/MenuItem";
+import ActiveLink from "./Menu/ActiveLink";
 
 export default function Menu() {
   const { pathname, activeLink, subpathSegments, inactiveLinks } =
@@ -23,7 +22,9 @@ export default function Menu() {
         <NavigationMenuList className="mx-auto flex items-center gap-4 py-4">
           <NavigationMenuItem className="inactive-links mr-2 flex items-center gap-8">
             {inactiveLinks.map(({ href, icon: Icon, label }) => {
-              return <MenuItem key={href} href={href} icon={Icon} label={label} />;
+              return (
+                <MenuItem key={href} href={href} icon={Icon} label={label} />
+              );
             })}
           </NavigationMenuItem>
 

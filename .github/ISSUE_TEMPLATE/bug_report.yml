@@ -1,6 +1,6 @@
 name: Bug Report
 description: Report a problem or unexpected behavior
-title: "[BUG][TURMA-<ISSUE_NUMBER>] Bug Report title"
+title: "[BUG][PORT-<ISSUE_NUMBER>] Bug Report title"
 labels: [bug]
 
 body:

@@ -6,6 +6,7 @@ import { Project } from "@/showcase-data";
 import YearAndMonth from "./YearAndMonth";
 import ProjectItemInfo from "./ProjectItemInfo";
 import ProjectItemImage from "./ProjectItemImage";
+import Link from "next/link";
 
 export function ProjectItem({ project }: { project: Project }) {
   const {
@@ -31,11 +32,13 @@ export function ProjectItem({ project }: { project: Project }) {
       </header>
 
       <section className="flex w-full flex-col items-start gap-8 md:gap-16 lg:flex-row pl-10 py-4 border-l-2 border-gray-50">
-        <ProjectItemImage
-          images={images}
-          title={title}
-          className="flex justify-center self-center w-[380px]"
-        />
+        <Link href={"/showcase/" + slug} rel="noopener noreferrer">
+          <ProjectItemImage
+            images={images}
+            title={title}
+            className="flex justify-center self-center w-[380px]"
+          />
+        </Link>
 
         <ProjectItemInfo
           title={title}
