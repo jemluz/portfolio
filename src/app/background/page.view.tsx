@@ -31,7 +31,7 @@ export default function Background() {
       <div className="flex flex-col mb-6 gap-2">
         <h3 className="font-semibold text-gray-500">Download Resume</h3>
 
-        <div className="flex flex gap-2">
+        <div className="flex gap-2">
           <Button asChild variant="outline" className="gap-2" size={"sm"}>
             <a
               href={`${s3BucketUrl}/${resumePdfENUrl}`}
