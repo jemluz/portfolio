@@ -17,7 +17,7 @@ export type NavLinkItem = {
 
 export const MENU_LINKS: NavLinkItem[] = [
   {
-    href: "/home",
+    href: "/",
     icon: House,
     label: "Home",
     matchMode: "exact",

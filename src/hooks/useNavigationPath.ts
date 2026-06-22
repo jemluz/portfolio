@@ -28,7 +28,7 @@ type UseNavigationPathState = {
  * //   baseHref: "/showcase",
  * //   subpathSegments: ["123"],
  * //   inactiveLinks: [
- * //     { href: "/home", label: "Home", matchMode: "exact" },
+ * //     { href: "/", label: "Home", matchMode: "exact" },
  * //     { href: "/timeline", label: "Timeline", matchMode: "prefix" },
  * //   ],
  * // }

@@ -17,7 +17,7 @@ export default function Background() {
   return (
     <div
       className={cn(
-        "mx-6 md:mx-24 lg:mx-auto lg:max-w-[60%] flex flex-col gap-10 pt-16",
+        "mx-6 md:mx-24 lg:mx-auto lg:max-w-[80%] xl:max-w-[1024px] flex flex-col gap-10 pt-16",
       )}
     >
       {/* Intro Section */}
@@ -25,11 +25,11 @@ export default function Background() {
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
           Background
         </h1>
-        <p className="text-md lg:text-lg text-gray-600">{summary}</p>
+        <p className="text-md lg:text-lg text-gray-400">{summary}</p>
       </section>
 
       <div className="flex flex-col mb-6 gap-2">
-        <h3 className="font-semibold text-gray-500">Download Resume</h3>
+        <h3 className="font-semibold text-gray-700">Download Resume</h3>
 
         <div className="flex gap-2">
           <Button asChild variant="outline" className="gap-2" size={"sm"}>
