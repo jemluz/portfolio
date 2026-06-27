@@ -22,7 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={theme} style={{ colorScheme: theme }}>
       <body
-        className={`bg-background text-foreground ${suseMono.className} antialiased`}
+        className={`bg-background text-foreground ${suseMono.className} antialiased overflow-x-hidden`}
       >
         <ThemeProvider
           attribute="class"
