@@ -5,6 +5,7 @@ import { suseMono } from "@/lib/fonts";
 import { headers } from "next/headers";
 import Menu from "@/components/custom/common/Menu";
 import BinaryArt from "@/components/custom/common/BinaryArt";
+import { NextIntlClientProvider } from "next-intl";
 
 export const metadata: Metadata = {
   title: "Jemluz ",
@@ -30,9 +31,11 @@ export default async function RootLayout({
           enableSystem={false}
         >
           {/* <ThemeToggle/> */}
-          <Menu />
-          <BinaryArt />
-          {children}
+          <NextIntlClientProvider>
+            <Menu />
+            <BinaryArt />
+            {children}
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>
