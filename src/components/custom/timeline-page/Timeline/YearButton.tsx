@@ -3,7 +3,6 @@ import { YearButtonProps } from "./timeline.types";
 import { suseMono } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import YearBtnLeftBullet from "./YearBtnLeftBullet";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function YearButton({
   year,
