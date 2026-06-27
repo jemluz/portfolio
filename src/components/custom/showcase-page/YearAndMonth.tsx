@@ -11,11 +11,7 @@ export default function YearAndMonth({ year, month }: YearAndMonthProps) {
       )}
     >
       <LeftBullet />
-      <time
-        className={cn(
-          "border-zinc-100 border-l-[3px] cursor-pointer hover:bg-accent bg-accent pl-4 pr-3 py-1 ",
-        )}
-      >
+      <time className="border-zinc-100 border-l-[3px] cursor-pointer hover:bg-accent bg-accent pl-4 pr-3 py-1 ">
         <span className={`text-[1.2rem] ${suseMono.variable}`}>{year}</span>
       </time>
 

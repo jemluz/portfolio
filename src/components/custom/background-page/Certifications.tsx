@@ -5,8 +5,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ScrollText } from "lucide-react";
-import CertificateBtn from "./EducationItem/CertificateBtn";
-import EducationDetails from "./EducationItem/EducationDetails";
 import { cn } from "@/lib/utils";
 import EducationItem from "./EducationItem/EducationItem";
 
