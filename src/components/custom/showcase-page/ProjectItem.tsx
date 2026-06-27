@@ -32,7 +32,7 @@ export function ProjectItem({ project }: { project: Project }) {
         <YearAndMonth year={year} month={numberToMonthPTBR(month)} />
       </header>
 
-      <section className="flex w-full flex-col items-start gap-8 md:gap-16 lg:flex-row pl-10 py-4 border-l-2 border-gray-50">
+      <section className="flex w-full flex-col items-start gap-8 lg:flex-row pl-10 py-4 border-l-2 border-gray-50">
         <Link href={"/showcase/" + slug} rel="noopener noreferrer">
           <ProjectItemImage
             images={images}
@@ -48,8 +48,8 @@ export function ProjectItem({ project }: { project: Project }) {
           description={description}
           languageStack={hasLanguageStack ? languageStack : undefined}
           webLink={webLink}
-          className="flex flex-col flex-1 pt-4 lg:pt-8 relative z-20 min-w-[300px] md:min-w-[380px] max-w-[380px]"
           githubLink={githubLink}
+          className="project-item-infoflex flex-col flex-1 pt-4 lg:pt-8 relative z-20 min-w-[300px] md:min-w-[340px] max-w-[380px]"
         />
       </section>
     </article>
