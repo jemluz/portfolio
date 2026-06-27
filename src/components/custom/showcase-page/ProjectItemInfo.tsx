@@ -12,12 +12,12 @@ import { courstardSans } from "@/lib/fonts";
  */
 export default function ProjectItemInfo({
   title,
-  slug,
   category,
   description,
   languageStack,
   className,
   webLink,
+  githubLink,
 }: ProjectItemInfoProps) {
   const hasLanguageStack = languageStack && languageStack.length > 0;
 
@@ -45,7 +45,7 @@ export default function ProjectItemInfo({
       {/* Show language tags only when the project has a stack defined. */}
       {hasLanguageStack && <LanguageStackList languageStack={languageStack} />}
 
-      <ProjectInfoButtons slug={slug} webLink={webLink} />
+      <ProjectInfoButtons githubLink={githubLink} webLink={webLink} />
     </section>
   );
 }

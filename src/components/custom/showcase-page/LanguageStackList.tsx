@@ -28,7 +28,7 @@ export default function LanguageStackList({
   }
 
   return (
-    <>
+    <div className="flex flex-col w-full">
       <h4
         className={cn(
           "flex w-fit items-center text-[1rem] font-weight-[700] mb-4 text-black tracking-wide",
@@ -53,6 +53,6 @@ export default function LanguageStackList({
           />
         ))}
       </ul>
-    </>
+    </div>
   );
 }
