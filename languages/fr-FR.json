@@ -1,0 +1,18 @@
+{
+  "HomePage": {
+    "title": "Accueil",
+    "description": "Cette page est en cours de construction. De nouvelles mises à jour arrivent bientôt !"
+  },
+  "BackgroundPage": {
+    "title": "Expérience",
+    "description": "a"
+  },
+  "ShowcasePage": {
+    "title": "Portefeuille",
+    "description": "a"
+  },
+  "TimeLinePage": {
+    "title": "Chronologie",
+    "description": "Cette page est en construction. Restez à l'écoute pour les mises à jour !"
+  }
+}

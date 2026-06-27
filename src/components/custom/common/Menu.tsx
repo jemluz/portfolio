@@ -16,7 +16,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useLocale } from "next-intl";
 
 export default function Menu() {
   const { pathname, activeLink, subpathSegments, inactiveLinks } =
@@ -25,12 +24,18 @@ export default function Menu() {
   const shouldRenderShowcaseBreadcrumb =
     activeLink?.href === "/showcase" && subpathSegments.length > 0;
 
-  const locale = useLocale();
-
   const languages = [
-    { code: " en", label: "🇺🇸 EN" },
-    { code: " pt-BR", label: "🇧🇷 PT-BR" },
+    { code: "en-US", label: "🇺🇸 EN" },
+    { code: "pt-BR", label: "🇧🇷 PT-BR" },
+    { code: "es-ES", label: "🇪🇸 ES" },
+    { code: "fr-FR", label: "🇫🇷 FR" },
   ];
+
+  function handleChange(newLocale: string) {
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+
+    window.location.reload();
+  }
 
   return (
     <header className="w-screen bg-white/80 flex  justify-between lg:px-12 transition-all z-50">
@@ -62,9 +67,9 @@ export default function Menu() {
           </NavigationMenuItem>
         </NavigationMenuList>
 
-        <Select defaultValue={languages[1].code}>
+        <Select onValueChange={(newLocale) => handleChange(newLocale)}>
           <SelectTrigger className="w-[120px] border-0 shadow-none">
-            <SelectValue placeholder={locale} />
+            <SelectValue placeholder={languages[1].label} />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
