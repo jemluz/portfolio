@@ -13,12 +13,14 @@ export type ProjectItemInfoProps = {
   languageStack?: string[];
   className?: string;
   webLink?: string;
+  githubLink?: string;
 };
 
 export type ProjectItemImageProps = {
   images: ImageInfo[];
   title: string;
   className?: string;
+  hasHoverAnimation?: boolean;
 };
 
 export type LanguageStackListProps = {
@@ -34,6 +36,6 @@ export type FileTagLinkProps = {
 };
 
 export type ProjectInfoButtonsProps = {
-  slug: string;
+  githubLink?: string;
   webLink?: string;
 };

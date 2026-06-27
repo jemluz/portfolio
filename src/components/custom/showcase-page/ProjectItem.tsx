@@ -24,6 +24,7 @@ export function ProjectItem({ project }: { project: Project }) {
   const hasLanguageStack = languageStack && languageStack.length > 0;
 
   const webLink = links.find((link) => link.type === "web")?.url ?? "#";
+  const githubLink = links.find((link) => link.type === "github")?.url ?? "#";
 
   return (
     <article className="project-item flex flex-col">
@@ -48,6 +49,7 @@ export function ProjectItem({ project }: { project: Project }) {
           languageStack={hasLanguageStack ? languageStack : undefined}
           webLink={webLink}
           className="flex flex-col flex-1 pt-4 lg:pt-8 relative z-20 min-w-[300px] md:min-w-[380px] max-w-[380px]"
+          githubLink={githubLink}
         />
       </section>
     </article>
