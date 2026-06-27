@@ -4,11 +4,11 @@ import Filters from "@/components/custom/showcase-page/Filters";
 import { ProjectItem } from "@/components/custom/showcase-page/ProjectItem";
 import Title from "@/components/custom/showcase-page/Title";
 import { PROJECTS } from "@/showcase-data";
-import { TagEnum } from "@/types/showcase.types";
+import { ProjectTypeEnum } from "@/types/showcase.types";
 import { useMemo, useState } from "react";
 
 export default function ShowcasePage() {
-  const [typeFilter, setTypeFilter] = useState<TagEnum | "all">("all");
+  const [typeFilter, setTypeFilter] = useState<ProjectTypeEnum | "all">("all");
   const [orderFilter, setOrderFilter] = useState<"asc" | "desc">("desc");
 
   const processedProjects = useMemo(() => {
@@ -16,7 +16,7 @@ export default function ShowcasePage() {
       typeFilter === "all"
         ? [...PROJECTS]
         : PROJECTS.filter((project) =>
-            project.tags.includes(typeFilter as TagEnum),
+            project.projectTypeTags.includes(typeFilter as ProjectTypeEnum),
           );
 
     return filteredProjects.sort((a, b) => {
