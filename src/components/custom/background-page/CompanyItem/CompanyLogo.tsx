@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Building } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -14,9 +15,11 @@ export default function CompanyLogo({
   return (
     <figure className={cn("company-logo w-16 h-16", className)}>
       {companyLogo ? (
-        <img
+        <Image
           src={`${s3BucketUrl}/${companyLogo}`}
           alt={`${company} logo`}
+          width={64}
+          height={64}
           className="w-full h-full object-cover rounded-md border-1 border-gray-200 shadow-sm"
         />
       ) : (
