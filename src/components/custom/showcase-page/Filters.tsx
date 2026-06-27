@@ -6,10 +6,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TagEnum } from "@/types/showcase.types";
+import { ProjectTypeEnum } from "@/types/showcase.types";
 
 type FiltersProps = {
-  setTypeFilter: (value: TagEnum | "all") => void;
+  setTypeFilter: (value: ProjectTypeEnum | "all") => void;
   setOrderFilter: (value: "asc" | "desc") => void;
 };
 
@@ -26,7 +26,9 @@ export default function Filters({
           <p className="text-md lg:text-lg text-gray-400">By type | </p>
           <Select
             defaultValue="all"
-            onValueChange={(value) => setTypeFilter(value as TagEnum | "all")}
+            onValueChange={(value) =>
+              setTypeFilter(value as ProjectTypeEnum | "all")
+            }
           >
             <SelectTrigger className="w-[120px]">
               <SelectValue placeholder="Theme" />
@@ -34,8 +36,8 @@ export default function Filters({
             <SelectContent>
               <SelectGroup>
                 <SelectItem value="all">All</SelectItem>
-                {TagEnum &&
-                  Object.values(TagEnum).map((tag) => (
+                {ProjectTypeEnum &&
+                  Object.values(ProjectTypeEnum).map((tag) => (
                     <SelectItem key={tag} value={tag}>
                       {tag}
                     </SelectItem>

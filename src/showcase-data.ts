@@ -1,3 +1,5 @@
+import { ProjectTypeEnum } from "@/types/showcase.types";
+
 export const FILES_LIST: Record<string, FileTag> = {
   pde: {
     style: "bg-pink-50 text-pink-700 hover:border-pink-300",
@@ -99,8 +101,10 @@ export interface Project {
   description: string;
   images: ImageInfo[];
   links: LinkInfo[];
+  projectTypeTags: ProjectTypeEnum[];
   techStack?: string[];
   languageStack?: TagKey[];
+  accentColor?: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -110,7 +114,8 @@ export const PROJECTS: Project[] = [
     year: 2017,
     month: 1,
     title: "Aurora",
-    category: "app + web",
+    category: "app + web2",
+    projectTypeTags: [ProjectTypeEnum.MOBILE, ProjectTypeEnum.WEB2],
     description:
       "Esse foi o projeto que me ensinou a pensar como uma programadora.\n\nUma aplicação mobile, feita em uma linguagem que foi projetada para desenhos...",
     languageStack: ["pde", "html", "css"],
@@ -124,6 +129,7 @@ export const PROJECTS: Project[] = [
     month: 12,
     title: "Monique Luz",
     category: "brand",
+    projectTypeTags: [ProjectTypeEnum.DESIGN],
     description:
       "Design de manual de marca para Monique Luz (professora particular)",
     languageStack: ["ai", "ps"],
@@ -137,6 +143,7 @@ export const PROJECTS: Project[] = [
     month: 3,
     title: "Exchange",
     category: "UI/UX",
+    projectTypeTags: [ProjectTypeEnum.DESIGN, ProjectTypeEnum.MOBILE],
     description:
       "Redesign de um aplicativo android, em um conceito alternativo às guidelines mobile.",
     languageStack: ["xd"],
@@ -150,6 +157,7 @@ export const PROJECTS: Project[] = [
     month: 4,
     title: "Bubbox",
     category: "UI/UX + app",
+    projectTypeTags: [ProjectTypeEnum.DESIGN, ProjectTypeEnum.MOBILE],
     description:
       "Design UI/UX de um app para streaming de música, com foco em playlists colaborativas.",
     languageStack: ["js", "html", "css"],
@@ -163,6 +171,7 @@ export const PROJECTS: Project[] = [
     month: 8,
     title: "You Better Measure",
     category: "UI/UX",
+    projectTypeTags: [ProjectTypeEnum.DESIGN, ProjectTypeEnum.MOBILE],
     description: "Design UI/UX de um app para produtividade pessoal.",
     languageStack: ["fig"],
     images: [{ src: "design/app-productivity-2.png", isTransparent: true }],
@@ -175,6 +184,7 @@ export const PROJECTS: Project[] = [
     month: 12,
     title: "Je",
     category: "brand",
+    projectTypeTags: [ProjectTypeEnum.DESIGN],
     description:
       "Design de minha marca pessoal, feita para ser atemporal e versátil.",
     languageStack: ["fig"],
@@ -188,6 +198,7 @@ export const PROJECTS: Project[] = [
     month: 2,
     title: "Green Text",
     category: "UI/UX",
+    projectTypeTags: [ProjectTypeEnum.DESIGN, ProjectTypeEnum.WEB2],
     description: "Design UI/UX de uma rede social.",
     languageStack: ["fig"],
     images: [{ src: "design/web-green-text.png", isTransparent: true }],
@@ -200,6 +211,7 @@ export const PROJECTS: Project[] = [
     month: 5,
     title: "Vinler",
     category: "UI/UX",
+    projectTypeTags: [ProjectTypeEnum.DESIGN, ProjectTypeEnum.MOBILE],
     description: "Design UI/UX de um app para troca de livros.",
     languageStack: ["vue"],
     images: [{ src: "", isTransparent: false }],
@@ -211,7 +223,8 @@ export const PROJECTS: Project[] = [
     year: 2020,
     month: 7,
     title: "Dashboard",
-    category: "UI/UX + web",
+    category: "UI/UX + web2",
+    projectTypeTags: [ProjectTypeEnum.DESIGN, ProjectTypeEnum.WEB2],
     description: "Redesign UI/UX do dashboard FixPay.",
     languageStack: ["vue"],
     images: [{ src: "dashboard/web-vue-dashboard.png", isTransparent: true }],
@@ -223,7 +236,8 @@ export const PROJECTS: Project[] = [
     year: 2020,
     month: 10,
     title: "Letrun",
-    category: "UI/UX + web",
+    category: "UI/UX + web2",
+    projectTypeTags: [ProjectTypeEnum.DESIGN, ProjectTypeEnum.WEB2],
     description: "Redesign UI/UX do dashboard FixPay.",
     languageStack: ["vue"],
     images: [{ src: "letrun/web-vue-ecommerce.png", isTransparent: true }],
@@ -233,9 +247,10 @@ export const PROJECTS: Project[] = [
     id: 11,
     slug: "diplomata",
     year: 2022,
-    month: 1,
+    month: 12,
     title: "Diplomata",
-    category: "UI/UX + web",
+    category: "UI/UX + web2",
+    projectTypeTags: [ProjectTypeEnum.DESIGN, ProjectTypeEnum.WEB2],
     description:
       "Trabalho de conclusão de curso, feito em Vue.js. Um sistema full stack para distribuição de artigos científicos em linguagem acessível.",
     languageStack: ["vue"],
@@ -248,7 +263,8 @@ export const PROJECTS: Project[] = [
     year: 2023,
     month: 1,
     title: "Ignite Todo List",
-    category: "web + curso",
+    category: "web2 + course",
+    projectTypeTags: [ProjectTypeEnum.WEB2],
     description: "",
     languageStack: ["ts"],
     images: [{ src: "", isTransparent: false }],
@@ -260,7 +276,8 @@ export const PROJECTS: Project[] = [
     year: 2023,
     month: 2,
     title: "Ignite Timer",
-    category: "web",
+    category: "web2",
+    projectTypeTags: [ProjectTypeEnum.WEB2],
     description: "",
     languageStack: ["ts"],
     images: [{ src: "", isTransparent: false }],
@@ -273,6 +290,7 @@ export const PROJECTS: Project[] = [
     month: 10,
     title: "Ignite DT Money",
     category: "web",
+    projectTypeTags: [ProjectTypeEnum.WEB2],
     description: "",
     languageStack: ["ts"],
     images: [{ src: "", isTransparent: false }],
@@ -284,7 +302,8 @@ export const PROJECTS: Project[] = [
     year: 2024,
     month: 2,
     title: "Ignite Shop",
-    category: "web",
+    category: "web2",
+    projectTypeTags: [ProjectTypeEnum.WEB2],
     description: "",
     languageStack: ["ts"],
     images: [{ src: "", isTransparent: false }],
@@ -296,7 +315,8 @@ export const PROJECTS: Project[] = [
     year: 2024,
     month: 11,
     title: "Ignite Pizza Shop",
-    category: "web",
+    category: "web2",
+    projectTypeTags: [ProjectTypeEnum.WEB2],
     description: "",
     languageStack: ["ts"],
     images: [{ src: "", isTransparent: false }],
@@ -308,7 +328,8 @@ export const PROJECTS: Project[] = [
     year: 2024,
     month: 12,
     title: "Ignite Call",
-    category: "design system + web",
+    category: "design system + web2",
+    projectTypeTags: [ProjectTypeEnum.DESIGN, ProjectTypeEnum.WEB2],
     description: "",
     languageStack: ["ts"],
     images: [{ src: "", isTransparent: false }],
@@ -321,6 +342,7 @@ export const PROJECTS: Project[] = [
     month: 3,
     title: "Jeu Bazar",
     category: "web",
+    projectTypeTags: [ProjectTypeEnum.WEB2],
     description: "aaa",
     languageStack: ["ts"],
     images: [{ src: "", isTransparent: false }],
@@ -332,7 +354,8 @@ export const PROJECTS: Project[] = [
     year: 2026,
     month: 6,
     title: "Portfolio",
-    category: "web",
+    category: "web2",
+    projectTypeTags: [ProjectTypeEnum.WEB2, ProjectTypeEnum.AI],
     description: "aaa",
     languageStack: ["ts"],
     images: [{ src: "", isTransparent: false }],
@@ -340,14 +363,22 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 20,
-    slug: "evast",
+    slug: "eva-station",
     year: 2026,
     month: 12,
     title: "EVA Station",
-    category: "web",
-    description: "Web3",
+    category: "web3",
+    projectTypeTags: [
+      ProjectTypeEnum.WEB3,
+      ProjectTypeEnum.WEB2,
+      ProjectTypeEnum.FULL_STACK,
+      ProjectTypeEnum.AI,
+    ],
+    description:
+      "Between web3 and web2, a quick panel for holders check EVA token (evervalue coin) prices before buying or selling.",
     languageStack: ["ts"],
-    images: [{ src: "", isTransparent: false }],
+    images: [{ src: "web3/evastation.png", isTransparent: false }],
     links: [],
+    accentColor: "orange-400",
   },
 ];
