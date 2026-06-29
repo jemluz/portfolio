@@ -1,12 +1,39 @@
 import Link from "next/link";
 import { EducationDetailsProps } from "./education-item.types";
+import { useLocale } from "next-intl";
 
 export default function EducationDetails({
   year,
-  degree,
+  name,
   institution,
   institutionUrl = "#",
 }: EducationDetailsProps) {
+  const locale = useLocale();
+
+  function getLocalizedName(name: { [key: string]: string }) {
+    if (locale === "fr-FR" || locale === "en-US") {
+      return name["en-US"];
+    }
+
+    if (!name) {
+      return "";
+    }
+
+    return name["pt-BR"];
+  }
+
+  function getLocalizedInstitution(institution: { [key: string]: string }) {
+    if (locale === "fr-FR" || locale === "en-US") {
+      return institution["en-US"];
+    }
+
+    if (!institution) {
+      return "";
+    }
+
+    return institution["pt-BR"];
+  }
+
   return (
     <div className="flex gap-6">
       <span className="pt-1 text-sm font-medium text-gray-400 tabular-nums tracking-wide">
@@ -16,11 +43,11 @@ export default function EducationDetails({
       <div className="flex flex-col gap-1 flex-1">
         <Link href={institutionUrl} target="_blank" rel="noopener noreferrer">
           <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 cursor-pointer transition-colors">
-            {degree}
+            {getLocalizedName(name)}
           </h3>
         </Link>
         <span className="text-[15px] font-medium text-gray-500">
-          {institution}
+          {getLocalizedInstitution(institution)}
         </span>
       </div>
     </div>

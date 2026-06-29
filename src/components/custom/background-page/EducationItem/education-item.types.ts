@@ -1,19 +1,29 @@
 export type CertificateBtnProps = {
-  openFor: string;
+  name: {
+    [key: string]: string;
+  };
   certificateUrl?: string;
 };
 
 export type EducationDetailsProps = {
   year: string;
-  degree: string;
-  institution: string;
+  name: {
+    [key: string]: string;
+  };
+  institution: {
+    [key: string]: string;
+  };
   institutionUrl?: string;
 };
 
 export type EducationItemProps = {
   year: string;
-  degree: string;
-  institution: string;
+  name: {
+    [key: string]: string;
+  };
+  institution: {
+    [key: string]: string;
+  };
   certificateUrl?: string;
   institutionUrl?: string;
 };

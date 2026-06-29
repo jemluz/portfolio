@@ -6,9 +6,11 @@ import {
 } from "@/components/ui/accordion";
 import { MapPin } from "lucide-react";
 import { CompanyItem } from "./CompanyItem";
-import { formatExperiencePeriod } from "./background.utils";
+import { useTranslations } from "next-intl";
 
 export default function WorkHistory() {
+  const t = useTranslations("BackgroundPage");
+
   return (
     <AccordionItem value="work-history">
       <AccordionTrigger
@@ -17,7 +19,7 @@ export default function WorkHistory() {
       >
         <div className="flex items-center">
           <MapPin size={20} className="mr-3 text-purple-500" />
-          Work History
+          {t("workHistory")}
         </div>
       </AccordionTrigger>
       <AccordionContent className="pt-6 pb-8">
@@ -31,7 +33,6 @@ export default function WorkHistory() {
               startDate={exp.startDate}
               endDate={exp.endDate}
               roles={exp.roles}
-              formatPeriod={formatExperiencePeriod}
             />
           ))}
         </ul>

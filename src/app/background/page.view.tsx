@@ -8,8 +8,11 @@ import Skills from "@/components/custom/background-page/Skills";
 import LanguageLevels from "@/components/custom/background-page/LanguageLevels";
 import DownloadButtons from "@/components/custom/background-page/DownloadButtons";
 import Title from "@/components/custom/background-page/Title";
+import { useTranslations } from "next-intl";
 
 export default function Background() {
+  const t = useTranslations("BackgroundPage");
+
   return (
     <div
       className={cn(
@@ -32,8 +35,11 @@ export default function Background() {
         className="w-full"
       >
         <WorkHistory />
-        <Education title="Education" iconColor="text-blue-500" />
-        <Certifications title="Certifications" iconColor="text-emerald-500" />
+        <Education title={t("education")} iconColor="text-blue-500" />
+        <Certifications
+          title={t("certificates")}
+          iconColor="text-emerald-500"
+        />
         <LanguageLevels />
         <Skills />
       </Accordion>
