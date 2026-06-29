@@ -4,12 +4,21 @@
     "description": "Cette page est en cours de construction. De nouvelles mises à jour arrivent bientôt !"
   },
   "BackgroundPage": {
-    "title": "Expérience",
-    "description": "a"
+    "title": "Parcours",
+    "description": "Frontend Engineer avec 7 ans d'expérience, entièrement dans le secteur B2B, concevant des applications web et mobiles évolutives (principalement web). Experte en TypeScript, spécialisée en React et Next.js, avec de solides bases en UI/UX. Également expérimentée en Angular, Vue et Flutter.",
+    "download": "Télécharger le CV",
+    "downloadAriaLabel": "Télécharger le CV au format PDF",
+    "downloadWarning": "Actuellement, seules les versions anglaise et portugaise sont disponibles au téléchargement.",
+    "workHistory": "Expérience Professionnelle",
+    "education": "Éducation",
+    "certificates": "Certificats",
+    "seeCertificate": "Voir le certificat",
+    "languages": "Langues (CEFR)",
+    "skills": "Compétences & Technologies"
   },
   "ShowcasePage": {
     "title": "Portefeuille",
-    "description": "a"
+    "description": "Jetons un coup d'œil à certains des projets sur lesquels j'ai travaillé."
   },
   "TimeLinePage": {
     "title": "Chronologie",

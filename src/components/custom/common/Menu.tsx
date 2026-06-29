@@ -31,6 +31,15 @@ export default function Menu() {
     { code: "fr-FR", label: "🇫🇷 FR" },
   ];
 
+  function getCurrentLanguage() {
+    const currentLocale = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("NEXT_LOCALE="))
+      ?.split("=")[1];
+
+    return currentLocale || "en-US";
+  }
+
   function handleChange(newLocale: string) {
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
 
@@ -69,7 +78,12 @@ export default function Menu() {
 
         <Select onValueChange={(newLocale) => handleChange(newLocale)}>
           <SelectTrigger className="w-[120px] border-0 shadow-none">
-            <SelectValue placeholder={languages[1].label} />
+            <SelectValue
+              placeholder={
+                languages.find(({ code }) => code === getCurrentLanguage())
+                  ?.label
+              }
+            />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
