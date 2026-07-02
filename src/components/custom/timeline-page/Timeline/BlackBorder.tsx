@@ -19,10 +19,12 @@ export default function BlackBorder({
   return (
     <div
       id="black-border"
-      className={`z-2 h-[36px] w-[3px] bg-zinc-900 -translate-x-[16px] text-transparent ease-out transition-[transform,opacity] duration-300 ${
+      className={`timeline-black-border-size shrink-0 z-2 bg-zinc-900 text-transparent ease-out transition-[transform,opacity] duration-300 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       } ${hasError ? "!bg-red-400" : ""}`}
-      style={{ transform: `translateY(${translation}px)` }}
+      style={{
+        transform: `translateX(calc(-1 * var(--timeline-black-border-offset-x))) translateY(${translation}px)`,
+      }}
     />
   );
 }

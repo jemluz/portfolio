@@ -74,11 +74,11 @@ export default function Timeline() {
 
   return (
     <div className="timeline-area flex flex-col">
-      <div className="timeline flex ml-[5px]">
+      <div className="timeline timeline-track flex">
         <ScrollArea
           className={cn(
             "scroll-area flex flex-col z-1",
-            isDesktop && "max-h-[290px]",
+            isDesktop && "timeline-scroll-area-size",
           )}
           viewportRef={scrollViewportRef}
           onViewportScroll={handleViewportScroll}

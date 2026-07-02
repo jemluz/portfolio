@@ -7,7 +7,7 @@ import {
   calculateItemVisibility,
 } from "./content-list.utils";
 import ContentItem from "./ContentItem";
-import { CONTENT_VIEW_HEIGHT } from "./content-list.utils";
+import { CONTENT_VIEW_HEIGHT_PX } from "./content-list.utils";
 import { useScrollPadding } from "@/hooks/useScrollPadding";
 import { useScrollActivation } from "@/hooks/useScrollActivation";
 import { useContentItemRefs } from "@/hooks/useContentItemRefs";
@@ -147,7 +147,7 @@ export default function ContentList() {
             isNext={isNext}
             isPrevious={isPrevious}
             isLastItem={isLastItem}
-            containerHeight={CONTENT_VIEW_HEIGHT}
+            containerHeight={CONTENT_VIEW_HEIGHT_PX}
           />
         );
       })}

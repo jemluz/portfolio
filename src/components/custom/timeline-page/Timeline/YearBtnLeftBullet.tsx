@@ -17,7 +17,7 @@ export default function YearBtnLeftBullet({
   return (
     <div
       className={cn(
-        "relative -right-[12px] z-[999] flex items-center justify-center w-5 h-5 transform-gpu transition-all duration-200 ease-out",
+        "timeline-year-left-bullet relative z-[999] flex items-center justify-center w-5 h-5 transform-gpu transition-all duration-200 ease-out",
         isVisible ? "scale-100 opacity-100" : "scale-0 opacity-0",
         showError && "animate-pulse",
       )}

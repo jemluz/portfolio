@@ -15,11 +15,11 @@ export default function PeriodInfo({
     : "border-zinc-900";
 
   return (
-    <div className={`ml-2 pl-[26px]  border-l-[2px] ${transparencyClass}`}>
-      <h2 className={`${changaSans.className} text-zinc-950 text-2xl`}>
+    <div className={`timeline-period-info ml-2 ${transparencyClass}`}>
+      <h2 className={`${changaSans.className} timeline-period-title text-zinc-950`}>
         {title}
       </h2>
-      <p className="text-sm max-w-[300px]">{description}</p>
+      <p className="timeline-period-description text-sm">{description}</p>
 
       {(location || durationInMonths) && (
         <div className="flex gap-2 mt-6">
