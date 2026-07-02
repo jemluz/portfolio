@@ -12,23 +12,12 @@ export default function RoleContent({
 }: RoleContentProps) {
   const locale = useLocale();
 
-  function getNormalizedDescription(description: {
-    "en-US": string[];
-    "pt-BR": string[];
-  }) {
-    if (locale === "fr-FR" || locale === "en-US") {
-      return description["en-US"];
-    }
-
-    return description["pt-BR"];
-  }
-
   return (
     <div
       className={cn("right-column flex flex-col mt-2 mb-4 gap-1.5", className)}
     >
       <RoleHeader title={title} period={period} />
-      <KeyArchievementList items={getNormalizedDescription(description)} />
+      <KeyArchievementList items={description[locale as keyof typeof description]} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { CEFR_LABEL_BY_LEVEL, CEFR_LEVELS, LANGUAGES } from "@/background-data";
+import { CEFR_LEVELS, LANGUAGES } from "@/background-data";
 import {
   AccordionContent,
   AccordionItem,
@@ -10,6 +10,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 export default function LanguageLevels() {
   const t = useTranslations("BackgroundPage");
+  const tCefr = useTranslations("CEFR");
   const locale = useLocale();
 
   const getLocaleLanguageName = (name: { [key: string]: string }) => {
@@ -70,7 +71,7 @@ export default function LanguageLevels() {
                 </div>
 
                 <span className="text-sm text-gray-500">
-                  {CEFR_LABEL_BY_LEVEL[language.level]} ({language.level})
+                  {tCefr(language.level)} ({language.level})
                 </span>
               </div>
             </li>
