@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { ProjectInfoButtonsProps } from "./showcase.types";
 import { GithubLogoIcon } from "@phosphor-icons/react";
+
+import { ProjectInfoButtonsProps } from "./showcase.types";
 
 /**
  * Renders action buttons for each project card.
@@ -14,33 +14,33 @@ export default function ProjectInfoButtons({
   githubLink,
   webLink,
 }: ProjectInfoButtonsProps) {
-  const router = useRouter();
-
   return (
     <footer className="project-info-buttons">
       {githubLink && (
         <Button
-          // Navigate to the project's GitHub repository.
-          onClick={() => router.push(githubLink)}
+          asChild
           data-icon="inline-start"
           size="lg"
           className="mr-4 text-md cursor-pointer hover:scale-105 hover:shadow-md transition-all duration-300"
         >
-          <GithubLogoIcon />
-          Github
+          <a href={githubLink} target="_blank" rel="noopener noreferrer">
+            <GithubLogoIcon />
+            Github
+          </a>
         </Button>
       )}
       {webLink && (
         <Button
-          // Navigate to the project's live site when provided.
-          onClick={() => router.push(webLink)}
+          asChild
           variant="link"
           data-icon="inline-start"
           size="lg"
           className="text-md  cursor-pointer hover:scale-105 transition-all duration-300"
         >
-          <ExternalLink />
-          Visitar site
+          <a href={webLink} target="_blank" rel="noopener noreferrer">
+            <ExternalLink />
+            Visitar site
+          </a>
         </Button>
       )}
     </footer>
