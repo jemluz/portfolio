@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import type { TimelineLocale } from "@/timeline-data";
 import { ColorKey, colorMap, MONTHS_PTBR } from "./constants";
 
 /**
@@ -39,6 +40,32 @@ export function numberToMonthPTBR(monthNumber: number): string {
     return "Janeiro";
 
   return MONTHS_PTBR[monthNumber - 1];
+}
+
+/**
+ * Convert a number (1-12) to a localized month name.
+ *
+ * @param monthNumber - A number between 1 and 12 representing a month
+ * @param locale - Locale used to format month name
+ * @returns The localized month name (e.g. 1 -> "January" for en-US)
+ * @throws Error if monthNumber is not an integer between 1 and 12
+ */
+export function getMonthName(
+  monthNumber: number,
+  locale: TimelineLocale,
+): string {
+  if (!Number.isInteger(monthNumber) || monthNumber < 1 || monthNumber > 12) {
+    throw new Error(
+      `[getMonthName] Invalid month number: ${monthNumber}. Expected an integer between 1 and 12.`,
+    );
+  }
+
+  const date = new Date(2000, monthNumber - 1, 1);
+  const monthName = new Intl.DateTimeFormat(locale, { month: "long" }).format(
+    date,
+  );
+
+  return monthName.charAt(0).toUpperCase() + monthName.slice(1);
 }
 
 let lastColor: ColorKey | null = null;

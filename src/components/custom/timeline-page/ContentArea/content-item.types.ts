@@ -1,5 +1,5 @@
 import { ColorKey } from "@/lib/constants";
-import { CareerMilestone, Project } from "@/timeline-data";
+import type { CareerMilestone, Project, TimelineLocale } from "@/timeline-data";
 
 export type ContentItemProps = {
   milestone: CareerMilestone;
@@ -23,6 +23,7 @@ export type ProjectButtonProps = {
 export type MonthBulletProps = {
   color: ColorKey;
   month: number;
+  locale: TimelineLocale;
   isGrayScale?: boolean;
 };
 
@@ -33,8 +34,10 @@ export type BulletProps = {
 
 export type PeriodInfoProps = Omit<
   CareerMilestone,
-  "year" | "month" | "projects" | "id" | "isCurrent"
+  "year" | "month" | "projects" | "id" | "isCurrent" | "title" | "description"
 > & {
+  title: string;
+  description: string;
   isInactive?: boolean;
 };
 

@@ -1,9 +1,12 @@
 "use client";
 
+import { useLocale } from "next-intl";
+import { useEffect, useRef, useMemo, forwardRef } from "react";
+
 import { courstardSans } from "@/lib/fonts";
+import { TimelineLocale } from "@/timeline-data";
 import { ContentItemProps } from "./content-item.types";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useMemo, forwardRef } from "react";
 import ProjectsList from "./ProjectList";
 import MonthBullet from "./MonthBullet";
 import {
@@ -48,6 +51,7 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
       durationInMonths,
       projects,
     } = milestone;
+    const locale = useLocale() as TimelineLocale;
 
     const internalRef = useRef<HTMLLIElement>(null);
 
@@ -63,6 +67,9 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
     }, [isNext, isPrevious]);
 
     const { opacity, transition } = visualState;
+    const resolvedTitle = title[locale] ?? `timeline.${id}.title`;
+    const resolvedDescription =
+      description[locale] ?? `timeline.${id}.description`;
 
     // Helper to combine internal ref with forwarded ref
     const setItemRef = (element: HTMLLIElement | null) => {
@@ -118,12 +125,17 @@ const ContentItem = forwardRef<HTMLLIElement, ContentItemProps>(
         )}
       >
         {month && (
-          <MonthBullet color={color} month={month} isGrayScale={isNext} />
+          <MonthBullet
+            color={color}
+            month={month}
+            locale={locale}
+            isGrayScale={isNext}
+          />
         )}
 
         <PeriodInfo
-          title={title}
-          description={description}
+          title={resolvedTitle}
+          description={resolvedDescription}
           location={location}
           durationInMonths={durationInMonths}
           isInactive={isNext || isPrevious}
