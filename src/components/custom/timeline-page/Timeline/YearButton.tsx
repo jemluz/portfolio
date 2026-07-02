@@ -18,7 +18,7 @@ export default function YearButton({
     <div
       ref={(el) => innerRef?.(el)}
       className={cn(
-        "flex items-center mr-[8px] -translate-x-[10px] transition-all duration-300",
+        "timeline-year-button-row flex items-center transition-all duration-300",
       )}
     >
       <YearBtnLeftBullet isVisible={isSelected} showError={showError} />
@@ -27,12 +27,14 @@ export default function YearButton({
         onClick={() => onClick(year)}
         aria-pressed={isSelected}
         className={cn(
-          "border-zinc-100 border-l-[3px] cursor-pointer hover:bg-accent rounded-none pr-[16px] md:pr-[8px]",
+          "timeline-year-button border-zinc-100 cursor-pointer hover:bg-accent rounded-none",
           isSelected && selectedStyle,
           showError && errorStyle,
         )}
       >
-        <span className={`text-[1.2rem] ${suseMono.variable}`}>{year}</span>
+        <span className={`timeline-year-label ${suseMono.variable}`}>
+          {year}
+        </span>
       </Button>
     </div>
   );

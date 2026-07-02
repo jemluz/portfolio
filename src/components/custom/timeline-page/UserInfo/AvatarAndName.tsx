@@ -10,7 +10,7 @@ export default function AvatarAndName({
 
   return (
     <div className="flex flex-col items-center">
-      <Avatar className="w-[112px] h-[112px] mb-4 border-[3px] border-zinc-200">
+      <Avatar className="timeline-avatar mb-4 border-zinc-200">
         <AvatarImage src={profilePhotoUrl} />
         <AvatarFallback>{nameInitials}</AvatarFallback>
       </Avatar>

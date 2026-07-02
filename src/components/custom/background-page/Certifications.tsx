@@ -34,8 +34,8 @@ export default function Certifications({
             <EducationItem
               key={`${certification.name}-${certification.year}`}
               year={certification.year}
-              degree={certification.name}
-              institution={certification.issuer}
+              name={certification.name}
+              institution={certification.institution}
               certificateUrl={certification.certificateUrl}
               institutionUrl={certification.institutionUrl}
             />

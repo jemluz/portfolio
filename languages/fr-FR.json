@@ -1,0 +1,34 @@
+{
+  "HomePage": {
+    "title": "Accueil",
+    "description": "Cette page est en cours de construction. De nouvelles mises à jour arrivent bientôt !"
+  },
+  "BackgroundPage": {
+    "title": "Parcours",
+    "download": "Télécharger le CV",
+    "downloadAriaLabel": "Télécharger le CV au format PDF",
+    "downloadWarning": "Pour le moment, seules les versions portugaise et anglaise sont disponibles au téléchargement.",
+    "workHistory": "Expérience Professionnelle",
+    "education": "Éducation",
+    "certificates": "Certificats",
+    "seeCertificate": "Voir le certificat",
+    "languages": "Langues (CEFR)",
+    "skills": "Compétences & Technologies"
+  },
+  "CEFR": {
+    "A1": "Débutant",
+    "A2": "Élémentaire",
+    "B1": "Intermédiaire",
+    "B2": "Intermédiaire supérieur",
+    "C1": "Avancé",
+    "C2": "Natif ou Compétent"
+  },
+  "ShowcasePage": {
+    "title": "Portefeuille",
+    "description": "Jetons un coup d'œil à certains des projets sur lesquels j'ai travaillé."
+  },
+  "TimeLinePage": {
+    "title": "Chronologie",
+    "projects": "Projets"
+  }
+}

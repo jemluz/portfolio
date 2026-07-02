@@ -29,9 +29,9 @@ export default function Education({ title, iconColor }: EducationProps) {
         <div className="flex flex-col gap-8">
           {EDUCATION.map((edu, i) => (
             <EducationItem
-              key={`${edu.institution}-${edu.degree}-${i}`}
+              key={`item-${i}`}
               year={edu.year}
-              degree={edu.degree}
+              name={edu.name}
               institution={edu.institution}
               certificateUrl={edu.certificateUrl}
               institutionUrl={edu.institutionUrl}

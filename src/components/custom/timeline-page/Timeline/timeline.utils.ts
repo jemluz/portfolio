@@ -1,8 +1,12 @@
 /**
  * Timeline constants
  */
-export const YEAR_BUTTON_HEIGHT = 36;
-export const ERROR_BLINK_DURATION = 300;
+export const YEAR_BUTTON_HEIGHT_PX = 36;
+export const ERROR_BLINK_DURATION_MS = 300;
+
+// Backward-compatible aliases for existing imports.
+export const YEAR_BUTTON_HEIGHT = YEAR_BUTTON_HEIGHT_PX;
+export const ERROR_BLINK_DURATION = ERROR_BLINK_DURATION_MS;
 
 /**
  * Calculate the Y translation for the black border based on the selected year position
@@ -17,7 +21,7 @@ export function calculateBlackBorderTranslation(
   if (selectedYear == null) return 0;
 
   const index = years.indexOf(selectedYear);
-  return Math.max(0, index) * YEAR_BUTTON_HEIGHT;
+  return Math.max(0, index) * YEAR_BUTTON_HEIGHT_PX;
 }
 
 /**

@@ -1,0 +1,34 @@
+{
+  "HomePage": {
+    "title": "Inicio",
+    "description": "Esta página está en construcción. ¡Próximamente habrá novetades!"
+  },
+  "BackgroundPage": {
+    "title": "Trayectoria",
+    "download": "Descargar Currículum",
+    "downloadAriaLabel": "Descargar currículum en PDF",
+    "downloadWarning": "Por el momento, solo las versiones en portugués e inglés están disponibles para descargar.",
+    "workHistory": "Experiencia Laboral",
+    "education": "Educación",
+    "certificates": "Certificados",
+    "seeCertificate": "Ver certificado",
+    "languages": "Idiomas (CEFR)",
+    "skills": "Habilidades y Tecnologías"
+  },
+  "CEFR": {
+    "A1": "Principiante",
+    "A2": "Elemental",
+    "B1": "Intermedio",
+    "B2": "Intermedio superior",
+    "C1": "Avanzado",
+    "C2": "Nativo o Competente"
+  },
+  "ShowcasePage": {
+    "title": "Portafolio",
+    "description": "Echemos un vistazo a algunos de los proyectos en los que he trabajado."
+  },
+  "TimeLinePage": {
+    "title": "Línea de Tiempo",
+    "projects": "Proyectos"
+  }
+}

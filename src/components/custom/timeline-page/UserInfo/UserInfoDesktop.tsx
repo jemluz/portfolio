@@ -20,8 +20,8 @@ function UserInfoDesktop(userData: UserInfoProps) {
 function GrowingLine() {
   return (
     <div className={cn(`w-full flex flex-col items-center justify-center`)}>
-      <div className="h-[152px]"></div>
-      <div className="w-full h-[2px] mb-4 mt-2 border-b-[2px] border-b-zinc-200"></div>
+      <div className="timeline-user-desktop-spacer"></div>
+      <div className="timeline-divider w-full mb-4 mt-2 border-b-zinc-200"></div>
     </div>
   );
 }
@@ -40,7 +40,7 @@ function RightContainer({
         profilePhotoUrl={profilePhotoUrl}
       />
 
-      <div className="w-full h-[2px] mb-4 mt-2 border-b-[2px] border-b-zinc-200"></div>
+      <div className="timeline-divider w-full mb-4 mt-2 border-b-zinc-200"></div>
 
       <UserExternalLinks goToUrls={urls} />
     </div>

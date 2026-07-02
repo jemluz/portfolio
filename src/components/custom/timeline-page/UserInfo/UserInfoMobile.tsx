@@ -11,7 +11,7 @@ function UserInfoMobile(userData: UserInfoProps) {
       id="user-info-mobile"
       className="user-area flex flex-col items-center justify-end"
     >
-      <div id="top-padding" className="h-[20px]"></div>
+      <div id="top-padding" className="timeline-user-mobile-spacer"></div>
       <TopContainer {...userData} />
       <GrowingLine />
     </div>
@@ -21,7 +21,7 @@ function UserInfoMobile(userData: UserInfoProps) {
 function GrowingLine() {
   return (
     <div className={cn(`w-full flex flex-col items-center justify-center`)}>
-      <div className="w-full h-[2px] mt-4 border-b-[2px] border-b-zinc-200"></div>
+      <div className="timeline-divider w-full mt-4 border-b-zinc-200"></div>
     </div>
   );
 }

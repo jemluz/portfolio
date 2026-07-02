@@ -3,11 +3,14 @@ import { RefObject } from "react";
 /**
  * ContentArea constants
  */
-export const CONTENT_VIEW_HEIGHT = 230;
+export const CONTENT_VIEW_HEIGHT_PX = 230;
 export const SCROLL_ANIMATION_DURATION = 600;
 export const DEFAULT_SCROLL_THRESHOLD = 10;
 export const DEFAULT_SCROLL_TIME_RESET = 300;
 export const DEFAULT_TOUCH_THRESHOLD = 50; // pixels for touch swipe
+
+// Backward-compatible alias for existing imports.
+export const CONTENT_VIEW_HEIGHT = CONTENT_VIEW_HEIGHT_PX;
 
 /**
  * Scrolls to the selected item

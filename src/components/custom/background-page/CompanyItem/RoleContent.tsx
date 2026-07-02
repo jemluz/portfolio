@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 
 import KeyArchievementList from "./KeyArchievementList";
 import { RoleContentProps, RoleHeaderProps } from "./company-item.types";
+import { useLocale } from "next-intl";
 
 export default function RoleContent({
   title,
@@ -9,12 +10,14 @@ export default function RoleContent({
   description,
   className,
 }: RoleContentProps) {
+  const locale = useLocale();
+
   return (
     <div
       className={cn("right-column flex flex-col mt-2 mb-4 gap-1.5", className)}
     >
       <RoleHeader title={title} period={period} />
-      <KeyArchievementList items={description} />
+      <KeyArchievementList items={description[locale as keyof typeof description]} />
     </div>
   );
 }

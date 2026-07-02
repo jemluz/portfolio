@@ -1,10 +1,12 @@
-import { numberToMonthPTBR } from "@/lib/utils";
-import { MonthBulletProps } from "./content-item.types";
 import { colorMap } from "@/lib/constants";
+import { getMonthName } from "@/lib/utils";
+
+import { MonthBulletProps } from "./content-item.types";
 
 export default function MonthBullet({
   color,
   month,
+  locale,
   isGrayScale = false,
 }: MonthBulletProps) {
   // Use grayscale when isGrayScale is true (for next content), otherwise use the assigned color
@@ -20,7 +22,7 @@ export default function MonthBullet({
           className={`absolute w-4 h-4 rounded-full border-2 ${border}`}
         ></div>
       </div>
-      <span className="text-sm text-gray-500 pb-2">{` ${numberToMonthPTBR(month)}`}</span>
+      <span className="text-sm text-gray-500 pb-2">{` ${getMonthName(month, locale)}`}</span>
     </div>
   );
 }

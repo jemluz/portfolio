@@ -27,7 +27,10 @@ export type CampanyItemRole = {
   title: string;
   startDate: string;
   endDate: string | null;
-  description: string[];
+  description: {
+    "en-US": string[];
+    "pt-BR": string[];
+  };
 };
 
 export type CampanyItemProps = {
@@ -37,14 +40,16 @@ export type CampanyItemProps = {
   startDate: string;
   endDate: string | null;
   roles: CampanyItemRole[];
-  formatPeriod: (startDate: string, endDate: string | null) => string;
   className?: string;
 };
 
 export type RoleContentProps = {
   title: string;
   period: string;
-  description: string[];
+  description: {
+    "en-US": string[];
+    "pt-BR": string[];
+  };
   className?: string;
 };
 
@@ -56,7 +61,10 @@ export type RoleHeaderProps = {
 export type RoleItemProps = {
   title: string;
   period: string;
-  description: string[];
+  description: {
+    "en-US": string[];
+    "pt-BR": string[];
+  };
   className?: string;
 };
 

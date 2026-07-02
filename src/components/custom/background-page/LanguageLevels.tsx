@@ -1,4 +1,4 @@
-import { CEFR_LABEL_BY_LEVEL, CEFR_LEVELS, LANGUAGES } from "@/background-data";
+import { CEFR_LEVELS, LANGUAGES } from "@/background-data";
 import {
   AccordionContent,
   AccordionItem,
@@ -6,8 +6,25 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import { Languages } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function LanguageLevels() {
+  const t = useTranslations("BackgroundPage");
+  const tCefr = useTranslations("CEFR");
+  const locale = useLocale();
+
+  const getLocaleLanguageName = (name: { [key: string]: string }) => {
+    if (locale === "en-US" || locale === "fr-FR") {
+      return name["en-US"];
+    }
+
+    if (!name) {
+      return "";
+    }
+
+    return name["pt-BR"];
+  };
+
   return (
     <AccordionItem value="language-levels">
       <AccordionTrigger
@@ -16,18 +33,18 @@ export default function LanguageLevels() {
       >
         <div className="flex items-center">
           <Languages size={20} className="mr-3 text-rose-500" />
-          Languages
+          {t("languages")}
         </div>
       </AccordionTrigger>
       <AccordionContent className="pt-6">
         <ul className="flex gap-12">
           {LANGUAGES.map((language) => (
             <li
-              key={language.name}
+              key={getLocaleLanguageName(language.name)}
               className="flex flex-col items-start gap-4 pb-4"
             >
               <span className="text-base font-semibold text-gray-900">
-                {language.name}
+                {getLocaleLanguageName(language.name)}
               </span>
 
               <div className="flex flex-col items-start gap-2">
@@ -54,7 +71,7 @@ export default function LanguageLevels() {
                 </div>
 
                 <span className="text-sm text-gray-500">
-                  {CEFR_LABEL_BY_LEVEL[language.level]} ({language.level})
+                  {tCefr(language.level)} ({language.level})
                 </span>
               </div>
             </li>
