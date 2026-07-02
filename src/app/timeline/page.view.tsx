@@ -19,7 +19,7 @@ export default function TimelinePage() {
   const isDesktop = useMediaQuery("(min-width: 769px)");
 
   return (
-    <main className="user-page-grid grid h-screen overflow-hidden">
+    <main className="user-page-grid grid overflow-hidden">
       {isDesktop ? (
         <UserInfoDesktop {...userData} />
       ) : (
