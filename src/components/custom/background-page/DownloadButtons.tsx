@@ -1,7 +1,8 @@
 import { resumePdfENUrl, resumePdfPTUrl } from "@/background-data";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { env } from "@/env";
-import { Download } from "lucide-react";
+import { AlertTriangle, Download } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export default function DownloadButtons() {
@@ -12,7 +13,7 @@ export default function DownloadButtons() {
     <div className="flex flex-col mb-6 gap-2">
       <h3 className="font-semibold text-gray-700">{t("download")}</h3>
 
-      <div className="flex gap-2">
+      <div className="download-buttons flex gap-2">
         <Button asChild variant="outline" className="gap-2" size={"sm"}>
           <a
             href={`${s3BucketUrl}/${resumePdfENUrl}`}
@@ -37,6 +38,11 @@ export default function DownloadButtons() {
           </a>
         </Button>
       </div>
+
+      <Alert variant="warning" className="mt-2 py-1">
+        <AlertTriangle className="text-amber-400 dark:text-amber-100" />
+        <AlertDescription>{t("downloadWarning")}</AlertDescription>
+      </Alert>
     </div>
   );
 }
